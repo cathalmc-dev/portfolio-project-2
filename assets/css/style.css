@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Oswald&family=Raleway&display=swap');
 
+:root {
+  --heading-font: Oswald, sans-serif;
+  --body-font: Raleway, sans-serif;
+  --dark-blue: #08115C;
+  --light-blue: #4081E8;
+  --box-background: #9CC7C4;
+  --orange: #CE884B;
+  --card: #ebeae7;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,16 +22,16 @@ html {
 }
 
 body {
-  font-family: Raleway, sans-serif;
+  font-family: var(--body-font);
   font-weight: 400;
-  color: #CE884B;
-  background-color: #08115C;
+  color: var(--orange);
+  background-color: var(--dark-blue);
 }
 
 /* Headings */
 
 h1, h2 {
-  font-family: Oswald, sans-serif;
+  font-family: var(--heading-font);
   text-transform: uppercase;
   letter-spacing: 4px;
   text-align: center;
@@ -53,10 +63,11 @@ ul {
 .random-number {
   height: 100%;
   width: 25%;
-  background-color: #9CC7C4;
+  background-color: var(--box-background);
   border: 1px solid black;
   font-family: Orbitron;
   font-size: 750%;
+  
   text-align: center;
   display: inline-block;
   margin: 0 -5px;
@@ -69,20 +80,31 @@ ul {
   border-radius: 50%;
   margin-top: 35px;
   margin-right: 10px;
-  background-color: #4081E8;
+  background-color: var(--box-background);
 }
 
 #user-nums {
-  height: 100px;
+  height: 6em;
   width: 60vw;
-  background-color: orangered;
   margin: 20px auto;
+  text-align: center;
+}
+
+.card {
+  height: 6em;
+  width: 6em;
+  border: 2px solid black;
+  border-radius: 10%;
+  display: inline-block;
+  background-color: var(--card);
 }
 
 #cards-container {
-  height: 100px;
-  width: 60vw;
-  background-color: yellow;
+  height: 20em;
+  width: 55vw;
+  background-color: var(--box-background);
   margin: 20px auto;
+  text-align: center;
+  padding-top: 5px;
 }
 
