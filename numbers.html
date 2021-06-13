@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  <h1 class="main-heading">Welcome to the Countdown Numbers Game!</h1>
+  <h2>Instructions:</h2>
+  <ul id="num-instructions">
+    <li>Choose any 6 cards from the below. The top 4 are large numbers and the bottom 20 are small numbers.</li>
+    <li>Click stop on the spinner to generate a random 3 digit target number.</li>
+    <li>Add, subtract, multiply or divide your 6 numbers to get as close to the target number as you can. Each number may only be used once.</li>
+    <li>10 points for getting the number exactly, 7 for being within 5 of it and 5 for being within 10. Any further away is 0 points.</li>
+    <li>There is an optional timer you can compete against.</li>
+  </ul>
+  <div id="target">
+    <div class="random-number">6</div>
+    <div class="random-number">0</div>
+    <div class="random-number">7</div>
+    <button id="get-target">GO!</button>
+  </div>
+  <div id="user-nums"></div>
+  <div id="cards-container">
+    <div id="large-cards"></div>
+    <div id="small-cards"></div>
+  </div>
+  <script src="assets/js/script.js"></script>
+  </body>
+</html>

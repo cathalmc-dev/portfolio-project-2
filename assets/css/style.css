@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Oswald&family=Raleway&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+html {
+  min-height: 100%;
+  position: relative;
+}
+
+body {
+  font-family: Raleway, sans-serif;
+  font-weight: 400;
+  color: #CE884B;
+  background-color: #08115C;
+}
+
+/* Headings */
+
+h1, h2 {
+  font-family: Oswald, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-align: center;
+}
+
+h1 {
+  margin: 5vh auto 1vh;
+  font-size: 250%;
+}
+
+h2 {
+
+}
+
+
+ul {
+  margin: 0 25vw;
+  font-size: 120%;
+}
+
+
+#target {
+  height: 150px;
+  width: 450px;
+  margin: 20px auto;
+  text-align: left;
+}
+
+.random-number {
+  height: 100%;
+  width: 25%;
+  background-color: #9CC7C4;
+  border: 1px solid black;
+  font-family: Orbitron;
+  font-size: 750%;
+  text-align: center;
+  display: inline-block;
+  margin: 0 -5px;
+}
+
+#get-target {
+  float: right;
+  height: 60%;
+  width: 22%;
+  border-radius: 50%;
+  margin-top: 35px;
+  margin-right: 10px;
+  background-color: #4081E8;
+}
+
+#user-nums {
+  height: 100px;
+  width: 60vw;
+  background-color: orangered;
+  margin: 20px auto;
+}
+
+#cards-container {
+  height: 100px;
+  width: 60vw;
+  background-color: yellow;
+  margin: 20px auto;
+}
+
