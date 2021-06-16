@@ -9,5 +9,37 @@
 }
 assignLarge();
 
-let smallNumbers = [7];
-console.log(smallNumbers);
+/**
+ * Taken from a YouTube tutorial - https://www.youtube.com/watch?v=P3gJr_Rd80g
+ * How to count the occurences in a JavaScript Array
+ */
+// let countOccurence = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+
+
+// let smallNumbers = [];
+// let smallLength = smallNumbers.length;
+// function assignSmall() {
+//   while (smallLength < 20) {
+//     let i = Math.ceil(Math.random() * 20);
+//     if (countOccurence(smallNumbers, i) < 2) {
+//       smallNumbers.push(i);
+//       continue;
+//     }
+//   }
+//   console.log(smallNumbers);
+// }
+// console.log(smallNumbers);
+// for (i = 1; i <= 20; i++) {
+//   document.getElementById(`small${i}`).innerHTML = `<h3>${smallNumbers[i]}</h3>`
+// }
+
+let smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
+function assignSmall() {
+  for (i = 1; i <= 20; i++) {
+    let smallLength = smallNumbers.length;
+    let j = Math.floor((Math.random()) * smallLength);
+    document.getElementById(`small${i}`).innerHTML = `<h3>${smallNumbers[j]}</h3>`
+    smallNumbers.splice(j, 1);
+ }
+}
+assignSmall();
