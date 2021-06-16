@@ -44,11 +44,15 @@ function assignSmall() {
 }
 assignSmall();
 
-let cards = document.getElementsByClassName("card");
-for (i = 0; i < 24; i++) {
-  cards[i].addEventListener('click', flipCard);
-}
+let userNums = [];
 
+let cards = document.getElementsByClassName("card");
+if (userNums.length < 6) {
+  for (i = 0; i < 24; i++) {
+    cards[i].addEventListener('click', flipCard);
+    cards[i].addEventListener('click', addToUserNums);
+  }
+}
 
 function flipCard() {
   for (i = 0; i < 24; i++) {
@@ -56,8 +60,15 @@ function flipCard() {
   }
 }
 
-// function flipCard() {
-//   this.classList.add("flipCard");
-// }
+function addToUserNums() {
+  let x = this.innerText;
+  userNums.push(x);
+  let i = userNums.length;
+  document.getElementById(`pick${i}`).innerHTML = `<h3>${x}</h3>`
+  console.log(userNums);
+}
 
-// cards.forEach((card) => card.addEventListener("click", flipCard));
+// function userPick() {
+//   flipCard();
+//   addToUserNums();
+// }

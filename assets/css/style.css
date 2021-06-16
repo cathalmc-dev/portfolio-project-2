@@ -88,7 +88,7 @@ ul {
 #cards-container {
   height: 22em;
   width: 55vw;
-  background-color: var(--box-background);
+  /* background-color: var(--box-background); */
   margin: 20px auto;
   text-align: center;
   vertical-align: middle;
@@ -109,7 +109,7 @@ ul {
   font-family: var(--number-font);
   line-height: 6em;
   transform-style: preserve-3d;
-  transition: all 0.8s ease;
+  transition: all 0.6s ease;
 }
 
 .user-pick {
@@ -147,4 +147,8 @@ ul {
 
 .card h3 {
   font-size: 250%;;
+}
+
+.user-pick h3 {
+  font-size: 250%;
 }
