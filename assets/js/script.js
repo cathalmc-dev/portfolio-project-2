@@ -43,3 +43,21 @@ function assignSmall() {
  }
 }
 assignSmall();
+
+let cards = document.getElementsByClassName("card");
+for (i = 0; i < 24; i++) {
+  cards[i].addEventListener('click', flipCard);
+}
+
+
+function flipCard() {
+  for (i = 0; i < 24; i++) {
+    this.classList.add("flipCard");
+  }
+}
+
+// function flipCard() {
+//   this.classList.add("flipCard");
+// }
+
+// cards.forEach((card) => card.addEventListener("click", flipCard));
