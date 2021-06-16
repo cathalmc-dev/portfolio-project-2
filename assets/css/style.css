@@ -3,6 +3,7 @@
 :root {
   --heading-font: Oswald, sans-serif;
   --body-font: Raleway, sans-serif;
+  --number-font: Orbitron, sans-serif;
   --dark-blue: #08115C;
   --light-blue: #4081E8;
   --box-background: #9CC7C4;
@@ -38,7 +39,7 @@ h1, h2 {
 }
 
 h1 {
-  margin: 5vh auto 1vh;
+  margin: 3vh auto 1vh;
   font-size: 250%;
 }
 
@@ -89,21 +90,30 @@ ul {
   text-align: center;
 }
 
-.card {
-  height: 6em;
-  width: 6em;
-  border: 2px solid black;
-  border-radius: 10%;
-  display: inline-block;
-  background-color: var(--card);
-}
-
 #cards-container {
   height: 20em;
   width: 55vw;
   background-color: var(--box-background);
   margin: 20px auto;
   text-align: center;
+  vertical-align: middle;
   padding-top: 5px;
 }
 
+#large-cards {
+  margin-bottom: 5px;
+}
+.card {
+  height: 6em;
+  width: 6em;
+  border: 2px solid black;
+  border-radius: 10%;
+  display: inline-table;
+  background-color: var(--card);
+  font-family: var(--number-font);
+  line-height: 6em;
+}
+
+.card h3 {
+  font-size: 250%;;
+}
