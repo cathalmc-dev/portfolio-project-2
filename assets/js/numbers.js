@@ -65,10 +65,12 @@ function addToUserNums() {
   userNums.push(x);
   let i = userNums.length;
   document.getElementById(`pick${i}`).innerHTML = `<h3>${x}</h3>`
-  console.log(userNums);
+  if (userNums.length === 6) {
+    replaceCards();
+  }
 }
 
-// function userPick() {
-//   flipCard();
-//   addToUserNums();
-// }
+function replaceCards() {
+  let cardContainer = document.getElementById("cards-container");
+  cardContainer.remove();
+}

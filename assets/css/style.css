@@ -115,7 +115,6 @@ ul {
 #user-nums {
   height: 6em;
   width: 55vw;
-  background-color: var(--box-background);
   margin: 50px auto 0;
   text-align: center;
   vertical-align: middle;
