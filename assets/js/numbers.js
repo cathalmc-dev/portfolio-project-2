@@ -67,10 +67,31 @@ function addToUserNums() {
   document.getElementById(`pick${i}`).innerHTML = `<h3>${x}</h3>`
   if (userNums.length === 6) {
     replaceCards();
+    startSpinner();
   }
 }
 
 function replaceCards() {
-  let cardContainer = document.getElementById("cards-container");
-  cardContainer.remove();
+  let largeCards = document.getElementById("large-cards");
+  largeCards.remove();
+  let smallCards = document.getElementById("small-cards");
+  smallCards.remove();
 }
+
+let stop = false;
+
+function startSpinner() {
+  let i = 0;
+  if (stop === false) {
+    document.getElementById("slot1").innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`
+    document.getElementById("slot2").innerHTML = `${Math.floor(Math.random() * 9.999999)}`
+    document.getElementById("slot3").innerHTML = `${Math.floor(Math.random() * 9.999999)}`
+  }
+}
+
+function stopSpinner() {
+  stop = true;
+}
+
+let stopButton = document.getElementById("get-target");
+stopButton.addEventListener('click', stopSpinner);

@@ -9,6 +9,7 @@
   --box-background: #9CC7C4;
   --orange: #CE884B;
   --card: #ebeae7;
+  --stop: #cf142b;
 }
 
 * {
@@ -43,6 +44,10 @@ h1 {
   font-size: 250%;
 }
 
+h2 {
+  font-size: 200%;
+}
+
 ul {
   margin: 0 25vw;
   font-size: 120%;
@@ -52,7 +57,7 @@ ul {
 #target {
   height: 150px;
   width: 450px;
-  margin: 20px auto;
+  margin: 20px 42%;
   text-align: left;
 }
 
@@ -63,7 +68,7 @@ ul {
   border: 1px solid black;
   font-family: Orbitron;
   font-size: 750%;
-  text-align: center;
+  text-align: top;
   display: inline-block;
   margin: 0 -5px;
 }
@@ -75,7 +80,11 @@ ul {
   border-radius: 50%;
   margin-top: 35px;
   margin-right: 10px;
-  background-color: var(--box-background);
+  background-color: var(--stop);
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 #user-nums {
@@ -85,10 +94,10 @@ ul {
   text-align: center;
 }
 
-#cards-container {
+#input-container {
   height: 22em;
   width: 55vw;
-  /* background-color: var(--box-background); */
+  background-color: var(--box-background);
   margin: 10px auto;
   text-align: center;
   vertical-align: middle;
@@ -161,3 +170,4 @@ ul {
 .user-pick h3 {
   font-size: 250%;
 }
+

@@ -17,10 +17,10 @@
     <li>10 points for getting the number exactly, 7 for being within 5 of it and 5 for being within 10. Any further away is 0 points.</li>
   </ul>
   <div id="target">
-    <div class="random-number">6</div>
-    <div class="random-number">0</div>
-    <div class="random-number">7</div>
-    <button id="get-target">GO!</button>
+    <div class="random-number" id="slot1">0</div>
+    <div class="random-number" id="slot2">0</div>
+    <div class="random-number" id="slot3">0</div>
+    <button id="get-target" class="hidden"><h2>STOP</h2></button>
   </div>
   <div id="user-nums">
     <div class="user-pick" id="pick1"></div>
@@ -30,7 +30,7 @@
     <div class="user-pick" id="pick5"></div>
     <div class="user-pick" id="pick6"></div>
   </div>
-  <div id="cards-container">
+  <div id="input-container">
     <div id="large-cards">
       <div class="card">
         <div class="front"></div>
