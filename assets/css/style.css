@@ -89,7 +89,7 @@ ul {
   height: 22em;
   width: 55vw;
   /* background-color: var(--box-background); */
-  margin: 20px auto;
+  margin: 10px auto;
   text-align: center;
   vertical-align: middle;
   padding-top: 5px;
@@ -112,13 +112,23 @@ ul {
   transition: all 0.6s ease;
 }
 
+#user-nums {
+  height: 6em;
+  width: 55vw;
+  background-color: var(--box-background);
+  margin: 50px auto 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
 .user-pick {
   position: relative;
   height: 6em;
   width: 6em;
   border: 2px solid black;
   border-radius: 10%;
-  display: inline-table;
+  display: inline-block;
+  vertical-align: top;
   background-color: var(--card);
   font-family: var(--number-font);
   line-height: 6em;
