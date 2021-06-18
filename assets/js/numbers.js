@@ -46,11 +46,13 @@ assignSmall();
 
 let userNums = [];
 
-let cards = document.getElementsByClassName("card");
+let cards = document.getElementsByClassName("available");
 if (userNums.length < 6) {
   for (i = 0; i < 24; i++) {
     cards[i].addEventListener('click', flipCard);
     cards[i].addEventListener('click', addToUserNums);
+    cards[i].addEventListener('click', preventDoublePick);
+
   }
 }
 
@@ -62,13 +64,15 @@ function flipCard() {
 
 function addToUserNums() {
   let x = this.innerText;
-  userNums.push(x);
-  let i = userNums.length;
-  document.getElementById(`pick${i}`).innerHTML = `<h3>${x}</h3>`
-  if (userNums.length === 6) {
-    replaceCards();
-    spin = true;
-    startSpinner();
+  if (this.classList.contains('available')) {
+    userNums.push(x);
+    let i = userNums.length;
+    document.getElementById(`pick${i}`).innerHTML = `<h3>${x}</h3>`
+    if (userNums.length === 6) {
+      replaceCards();
+      startSpinner();
+      stopButton.classList.remove('hidden');
+    }
   }
 }
 
@@ -79,26 +83,6 @@ function replaceCards() {
   smallCards.remove();
 }
 
-// let spin = true;
-// let stopButton = document.getElementById("get-target");
-// stopButton.addEventListener('click', stopSpinner);
-
-// function startSpinner() {
-//   if (spin === true) {
-//     setInterval( function() {
-//       document.getElementById("slot1").innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`
-//       document.getElementById("slot2").innerHTML = `${Math.floor(Math.random() * 9.999999)}`
-//       document.getElementById("slot3").innerHTML = `${Math.floor(Math.random() * 9.999999)}`
-//     }, 100);
-//   }
-//   stopButton.classList.remove('hidden');
-// }
-
-// function stopSpinner() {
-//   spin = false;
-//   startSpinner();
-//   console.log('click')
-// }
 var spin = true;
 let stopButton = document.getElementById("get-target");
 function startSpinner() {
@@ -108,7 +92,6 @@ function startSpinner() {
     document.getElementById("slot3").innerHTML = `${Math.floor(Math.random() * 9.999999)}`
     setTimeout(startSpinner, 100);
   }
-  stopButton.classList.remove('hidden');
 }
 
 stopButton.addEventListener('click', stopSpinner);
@@ -116,5 +99,9 @@ stopButton.addEventListener('click', stopSpinner);
 function stopSpinner() {
   spin = false;
   startSpinner();
-  console.log('click')
+  stopButton.classList.add('hidden');
+}
+
+function preventDoublePick() {
+  this.classList.remove('available');
 }
