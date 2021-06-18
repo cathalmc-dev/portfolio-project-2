@@ -67,6 +67,7 @@ function addToUserNums() {
   document.getElementById(`pick${i}`).innerHTML = `<h3>${x}</h3>`
   if (userNums.length === 6) {
     replaceCards();
+    spin = true;
     startSpinner();
   }
 }
@@ -78,20 +79,42 @@ function replaceCards() {
   smallCards.remove();
 }
 
-let stop = false;
+// let spin = true;
+// let stopButton = document.getElementById("get-target");
+// stopButton.addEventListener('click', stopSpinner);
 
+// function startSpinner() {
+//   if (spin === true) {
+//     setInterval( function() {
+//       document.getElementById("slot1").innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`
+//       document.getElementById("slot2").innerHTML = `${Math.floor(Math.random() * 9.999999)}`
+//       document.getElementById("slot3").innerHTML = `${Math.floor(Math.random() * 9.999999)}`
+//     }, 100);
+//   }
+//   stopButton.classList.remove('hidden');
+// }
+
+// function stopSpinner() {
+//   spin = false;
+//   startSpinner();
+//   console.log('click')
+// }
+var spin = true;
+let stopButton = document.getElementById("get-target");
 function startSpinner() {
-  let i = 0;
-  if (stop === false) {
-    document.getElementById("slot1").innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`
+  if (spin === true) {
+    document.getElementById('slot1').innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`
     document.getElementById("slot2").innerHTML = `${Math.floor(Math.random() * 9.999999)}`
     document.getElementById("slot3").innerHTML = `${Math.floor(Math.random() * 9.999999)}`
+    setTimeout(startSpinner, 100);
   }
+  stopButton.classList.remove('hidden');
 }
+
+stopButton.addEventListener('click', stopSpinner);
 
 function stopSpinner() {
-  stop = true;
+  spin = false;
+  startSpinner();
+  console.log('click')
 }
-
-let stopButton = document.getElementById("get-target");
-stopButton.addEventListener('click', stopSpinner);
