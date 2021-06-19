@@ -46,10 +46,20 @@ h1 {
 
 h2 {
   font-size: 200%;
+  color: var(--orange);
+}
+
+#instructions-badge {
+  background-color: var(--box-background);
+  width: 14%;
+  margin: 0 auto 5vh;
+  border: solid 5px var(--orange);
+  border-radius: 15px;
+  box-sizing: border-box;
 }
 
 ul {
-  margin: 0 25vw;
+  margin: 2vh 25vw;
   font-size: 120%;
 }
 
@@ -80,7 +90,12 @@ ul {
   border-radius: 50%;
   margin-top: 35px;
   margin-right: 10px;
+  text-align: center;
   background-color: var(--stop);
+}
+
+.display-none {
+  display: none;
 }
 
 .hidden {
@@ -98,7 +113,7 @@ ul {
   height: 22em;
   width: 55vw;
   background-color: var(--box-background);
-  margin: 10px auto;
+  margin: 4vh auto;
   text-align: center;
   vertical-align: middle;
   padding-top: 5px;

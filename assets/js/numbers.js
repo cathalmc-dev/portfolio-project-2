@@ -1,5 +1,12 @@
- let largeNumbers = [25, 50, 75, 100];
- function assignLarge() {
+let instructions = document.getElementById("instructions-badge");
+instructions.addEventListener('click', toggleInstructions);
+
+function toggleInstructions() {
+  document.getElementById("num-instructions").classList.toggle("display-none");
+}
+
+let largeNumbers = [25, 50, 75, 100];
+function assignLarge() {
   for (i = 1; i <= 4; i++) {
     let largeLength = largeNumbers.length;
     let j = Math.floor((Math.random()) * largeLength);
@@ -76,6 +83,10 @@ function addToUserNums() {
   }
 }
 
+function preventDoublePick() {
+  this.classList.remove('available');
+}
+
 function replaceCards() {
   let largeCards = document.getElementById("large-cards");
   largeCards.remove();
@@ -83,14 +94,22 @@ function replaceCards() {
   smallCards.remove();
 }
 
+let slot1 = document.getElementById('slot1');
+let slot2 = document.getElementById('slot2');
+let slot3 = document.getElementById('slot3');
+
 var spin = true;
 let stopButton = document.getElementById("get-target");
 function startSpinner() {
   if (spin === true) {
-    document.getElementById('slot1').innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`
-    document.getElementById("slot2").innerHTML = `${Math.floor(Math.random() * 9.999999)}`
-    document.getElementById("slot3").innerHTML = `${Math.floor(Math.random() * 9.999999)}`
+    slot1.innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`
+    slot2.innerHTML = `${Math.floor(Math.random() * 9.999999)}`
+    slot3.innerHTML = `${Math.floor(Math.random() * 9.999999)}`
     setTimeout(startSpinner, 100);
+  }
+  else {
+    var target = slot1.innerText + slot2.innerText + slot3.innerText;
+    console.log(target);
   }
 }
 
@@ -100,8 +119,4 @@ function stopSpinner() {
   spin = false;
   startSpinner();
   stopButton.classList.add('hidden');
-}
-
-function preventDoublePick() {
-  this.classList.remove('available');
 }
