@@ -7,33 +7,33 @@ function toggleInstructions() {
 
 var inputContainer = document.getElementById("input-container");
 
-function createCards() {
-  let front = document.createElement('div');
-  front.setAttribute("class", "front");
-  let back = document.createElement('div');
-  back.setAttribute("class", "back");
-  let card = document.createElement('div');
-  card.setAttribute('class', 'card available');
-  let largeContainer = document.createElement('div');
-  largeContainer.setAttribute('id', 'large-cards');
-  for (i = 1; i <= 4; i++) {
-    card.appendChild(front.cloneNode());
-    back.setAttribute('id', `large${i}`);
-    card.appendChild(back.cloneNode());
-    largeContainer.appendChild(card.cloneNode());
-  }
-  let smallContainer = document.createElement('div');
-  smallContainer.setAttribute('id', 'small-cards');
-  for (i = 1; i <= 20; i++) {
-    card.appendChild(front.cloneNode());
-    back.setAttribute('id', `small${i}`);
-    card.appendChild(back.cloneNode());
-    smallContainer.appendChild(card.cloneNode());
-  }
-  inputContainer.appendChild(largeContainer);
-  inputContainer.appendChild(smallContainer);
-}
-createCards();
+// function createCards() {
+//   let front = document.createElement('div');
+//   front.setAttribute("class", "front");
+//   let back = document.createElement('div');
+//   back.setAttribute("class", "back");
+//   let card = document.createElement('div');
+//   card.setAttribute('class', 'card available');
+//   let largeContainer = document.createElement('div');
+//   largeContainer.setAttribute('id', 'large-cards');
+//   for (i = 1; i <= 4; i++) {
+//     card.appendChild(front.cloneNode());
+//     back.setAttribute('id', `large${i}`);
+//     card.appendChild(back.cloneNode());
+//     largeContainer.appendChild(card.cloneNode());
+//   }
+//   let smallContainer = document.createElement('div');
+//   smallContainer.setAttribute('id', 'small-cards');
+//   for (i = 1; i <= 20; i++) {
+//     card.appendChild(front.cloneNode());
+//     back.setAttribute('id', `small${i}`);
+//     card.appendChild(back.cloneNode());
+//     smallContainer.appendChild(card.cloneNode());
+//   }
+//   inputContainer.appendChild(largeContainer);
+//   inputContainer.appendChild(smallContainer);
+// }
+// createCards();
 
 let largeNumbers = [25, 50, 75, 100];
 function assignLarge() {
@@ -163,10 +163,13 @@ function createInputRow () {
   multiply.setAttribute('value', '*');
   multiply.innerText = "x";
   let divide = document.createElement('option');
-  divide.setAttribute('value', '÷');
+  divide.setAttribute('value', '/');
   divide.innerText = "÷";
-  let result = document.createElement('div');
-  result.setAttribute("class", "input result");
+  let result = document.createElement('input');
+  result.setAttribute("class", "input");
+  result.setAttribute("type", "text");
+  result.setAttribute("id", "result");
+  result.setAttribute("readonly", "")
   let compute = document.createElement('input');
   compute.type = "submit";
   compute.value = "="
@@ -174,19 +177,85 @@ function createInputRow () {
   let operand = document.createElement('input');
   operand.setAttribute("class", "input operand");
   operand.type = "number";
+  operand.setAttribute('id', 'operand1')
+  let clone = operand.cloneNode(true);
+  clone.setAttribute('id', 'operand2')
   let operator = document.createElement('select');
   operator.setAttribute("class", "button operator");
+  operator.setAttribute('id', 'operator');
   let span = document.createElement('span');
   let form = document.createElement('form');
   operator.appendChild(add);
   operator.appendChild(subtract);
   operator.appendChild(multiply);
   operator.appendChild(divide);
-  span.appendChild(operand.cloneNode());
+  span.appendChild(operand);
   span.appendChild(operator);
-  span.appendChild(operand.cloneNode());
+  span.appendChild(clone);
   span.appendChild(compute);
   span.appendChild(result);
   form.appendChild(span);
+  form.setAttribute("onsubmit", "handleSubmit(event);")
   inputContainer.appendChild(form);
+}
+
+// function handleSubmit(event) {
+//   event.preventDefault();
+//   let operand1 = parseInt(document.getElementById('operand1').value);
+//   let operand2 = parseInt(document.getElementById('operand2').value);
+//   let operator = document.getElementById('operator').value;
+//   let result = document.getElementById('result');
+//   if (userNums.includes(operand1 && operand2)) {
+//     switch (operator) {
+//       case "+":
+//         result.value = operand1 + operand2;
+//         console.log(result);
+//         break;
+//       case "-":
+//         result.value = operand1 - operand2;
+//         console.log(result);
+//         break;
+//       case "*":
+//         result.value = operand1 * operand2;
+//         console.log(result);
+//         break;
+//       case "/":
+//         result.value = operand1 / operand2;
+//         console.log(result);
+//         break;
+//     }
+//   }
+// }
+
+// let index1 = userNums.indexOf(operand1);
+//     let index2 = userNums.indexOf(operand2);
+//     userNums.splice(index1, 1);
+//     userNums.splice(index2, 1, result);
+//     let resultDiv = document.getElementById('result');
+//     // resultDiv.innerHTML = `<h3>${result}</h3>`;
+//     // console.log(result);
+//   
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let operator = document.getElementById('operator').value;
+  let operand1 = document.getElementById('operand1').value;
+  let operand2 = document.getElementById('operand2').value;
+  let result = document.getElementById('result');
+  if (userNums.includes(operand1 && operand2)) {
+    switch(operator) {
+      case "+":
+        result.value = parseInt(operand1) + parseInt(operand2);
+        break
+      case "-":
+        result.value = operand1 - operand2;
+        break
+      case "*":
+        result.value = operand1 * operand2;
+        break
+      case "/":
+        result.value = operand1 / operand2;
+        break
+    }
+  }
 }

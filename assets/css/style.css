@@ -111,7 +111,7 @@ ul {
 
 #input-container {
   height: 22em;
-  width: 55vw;
+  width: 60vw;
   background-color: var(--box-background);
   margin: 4vh auto;
   text-align: center;
@@ -212,7 +212,3 @@ form {
   border-radius: 15%;
 }
 
-.result {
-  background-color: magenta;
-  display: inline-block;
-}
