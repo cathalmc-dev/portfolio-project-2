@@ -1,3 +1,8 @@
+let userNums = [];
+
+/**
+ * Allows the user to toggle the instruction by clicking on the instructions title div
+ */
 let instructions = document.getElementById("instructions-badge");
 instructions.addEventListener('click', toggleInstructions);
 
@@ -35,6 +40,9 @@ var inputContainer = document.getElementById("input-container");
 // }
 // createCards();
 
+/**
+ * Randomly assign the 4 large numbers to the 4 large cards for user selection
+ */
 let largeNumbers = [25, 50, 75, 100];
 function assignLarge() {
   for (i = 1; i <= 4; i++) {
@@ -46,30 +54,7 @@ function assignLarge() {
 }
 assignLarge();
 
-/**
- * Taken from a YouTube tutorial - https://www.youtube.com/watch?v=P3gJr_Rd80g
- * How to count the occurences in a JavaScript Array
- */
-// let countOccurence = (arr, val) => arr.reduce((a, v) => (v === val ? a + 1 : a), 0);
-
-
-// let smallNumbers = [];
-// let smallLength = smallNumbers.length;
-// function assignSmall() {
-//   while (smallLength < 20) {
-//     let i = Math.ceil(Math.random() * 20);
-//     if (countOccurence(smallNumbers, i) < 2) {
-//       smallNumbers.push(i);
-//       continue;
-//     }
-//   }
-//   console.log(smallNumbers);
-// }
-// console.log(smallNumbers);
-// for (i = 1; i <= 20; i++) {
-//   document.getElementById(`small${i}`).innerHTML = `<h3>${smallNumbers[i]}</h3>`
-// }
-
+// Randomly assign the 20 small numbers to the 20 small cards for user selection
 let smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
 function assignSmall() {
   for (i = 1; i <= 20; i++) {
@@ -81,8 +66,7 @@ function assignSmall() {
 }
 assignSmall();
 
-let userNums = [];
-
+// Listeners for when a user wants to flip a card
 let cards = document.getElementsByClassName("available");
 if (userNums.length < 6) {
   for (i = 0; i < 24; i++) {
@@ -91,6 +75,10 @@ if (userNums.length < 6) {
   }
 }
 
+/** 
+ *Flips a card to reveal it's value,
+ *then removes it from the pool of cards that are available to be flipped 
+*/
 function flipCard() {
   for (i = 0; i < 24; i++) {
     this.classList.add("flipCard");
@@ -98,6 +86,13 @@ function flipCard() {
   }
 }
 
+/**
+ * Adds a selected card's value to the array of user numbers
+ * Adds the value to the row displaying the users cards to them
+ * Checks if the users numbers array has 6 values
+ * and if it does then it runs the functions to start the spinner and remove the selection cards.
+ * It also makes the stop button visible
+ */
 function addToUserNums() {
   let x = this.innerText;
   if (this.classList.contains('available')) {
@@ -112,6 +107,7 @@ function addToUserNums() {
   }
 }
 
+// Deletes the elements containing the selectable cards
 function replaceCards() {
   let largeCards = document.getElementById("large-cards");
   largeCards.remove();
@@ -125,6 +121,11 @@ let slot3 = document.getElementById('slot3');
 
 var spin = true;
 let stopButton = document.getElementById("get-target");
+
+/**
+ * Starts changing the innerHTML of the target number slots every 0.1 seconds until the stop function is called
+ * if the stop function has been called it will assign the values of the slots to the target number variable
+*/
 function startSpinner() {
   if (spin === true) {
     slot1.innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`
@@ -147,7 +148,9 @@ function stopSpinner() {
   createInputRow();
 }
 
+// Creates an input row for the user
 function createInputRow () {
+  // The dropdown operator options
   let add = document.createElement('option');
   add.setAttribute('value', '+');
   add.innerText = "+";
@@ -160,40 +163,57 @@ function createInputRow () {
   let divide = document.createElement('option');
   divide.setAttribute('value', '/');
   divide.innerText = "÷";
+
+  // Each of the elements in the row
+  let operand = document.createElement('input');
+  operand.setAttribute("class", "input operand");
+  operand.type = "number";
+  operand.setAttribute('id', 'operand1')
+
+  let clone = operand.cloneNode(true);
+  clone.setAttribute('id', 'operand2')
+
+  let operator = document.createElement('select');
+  operator.setAttribute("class", "button operator");
+  operator.setAttribute('id', 'operator');
+
+  let compute = document.createElement('input');
+  compute.type = "submit";
+  compute.value = "="
+  compute.setAttribute("class", "button compute");
+
   let result = document.createElement('input');
   result.setAttribute("class", "input");
   result.setAttribute("type", "text");
   result.setAttribute("id", "result");
   result.setAttribute("readonly", "")
-  let compute = document.createElement('input');
-  compute.type = "submit";
-  compute.value = "="
-  compute.setAttribute("class", "button compute");
-  let operand = document.createElement('input');
-  operand.setAttribute("class", "input operand");
-  operand.type = "number";
-  operand.setAttribute('id', 'operand1')
-  let clone = operand.cloneNode(true);
-  clone.setAttribute('id', 'operand2')
-  let operator = document.createElement('select');
-  operator.setAttribute("class", "button operator");
-  operator.setAttribute('id', 'operator');
+
   let span = document.createElement('span');
   let form = document.createElement('form');
+
+  // Appends the operator dropdown options to the select element
   operator.appendChild(add);
   operator.appendChild(subtract);
   operator.appendChild(multiply);
   operator.appendChild(divide);
+
+  // Appends the row elements to the span element
   span.appendChild(operand);
   span.appendChild(operator);
   span.appendChild(clone);
   span.appendChild(compute);
   span.appendChild(result);
+
+  // Nests the entire row within a form which calls the handleSubmit function when it is computed
   form.appendChild(span);
   form.setAttribute("onsubmit", "handleSubmit(event);")
   inputContainer.appendChild(form);
 }
 
+/**
+ * Computes the value of the user equation depending on the chosen operator
+ * Removes the used values from the user numbers array and pushes in the new one
+ */
 function handleSubmit(event) {
   event.preventDefault();
   let operator = document.getElementById('operator').value;
