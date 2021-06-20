@@ -5,6 +5,36 @@ function toggleInstructions() {
   document.getElementById("num-instructions").classList.toggle("display-none");
 }
 
+var inputContainer = document.getElementById("input-container");
+
+function createCards() {
+  let front = document.createElement('div');
+  front.setAttribute("class", "front");
+  let back = document.createElement('div');
+  back.setAttribute("class", "back");
+  let card = document.createElement('div');
+  card.setAttribute('class', 'card available');
+  let largeContainer = document.createElement('div');
+  largeContainer.setAttribute('id', 'large-cards');
+  for (i = 1; i <= 4; i++) {
+    card.appendChild(front.cloneNode());
+    back.setAttribute('id', `large${i}`);
+    card.appendChild(back.cloneNode());
+    largeContainer.appendChild(card.cloneNode());
+  }
+  let smallContainer = document.createElement('div');
+  smallContainer.setAttribute('id', 'small-cards');
+  for (i = 1; i <= 20; i++) {
+    card.appendChild(front.cloneNode());
+    back.setAttribute('id', `small${i}`);
+    card.appendChild(back.cloneNode());
+    smallContainer.appendChild(card.cloneNode());
+  }
+  inputContainer.appendChild(largeContainer);
+  inputContainer.appendChild(smallContainer);
+}
+createCards();
+
 let largeNumbers = [25, 50, 75, 100];
 function assignLarge() {
   for (i = 1; i <= 4; i++) {
@@ -146,7 +176,6 @@ function createInputRow () {
   operand.type = "number";
   let operator = document.createElement('select');
   operator.setAttribute("class", "button operator");
-  let inputContainer = document.getElementById("input-container");
   let span = document.createElement('span');
   let form = document.createElement('form');
   operator.appendChild(add);
