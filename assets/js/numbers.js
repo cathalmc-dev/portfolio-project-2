@@ -181,7 +181,8 @@ function createInputRow() {
   let compute = document.createElement('input');
   compute.type = "submit";
   compute.value = "="
-  compute.setAttribute("class", "button compute");
+  compute.setAttribute("class", "button");
+  compute.setAttribute('id', 'compute');
 
   let result = document.createElement('input');
   result.setAttribute("class", "input");
@@ -212,6 +213,7 @@ function createInputRow() {
 }
 
 /**
+ * Checks if the user has given valid inputs by comparing the operands to each other and to the user numbers array
  * Computes the value of the user equation depending on the chosen operator
  * Removes the used values from the user numbers array and pushes in the new one
  */
@@ -242,7 +244,8 @@ function handleSubmit(event) {
       let index2 = userNums.indexOf(operand2);
       userNums.splice(index2, 1);
       userNums.push(result.value);
-      console.log(userNums);
+      freezeRow();
+      createInputRow();
     } else {
       alert("That number isn't available to you!");
     }
@@ -266,9 +269,22 @@ function handleSubmit(event) {
       let index2 = userNums.indexOf(operand2);
       userNums.splice(index2, 1);
       userNums.push(result.value);
-      console.log(userNums);
+      freezeRow();
+      createInputRow();
     }
   } else {
     alert("That number isn't available to you!");
   }
+}
+
+function freezeRow() {
+  document.getElementById('operand1').setAttribute('readonly', '');
+  document.getElementById('operand1').removeAttribute('id');
+  document.getElementById('operand2').setAttribute('readonly', '');
+  document.getElementById('operand2').removeAttribute('id');
+  document.getElementById('operator').disabled = true;
+  document.getElementById('operator').removeAttribute('id');
+  document.getElementById('compute').disabled = true;
+  document.getElementById('compute').removeAttribute('id');
+  document.getElementById('result').removeAttribute('id');
 }
