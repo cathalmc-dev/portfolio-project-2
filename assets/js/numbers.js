@@ -44,25 +44,27 @@ var inputContainer = document.getElementById("input-container");
  * Randomly assign the 4 large numbers to the 4 large cards for user selection
  */
 let largeNumbers = [25, 50, 75, 100];
+
 function assignLarge() {
   for (i = 1; i <= 4; i++) {
     let largeLength = largeNumbers.length;
     let j = Math.floor((Math.random()) * largeLength);
     document.getElementById(`large${i}`).innerHTML = `<h3>${largeNumbers[j]}</h3>`
     largeNumbers.splice(j, 1);
- }
+  }
 }
 assignLarge();
 
 // Randomly assign the 20 small numbers to the 20 small cards for user selection
 let smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
+
 function assignSmall() {
   for (i = 1; i <= 20; i++) {
     let smallLength = smallNumbers.length;
     let j = Math.floor((Math.random()) * smallLength);
     document.getElementById(`small${i}`).innerHTML = `<h3>${smallNumbers[j]}</h3>`
     smallNumbers.splice(j, 1);
- }
+  }
 }
 assignSmall();
 
@@ -78,7 +80,7 @@ if (userNums.length < 6) {
 /** 
  *Flips a card to reveal it's value,
  *then removes it from the pool of cards that are available to be flipped 
-*/
+ */
 function flipCard() {
   for (i = 0; i < 24; i++) {
     this.classList.add("flipCard");
@@ -125,15 +127,14 @@ let stopButton = document.getElementById("get-target");
 /**
  * Starts changing the innerHTML of the target number slots every 0.1 seconds until the stop function is called
  * if the stop function has been called it will assign the values of the slots to the target number variable
-*/
+ */
 function startSpinner() {
   if (spin === true) {
     slot1.innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`
     slot2.innerHTML = `${Math.floor(Math.random() * 9.999999)}`
     slot3.innerHTML = `${Math.floor(Math.random() * 9.999999)}`
     setTimeout(startSpinner, 100);
-  }
-  else {
+  } else {
     var target = slot1.innerText + slot2.innerText + slot3.innerText;
     console.log(target);
   }
@@ -149,7 +150,7 @@ function stopSpinner() {
 }
 
 // Creates an input row for the user
-function createInputRow () {
+function createInputRow() {
   // The dropdown operator options
   let add = document.createElement('option');
   add.setAttribute('value', '+');
@@ -221,10 +222,9 @@ function handleSubmit(event) {
   let operand2 = document.getElementById('operand2').value;
   let result = document.getElementById('result');
   let index1 = userNums.indexOf(operand1);
-  let index2 = userNums.indexOf(operand2);
-  if (index1 !== index2) {
+  if (operand1 !== operand2) {
     if (userNums.includes(operand1) && userNums.includes(operand2)) {
-      switch(operator) {
+      switch (operator) {
         case "+":
           result.value = parseInt(operand1) + parseInt(operand2);
           break
@@ -239,15 +239,36 @@ function handleSubmit(event) {
           break
       }
       userNums.splice(index1, 1);
+      let index2 = userNums.indexOf(operand2);
       userNums.splice(index2, 1);
       userNums.push(result.value);
-    }
-    else {
+      console.log(userNums);
+    } else {
       alert("That number isn't available to you!");
     }
-  }
-  else {
+  } else if (operand1 == operand2) {
+    userNums.splice(index1, 1);
+    if (userNums.includes(operand2)) {
+      switch (operator) {
+        case "+":
+          result.value = parseInt(operand1) + parseInt(operand2);
+          break
+        case "-":
+          result.value = parseInt(operand1) - parseInt(operand2);
+          break
+        case "*":
+          result.value = parseInt(operand1) * parseInt(operand2);
+          break
+        case "/":
+          result.value = parseInt(operand1) / parseInt(operand2);
+          break
+      }
+      let index2 = userNums.indexOf(operand2);
+      userNums.splice(index2, 1);
+      userNums.push(result.value);
+      console.log(userNums);
+    }
+  } else {
     alert("That number isn't available to you!");
   }
-  
 }
