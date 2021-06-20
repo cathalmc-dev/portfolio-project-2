@@ -215,5 +215,10 @@ function handleSubmit(event) {
         result.value = parseInt(operand1) / parseInt(operand2);
         break
     }
+    let index1 = userNums.indexOf(operand1);
+    let index2 = userNums.indexOf(operand2);
+    userNums.splice(index1, 1);
+    userNums.splice(index2, 1);
+    userNums.push(result.value);
   }
 }
