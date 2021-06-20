@@ -220,25 +220,34 @@ function handleSubmit(event) {
   let operand1 = document.getElementById('operand1').value;
   let operand2 = document.getElementById('operand2').value;
   let result = document.getElementById('result');
-  if (userNums.includes(operand1 && operand2)) {
-    switch(operator) {
-      case "+":
-        result.value = parseInt(operand1) + parseInt(operand2);
-        break
-      case "-":
-        result.value = parseInt(operand1) - parseInt(operand2);
-        break
-      case "*":
-        result.value = parseInt(operand1) * parseInt(operand2);
-        break
-      case "/":
-        result.value = parseInt(operand1) / parseInt(operand2);
-        break
+  let index1 = userNums.indexOf(operand1);
+  let index2 = userNums.indexOf(operand2);
+  if (index1 !== index2) {
+    if (userNums.includes(operand1) && userNums.includes(operand2)) {
+      switch(operator) {
+        case "+":
+          result.value = parseInt(operand1) + parseInt(operand2);
+          break
+        case "-":
+          result.value = parseInt(operand1) - parseInt(operand2);
+          break
+        case "*":
+          result.value = parseInt(operand1) * parseInt(operand2);
+          break
+        case "/":
+          result.value = parseInt(operand1) / parseInt(operand2);
+          break
+      }
+      userNums.splice(index1, 1);
+      userNums.splice(index2, 1);
+      userNums.push(result.value);
     }
-    let index1 = userNums.indexOf(operand1);
-    let index2 = userNums.indexOf(operand2);
-    userNums.splice(index1, 1);
-    userNums.splice(index2, 1);
-    userNums.push(result.value);
+    else {
+      alert("That number isn't available to you!");
+    }
   }
+  else {
+    alert("That number isn't available to you!");
+  }
+  
 }
