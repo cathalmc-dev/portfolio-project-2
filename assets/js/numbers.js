@@ -119,4 +119,45 @@ function stopSpinner() {
   spin = false;
   startSpinner();
   stopButton.classList.add('hidden');
+  createInputRow();
+}
+
+function createInputRow () {
+  let add = document.createElement('option');
+  add.setAttribute('value', '+');
+  add.innerText = "+";
+  let subtract = document.createElement('option');
+  subtract.setAttribute('value', '-');
+  subtract.innerText = "-";
+  let multiply = document.createElement('option');
+  multiply.setAttribute('value', '*');
+  multiply.innerText = "x";
+  let divide = document.createElement('option');
+  divide.setAttribute('value', '÷');
+  divide.innerText = "÷";
+  let result = document.createElement('div');
+  result.setAttribute("class", "input result");
+  let compute = document.createElement('input');
+  compute.type = "submit";
+  compute.value = "="
+  compute.setAttribute("class", "button compute");
+  let operand = document.createElement('input');
+  operand.setAttribute("class", "input operand");
+  operand.type = "number";
+  let operator = document.createElement('select');
+  operator.setAttribute("class", "button operator");
+  let inputContainer = document.getElementById("input-container");
+  let span = document.createElement('span');
+  let form = document.createElement('form');
+  operator.appendChild(add);
+  operator.appendChild(subtract);
+  operator.appendChild(multiply);
+  operator.appendChild(divide);
+  span.appendChild(operand.cloneNode());
+  span.appendChild(operator);
+  span.appendChild(operand.cloneNode());
+  span.appendChild(compute);
+  span.appendChild(result);
+  form.appendChild(span);
+  inputContainer.appendChild(form);
 }

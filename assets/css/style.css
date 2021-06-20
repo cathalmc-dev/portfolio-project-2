@@ -186,3 +186,33 @@ ul {
   font-size: 250%;
 }
 
+form {
+  margin: 20px auto;
+}
+
+.input {
+  width: 15%;
+  height: 60px;
+  margin: 0 1vw;
+  vertical-align: top;
+  font-family: var(--number-font);
+  font-size: 150%;
+  color: var(--orange);
+  text-align: center;
+}
+
+.button {
+  width: 5%;
+  height: 4vh;
+  margin: 15px auto;
+  font-size: 200%;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-radius: 15%;
+}
+
+.result {
+  background-color: magenta;
+  display: inline-block;
+}
