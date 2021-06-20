@@ -188,6 +188,7 @@ ul {
 
 form {
   margin: 20px auto;
+  font-size: 130%;
 }
 
 .input {
@@ -205,7 +206,7 @@ form {
   width: 5%;
   height: 4vh;
   margin: 15px auto;
-  font-size: 200%;
+  font-size: 100%;
   text-align: center;
   box-sizing: border-box;
   border: 1px solid black;

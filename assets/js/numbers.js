@@ -86,16 +86,15 @@ let userNums = [];
 let cards = document.getElementsByClassName("available");
 if (userNums.length < 6) {
   for (i = 0; i < 24; i++) {
-    cards[i].addEventListener('click', flipCard);
     cards[i].addEventListener('click', addToUserNums);
-    cards[i].addEventListener('click', preventDoublePick);
-
+    cards[i].addEventListener('click', flipCard);
   }
 }
 
 function flipCard() {
   for (i = 0; i < 24; i++) {
     this.classList.add("flipCard");
+    this.classList.remove('available');
   }
 }
 
@@ -111,10 +110,6 @@ function addToUserNums() {
       stopButton.classList.remove('hidden');
     }
   }
-}
-
-function preventDoublePick() {
-  this.classList.remove('available');
 }
 
 function replaceCards() {
@@ -199,43 +194,6 @@ function createInputRow () {
   inputContainer.appendChild(form);
 }
 
-// function handleSubmit(event) {
-//   event.preventDefault();
-//   let operand1 = parseInt(document.getElementById('operand1').value);
-//   let operand2 = parseInt(document.getElementById('operand2').value);
-//   let operator = document.getElementById('operator').value;
-//   let result = document.getElementById('result');
-//   if (userNums.includes(operand1 && operand2)) {
-//     switch (operator) {
-//       case "+":
-//         result.value = operand1 + operand2;
-//         console.log(result);
-//         break;
-//       case "-":
-//         result.value = operand1 - operand2;
-//         console.log(result);
-//         break;
-//       case "*":
-//         result.value = operand1 * operand2;
-//         console.log(result);
-//         break;
-//       case "/":
-//         result.value = operand1 / operand2;
-//         console.log(result);
-//         break;
-//     }
-//   }
-// }
-
-// let index1 = userNums.indexOf(operand1);
-//     let index2 = userNums.indexOf(operand2);
-//     userNums.splice(index1, 1);
-//     userNums.splice(index2, 1, result);
-//     let resultDiv = document.getElementById('result');
-//     // resultDiv.innerHTML = `<h3>${result}</h3>`;
-//     // console.log(result);
-//   
-
 function handleSubmit(event) {
   event.preventDefault();
   let operator = document.getElementById('operator').value;
@@ -248,13 +206,13 @@ function handleSubmit(event) {
         result.value = parseInt(operand1) + parseInt(operand2);
         break
       case "-":
-        result.value = operand1 - operand2;
+        result.value = parseInt(operand1) - parseInt(operand2);
         break
       case "*":
-        result.value = operand1 * operand2;
+        result.value = parseInt(operand1) * parseInt(operand2);
         break
       case "/":
-        result.value = operand1 / operand2;
+        result.value = parseInt(operand1) / parseInt(operand2);
         break
     }
   }
