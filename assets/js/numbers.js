@@ -134,8 +134,7 @@ function startSpinner() {
     slot2.innerHTML = `${Math.floor(Math.random() * 9.999999)}`
     slot3.innerHTML = `${Math.floor(Math.random() * 9.999999)}`
     setTimeout(startSpinner, 100);
-  } 
-  else {
+  } else {
     targetNum = parseInt(slot1.innerText + slot2.innerText + slot3.innerText);
     console.log(targetNum);
   }
@@ -147,6 +146,7 @@ function stopSpinner() {
   spin = false;
   stopButton.classList.add('hidden');
   createInputRow();
+  createDoneButton();
 }
 
 // Creates an input row for the user
@@ -213,6 +213,14 @@ function createInputRow() {
   clearOldCalcRow();
 }
 
+function createDoneButton() {
+  let done = document.createElement('button');
+  done.setAttribute('id', 'done');
+  done.innerHTML = "<h2>Done</h2>";
+  inputContainer.appendChild(done);
+  done.addEventListener('click', compareResult)
+}
+
 /**
  * Checks if the user has given valid inputs by comparing the operands to each other and to the user numbers array
  * Computes the value of the user equation depending on the chosen operator
@@ -241,8 +249,7 @@ function handleSubmit(event) {
           if (operand1 % operand2 === 0) {
             result.value = parseInt(operand1) / parseInt(operand2);
             break
-          }
-          else {
+          } else {
             alert('That is not a valid operation');
             return
           }
@@ -255,8 +262,7 @@ function handleSubmit(event) {
       replaceUserCards();
       if (userNums.length > 1) {
         createInputRow();
-      }
-      else {
+      } else {
         compareResult();
       }
     } else {
@@ -279,8 +285,7 @@ function handleSubmit(event) {
           if (operand1 % operand2 === 0) {
             result.value = parseInt(operand1) / parseInt(operand2);
             break
-          }
-          else {
+          } else {
             alert('That is not a valid operation');
             return
           }
@@ -292,8 +297,7 @@ function handleSubmit(event) {
       replaceUserCards();
       if (userNums.length > 1) {
         createInputRow();
-      }
-      else {
+      } else {
         compareResult();
       }
     }
@@ -325,21 +329,37 @@ function replaceUserCards() {
 }
 
 function compareResult() {
-  if (userNums.includes(targetNum)) {
-    alert('You Win! 10 Points!')
+  if (userNums.length > 1) {
+    let usersAttempt = userNums.pop();
+    if (usersAttempt == targetNum) {
+      alert('You Win! 10 Points!')
+    }
+    else if (Math.abs(usersAttempt - targetNum) <= 5) {
+      alert('Almost! 7 Points!')
+    } 
+    else if (Math.abs(usersAttempt - targetNum) <= 10) {
+      alert('Close, keep practicing! 5 Points!')
+    } 
+    else {
+      alert('Sorry, 0 points!')
+    }
   }
-  else if (Math.abs(userNums[0] - targetNum) <=5) {
-    alert('Almost! 7 Points!')
-  }
-  else if (Math.abs(userNums[0] - targetNum) <=10) {
-    alert('Close, keep practicing! 5 Points!')
-  }
-  else {
-    alert('Sorry, 0 points!')
+  else if (userNums.length = 1) {
+    if (userNums.includes(targetNum)) {
+      alert('You Win! 10 Points!')
+    } else if (Math.abs(userNums[0] - targetNum) <= 5) {
+      alert('Almost! 7 Points!')
+    } else if (Math.abs(userNums[0] - targetNum) <= 10) {
+      alert('Close, keep practicing! 5 Points!')
+    } else {
+      alert('Sorry, 0 points!')
+    }
   }
 }
 
 function clearOldCalcRow() {
   if (userNums.length < 4)
-  document.getElementsByTagName('form')[0].remove();
+    document.getElementsByTagName('form')[0].remove();
 }
+
+
