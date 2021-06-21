@@ -210,6 +210,7 @@ function createInputRow() {
   form.appendChild(span);
   form.setAttribute("onsubmit", "handleSubmit(event);")
   inputContainer.appendChild(form);
+  clearOldCalcRow();
 }
 
 /**
@@ -324,4 +325,9 @@ function compareResult() {
   else {
     alert('Sorry, 0 points!')
   }
+}
+
+function clearOldCalcRow() {
+  if (userNums.length < 4)
+  document.getElementsByTagName('form')[0].remove();
 }
