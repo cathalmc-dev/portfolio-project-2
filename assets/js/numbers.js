@@ -1,4 +1,5 @@
 let userNums = [];
+let targetNum
 
 /**
  * Allows the user to toggle the instruction by clicking on the instructions title div
@@ -117,11 +118,7 @@ function replaceCards() {
   smallCards.remove();
 }
 
-let slot1 = document.getElementById('slot1');
-let slot2 = document.getElementById('slot2');
-let slot3 = document.getElementById('slot3');
-
-var spin = true;
+let spin = true;
 let stopButton = document.getElementById("get-target");
 
 /**
@@ -129,14 +126,18 @@ let stopButton = document.getElementById("get-target");
  * if the stop function has been called it will assign the values of the slots to the target number variable
  */
 function startSpinner() {
+  let slot1 = document.getElementById('slot1');
+  let slot2 = document.getElementById('slot2');
+  let slot3 = document.getElementById('slot3');
   if (spin === true) {
     slot1.innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`
     slot2.innerHTML = `${Math.floor(Math.random() * 9.999999)}`
     slot3.innerHTML = `${Math.floor(Math.random() * 9.999999)}`
     setTimeout(startSpinner, 100);
-  } else {
-    var target = slot1.innerText + slot2.innerText + slot3.innerText;
-    console.log(target);
+  } 
+  else {
+    targetNum = parseInt(slot1.innerText + slot2.innerText + slot3.innerText);
+    console.log(targetNum);
   }
 }
 
@@ -144,7 +145,6 @@ stopButton.addEventListener('click', stopSpinner);
 
 function stopSpinner() {
   spin = false;
-  startSpinner();
   stopButton.classList.add('hidden');
   createInputRow();
 }
@@ -248,7 +248,10 @@ function handleSubmit(event) {
       replaceUserCards();
       if (userNums.length > 1) {
         createInputRow();
-      }  
+      }
+      else {
+        compareResult();
+      }
     } else {
       alert("That number isn't available to you!");
     }
@@ -276,7 +279,10 @@ function handleSubmit(event) {
       replaceUserCards();
       if (userNums.length > 1) {
         createInputRow();
-      }  
+      }
+      else {
+        compareResult();
+      }
     }
   } else {
     alert("That number isn't available to you!");
@@ -302,5 +308,20 @@ function replaceUserCards() {
     if (pick.innerHTML == `<h3>${undefined}</h3>`) {
       pick.remove();
     }
+  }
+}
+
+function compareResult() {
+  if (userNums.includes(targetNum)) {
+    alert('You Win! 10 Points!')
+  }
+  else if (Math.abs(userNums[0] - targetNum) <=5) {
+    alert('Almost! 7 Points!')
+  }
+  else if (Math.abs(userNums[0] - targetNum) <=10) {
+    alert('Close, keep practicing! 5 Points!')
+  }
+  else {
+    alert('Sorry, 0 points!')
   }
 }
