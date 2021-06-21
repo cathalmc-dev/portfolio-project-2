@@ -245,8 +245,10 @@ function handleSubmit(event) {
       userNums.splice(index2, 1);
       userNums.push(result.value);
       freezeRow();
-      createInputRow();
       replaceUserCards();
+      if (userNums.length > 1) {
+        createInputRow();
+      }  
     } else {
       alert("That number isn't available to you!");
     }
@@ -271,8 +273,10 @@ function handleSubmit(event) {
       userNums.splice(index2, 1);
       userNums.push(result.value);
       freezeRow();
-      createInputRow();
       replaceUserCards();
+      if (userNums.length > 1) {
+        createInputRow();
+      }  
     }
   } else {
     alert("That number isn't available to you!");
@@ -292,14 +296,11 @@ function freezeRow() {
 }
 
 function replaceUserCards() {
-  for (i = 0; i <= 6-userNums.length; i++) {
-    userNums.push(" ")
+  for (i = 0; i <= userNums.length; i++) {
+    let pick = document.getElementById(`pick${i+1}`);
+    pick.innerHTML = `<h3>${userNums[i]}</h3>`
+    if (pick.innerHTML == `<h3>${undefined}</h3>`) {
+      pick.remove();
+    }
   }
-  console.log(userNums);
-  for (j = 0; j <= 5; j++) {
-    document.getElementById(`pick${j+1}`).innerHTML = `<h3>${userNums[j]}</h3>`
-  }
-  let x = userNums.indexOf(" ")
-  userNums.splice(x, 6-x)
-  console.log(userNums);
 }
