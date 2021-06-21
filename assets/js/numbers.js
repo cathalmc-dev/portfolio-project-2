@@ -238,8 +238,14 @@ function handleSubmit(event) {
           result.value = parseInt(operand1) * parseInt(operand2);
           break
         case "/":
-          result.value = parseInt(operand1) / parseInt(operand2);
-          break
+          if (operand1 % operand2 === 0) {
+            result.value = parseInt(operand1) / parseInt(operand2);
+            break
+          }
+          else {
+            alert('That is not a valid operation');
+            return
+          }
       }
       userNums.splice(index1, 1);
       let index2 = userNums.indexOf(operand2);
@@ -270,8 +276,14 @@ function handleSubmit(event) {
           result.value = parseInt(operand1) * parseInt(operand2);
           break
         case "/":
-          result.value = parseInt(operand1) / parseInt(operand2);
-          break
+          if (operand1 % operand2 === 0) {
+            result.value = parseInt(operand1) / parseInt(operand2);
+            break
+          }
+          else {
+            alert('That is not a valid operation');
+            return
+          }
       }
       let index2 = userNums.indexOf(operand2);
       userNums.splice(index2, 1);
