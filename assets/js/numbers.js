@@ -246,6 +246,7 @@ function handleSubmit(event) {
       userNums.push(result.value);
       freezeRow();
       createInputRow();
+      replaceUserCards();
     } else {
       alert("That number isn't available to you!");
     }
@@ -271,6 +272,7 @@ function handleSubmit(event) {
       userNums.push(result.value);
       freezeRow();
       createInputRow();
+      replaceUserCards();
     }
   } else {
     alert("That number isn't available to you!");
@@ -287,4 +289,14 @@ function freezeRow() {
   document.getElementById('compute').disabled = true;
   document.getElementById('compute').removeAttribute('id');
   document.getElementById('result').removeAttribute('id');
+}
+
+function replaceUserCards() {
+  for (i = 0; i <= 6-userNums.length; i++) {
+    userNums.push(" ")
+  }
+  console.log(userNums);
+  for (j = 0; j <= 5; j++) {
+    document.getElementById(`pick${j+1}`).innerHTML = `<h3>${userNums[j]}</h3>`
+  }
 }
