@@ -299,4 +299,7 @@ function replaceUserCards() {
   for (j = 0; j <= 5; j++) {
     document.getElementById(`pick${j+1}`).innerHTML = `<h3>${userNums[j]}</h3>`
   }
+  let x = userNums.indexOf(" ")
+  userNums.splice(x, 6-x)
+  console.log(userNums);
 }

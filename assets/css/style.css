@@ -102,13 +102,6 @@ ul {
   visibility: hidden;
 }
 
-#user-nums {
-  height: 6em;
-  width: 60vw;
-  margin: 20px auto;
-  text-align: center;
-}
-
 #input-container {
   height: 22em;
   width: 60vw;
@@ -138,7 +131,7 @@ ul {
 
 #user-nums {
   height: 6em;
-  width: 55vw;
+  width: 75vw;
   margin: 50px auto 0;
   text-align: center;
   vertical-align: middle;
@@ -147,7 +140,7 @@ ul {
 .user-pick {
   position: relative;
   height: 6em;
-  width: 6em;
+  width: 9em;
   border: 2px solid black;
   border-radius: 10%;
   display: inline-block;
@@ -192,7 +185,7 @@ form {
 }
 
 .input {
-  width: 15%;
+  width: 25%;
   height: 60px;
   margin: 0 1vw;
   vertical-align: top;
