@@ -246,6 +246,27 @@ form {
   font-family: var(--number-font);
   font-size: 300%;
   text-align: center;
-  margin: 30% auto;
+  margin-top: 15%;
   text-shadow: 2px 2px #ff0000;
+}
+
+#scoreboard {
+  position: absolute;
+  width: 15vw;
+  height: 55vh;
+  background-color: silver;
+  top: 20vh;
+  right: 1vw;
+  text-align: center;
+  font-size: 145%;
+  text-shadow: 1px 1px #000000;
+}
+
+.score-type {
+  margin: 2.2vh;
+}
+
+.score-type p {
+  font-family: var(--number-font);
+  font-size: 120%;
 }

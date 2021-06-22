@@ -404,10 +404,11 @@ function resultModal(x) {
 `
 let body = document.getElementsByTagName('body');
 body[0].appendChild(modal)
-setTimeout(removeModal, 7000);
+setTimeout(removeModal, 3000);
 }
 
 function removeModal() {
   let modal = document.getElementById('modal');
-  modal.remove();
+  modal.remove()
 }
+
