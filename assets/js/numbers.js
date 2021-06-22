@@ -79,6 +79,19 @@ function createCards() {
 }
 createCards();
 
+function createUserCards() {
+  userCard = document.createElement('div');
+  userCard.className = 'user-pick four-plus';
+  let userCards = [];
+  userCardsContainer = document.getElementById('user-nums');
+  for (i = 0; i <= 5; i++) {
+    userCards.push(userCard.cloneNode());
+    userCards[i].setAttribute('id', `pick${i+1}`);
+    userCardsContainer.appendChild(userCards[i]);
+  }
+}
+createUserCards();
+
 /**
  * Randomly assign the 4 large numbers to the 4 large cards for user selection
  */
@@ -186,8 +199,15 @@ stopButton.addEventListener('click', stopSpinner);
 function stopSpinner() {
   spin = false;
   stopButton.classList.add('hidden');
+  createFormHolder();
   createInputRow();
   createDoneButton();
+}
+
+function createFormHolder() {
+  formContainer = document.createElement('div');
+  formContainer.setAttribute('id', 'form-container');
+  inputContainer.appendChild(formContainer);
 }
 
 // Creates an input row for the user
@@ -250,7 +270,7 @@ function createInputRow() {
   // Nests the entire row within a form which calls the handleSubmit function when it is computed
   form.appendChild(span);
   form.setAttribute("onsubmit", "handleSubmit(event);")
-  inputContainer.appendChild(form);
+  formContainer.appendChild(form);
   clearOldCalcRow();
 }
 
@@ -258,7 +278,7 @@ function createDoneButton() {
   let done = document.createElement('button');
   done.setAttribute('id', 'done');
   done.innerHTML = "<h2>Done</h2>";
-  inputContainer.appendChild(done);
+  formContainer.appendChild(done);
   done.addEventListener('click', compareResult);
 }
 
@@ -449,6 +469,7 @@ function resultModal(x) {
   let body = document.getElementsByTagName('body');
   body[0].appendChild(modal)
   setTimeout(removeModal, 3000);
+  setTimeout(resetGame, 3000);
 }
 
 function removeModal() {
@@ -495,4 +516,17 @@ function attempts() {
   let oldScore = parseInt(document.getElementById('attempts').innerText)
   document.getElementById('attempts').innerText = oldScore + 1;
 
+}
+
+function resetGame() {
+  document.getElementById('slot1').innerText = 0;
+  document.getElementById('slot2').innerText = 0;
+  document.getElementById('slot3').innerText = 0;
+  formContainer.remove();
+  createCards();
+  assignLarge();
+  assignSmall();
+  userCardsContainer.innerHTML = "";
+  createUserCards();
+  userNums = [];
 }
