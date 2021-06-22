@@ -1,7 +1,6 @@
 let userNums = [];
 let targetNum
-let scores = [
-  {
+let scores = [{
     value: 10,
     message: "You Win! 10 Points!",
   },
@@ -344,6 +343,21 @@ function replaceUserCards() {
       pick.remove();
     }
   }
+  let picks = document.getElementsByClassName('user-pick');
+  for (i = 0; i < picks.length; i++) {
+    if (picks.length > 3) {
+      ;
+    } else if (picks.length = 3) {
+      picks[i].classList.remove('four-plus');
+      picks[i].classList.add('three');
+    } else if (picks.length = 2) {
+      picks[i].classList.remove('three');
+      picks[i].classList.add('two');
+    } else if (picks.length = 1) {
+      picks[i].classList.remove('two');
+      picks[i].classList.add('one');
+    }
+  }
 }
 
 function compareResult() {
@@ -351,18 +365,14 @@ function compareResult() {
     let usersAttempt = userNums.pop();
     if (usersAttempt == targetNum) {
       resultModal(10);
-    }
-    else if (Math.abs(usersAttempt - targetNum) <= 5) {
+    } else if (Math.abs(usersAttempt - targetNum) <= 5) {
       resultModal(7);
-    } 
-    else if (Math.abs(usersAttempt - targetNum) <= 10) {
+    } else if (Math.abs(usersAttempt - targetNum) <= 10) {
       resultModal(5);
-    } 
-    else {
+    } else {
       resultModal(0);
     }
-  }
-  else if (userNums.length = 1) {
+  } else if (userNums.length = 1) {
     if (userNums.includes(targetNum)) {
       resultModal(10);
     } else if (Math.abs(userNums[0] - targetNum) <= 5) {
@@ -382,33 +392,32 @@ function clearOldCalcRow() {
 
 function resultModal(x) {
   let message;
-    switch (x) {
-      case 10:
-        message = scores[0].message;
-        break
-      case 7:
-        message = scores[1].message;
-        break
-      case 5:
-        message = scores[2].message;
-        break
-      case 0:
-        message = scores[3].message;
-    }
+  switch (x) {
+    case 10:
+      message = scores[0].message;
+      break
+    case 7:
+      message = scores[1].message;
+      break
+    case 5:
+      message = scores[2].message;
+      break
+    case 0:
+      message = scores[3].message;
+  }
 
   modal = document.createElement('div');
-  modal.setAttribute('id','modal');
+  modal.setAttribute('id', 'modal');
   modal.innerHTML = `<div class="modal-text">
     <h2>${message}</h2>
   </div>
 `
-let body = document.getElementsByTagName('body');
-body[0].appendChild(modal)
-setTimeout(removeModal, 3000);
+  let body = document.getElementsByTagName('body');
+  body[0].appendChild(modal)
+  setTimeout(removeModal, 3000);
 }
 
 function removeModal() {
   let modal = document.getElementById('modal');
   modal.remove()
 }
-

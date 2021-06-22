@@ -81,6 +81,7 @@ ul {
   text-align: center;
   display: inline-block;
   margin: 0 -5px;
+  text-shadow: 2px 2px black;
 }
 
 #get-target {
@@ -150,19 +151,19 @@ ul {
 }
 
 .four-plus {
-  width: 6em;
-}
-
-.three {
-  width: 8em;
-}
-
-.two {
   width: 10em;
 }
 
-.one {
+.three {
+  width: 12em;
+}
+
+.two {
   width: 14em;
+}
+
+.one {
+  width: 16em;
 }
 
 .front {
