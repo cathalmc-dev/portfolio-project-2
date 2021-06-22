@@ -26,6 +26,11 @@ instructions.addEventListener('click', toggleInstructions);
 
 function toggleInstructions() {
   document.getElementById("num-instructions").classList.toggle("display-none");
+  const chevron = document.getElementById('chevron');
+  const down = 'fa-chevron-down';
+  const up = 'fa-chevron-up';
+  chevron.classList.toggle(down);
+  chevron.classList.toggle(up);
 }
 
 const inputContainer = document.getElementById("input-container");

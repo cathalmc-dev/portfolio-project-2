@@ -55,11 +55,19 @@ h2 {
 
 #instructions-badge {
   background-color: var(--box-background);
-  width: 14%;
+  max-width: 16%;
   margin: 0 auto 5vh;
   /* border: solid 5px var(--orange); */
   border-radius: 15px;
   box-sizing: border-box;
+}
+
+i {
+  transition: all .5s linear;
+}
+
+.rotate180-animation{
+  transform: rotate(180deg);
 }
 
 ul {
