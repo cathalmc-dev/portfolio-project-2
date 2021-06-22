@@ -230,3 +230,22 @@ form {
   left: 45%;
   font-family: var(--number-font);
 }
+
+#modal {
+  position: absolute;
+  width: 60%;
+  height: 50%;
+  background-color: var(--box-background);
+  top: 20%;
+  left: 20%;
+}
+
+#modal h2 {
+  position: relative;
+  color: var(--orange);
+  font-family: var(--number-font);
+  font-size: 300%;
+  text-align: center;
+  margin: 30% auto;
+  text-shadow: 2px 2px #ff0000;
+}

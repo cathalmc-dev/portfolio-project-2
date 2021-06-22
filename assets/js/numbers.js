@@ -1,5 +1,23 @@
 let userNums = [];
 let targetNum
+let scores = [
+  {
+    value: 10,
+    message: "You Win! 10 Points!",
+  },
+  {
+    value: 7,
+    message: "Almost! 7 Points!",
+  },
+  {
+    value: 5,
+    message: "Close, keep practicing! 5 Points!",
+  },
+  {
+    value: 0,
+    message: "Sorry, 0 points!",
+  }
+]
 
 /**
  * Allows the user to toggle the instruction by clicking on the instructions title div
@@ -334,27 +352,27 @@ function compareResult() {
   if (userNums.length > 1) {
     let usersAttempt = userNums.pop();
     if (usersAttempt == targetNum) {
-      alert('You Win! 10 Points!')
+      resultModal(10);
     }
     else if (Math.abs(usersAttempt - targetNum) <= 5) {
-      alert('Almost! 7 Points!')
+      resultModal(7);
     } 
     else if (Math.abs(usersAttempt - targetNum) <= 10) {
-      alert('Close, keep practicing! 5 Points!')
+      resultModal(5);
     } 
     else {
-      alert('Sorry, 0 points!')
+      resultModal(0);
     }
   }
   else if (userNums.length = 1) {
     if (userNums.includes(targetNum)) {
-      alert('You Win! 10 Points!')
+      resultModal(10);
     } else if (Math.abs(userNums[0] - targetNum) <= 5) {
-      alert('Almost! 7 Points!')
+      resultModal(7);
     } else if (Math.abs(userNums[0] - targetNum) <= 10) {
-      alert('Close, keep practicing! 5 Points!')
+      resultModal(5);
     } else {
-      alert('Sorry, 0 points!')
+      resultModal(0);
     }
   }
 }
@@ -369,4 +387,36 @@ let forms = document.getElementsByTagName('form')
   if (userNums.length <= 5) {
     forms[forms.length - 1].remove();
   }
+}
+
+function resultModal(x) {
+  let message;
+    switch (x) {
+      case 10:
+        message = scores[0].message;
+        break
+      case 7:
+        message = scores[1].message;
+        break
+      case 5:
+        message = scores[2].message;
+        break
+      case 0:
+        message = scores[3].message;
+    }
+
+  modal = document.createElement('div');
+  modal.setAttribute('id','modal');
+  modal.innerHTML = `<div class="modal-text">
+    <h2>${message}</h2>
+  </div>
+`
+let body = document.getElementsByTagName('body');
+body[0].appendChild(modal)
+setTimeout(removeModal, 5000);
+}
+
+function removeModal() {
+  let modal = document.getElementById('modal');
+  modal.remove();
 }
