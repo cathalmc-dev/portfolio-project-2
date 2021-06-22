@@ -237,8 +237,6 @@ function createDoneButton() {
   done.innerHTML = "<h2>Done</h2>";
   inputContainer.appendChild(done);
   done.addEventListener('click', compareResult);
-  done.addEventListener('click', clearEmptyCalcRow);
-
 }
 
 /**
@@ -382,13 +380,6 @@ function clearOldCalcRow() {
     document.getElementsByTagName('form')[0].remove();
 }
 
-function clearEmptyCalcRow() {
-let forms = document.getElementsByTagName('form')
-  if (userNums.length <= 5) {
-    forms[forms.length - 1].remove();
-  }
-}
-
 function resultModal(x) {
   let message;
     switch (x) {
@@ -413,7 +404,7 @@ function resultModal(x) {
 `
 let body = document.getElementsByTagName('body');
 body[0].appendChild(modal)
-setTimeout(removeModal, 5000);
+setTimeout(removeModal, 7000);
 }
 
 function removeModal() {
