@@ -30,33 +30,54 @@ function toggleInstructions() {
 
 var inputContainer = document.getElementById("input-container");
 
-// function createCards() {
-//   let front = document.createElement('div');
-//   front.setAttribute("class", "front");
-//   let back = document.createElement('div');
-//   back.setAttribute("class", "back");
-//   let card = document.createElement('div');
-//   card.setAttribute('class', 'card available');
-//   let largeContainer = document.createElement('div');
-//   largeContainer.setAttribute('id', 'large-cards');
-//   for (i = 1; i <= 4; i++) {
-//     card.appendChild(front.cloneNode());
-//     back.setAttribute('id', `large${i}`);
-//     card.appendChild(back.cloneNode());
-//     largeContainer.appendChild(card.cloneNode());
-//   }
-//   let smallContainer = document.createElement('div');
-//   smallContainer.setAttribute('id', 'small-cards');
-//   for (i = 1; i <= 20; i++) {
-//     card.appendChild(front.cloneNode());
-//     back.setAttribute('id', `small${i}`);
-//     card.appendChild(back.cloneNode());
-//     smallContainer.appendChild(card.cloneNode());
-//   }
-//   inputContainer.appendChild(largeContainer);
-//   inputContainer.appendChild(smallContainer);
-// }
-// createCards();
+function createCards() {
+  // Creates the backs of each card and sets the id of each
+  back = document.createElement('div');
+  back.className = 'back';
+  let backs = [];
+
+  for (i = 0; i <= 3; i++) {
+    backs.push(back.cloneNode());
+    backs[i].setAttribute('id', `large${i+1}`)
+  }
+  for (i = 0; i <= 19; i++) {
+    backs.push(back.cloneNode());
+    backs[i + 4].setAttribute('id', `small${i+1}`);
+  }
+
+  // Creates the front face and each card container template
+  front = document.createElement('div');
+  front.className = 'front';
+
+  card = document.createElement('div');
+  card.className = 'card available';
+  card.appendChild(front.cloneNode());
+
+  // Iterates each card and then appends the appropriate card back
+  let cards = [];
+  for (i = 0; i <= 23; i++) {
+    cards.push(card.cloneNode());
+    cards[i].appendChild(backs[i])
+  }
+
+  // Creates the card containers and appends the correct cards to them
+  largeContainer = document.createElement('div');
+  largeContainer.setAttribute('id', 'large-cards');
+
+  smallContainer = document.createElement('div');
+  smallContainer.setAttribute('id', 'small-cards');
+
+  for (i = 0; i <= 3; i++) {
+    largeContainer.appendChild(cards[i])
+  }
+  for (i = 0; i <= 19; i++) {
+    smallContainer.appendChild(cards[i + 4]);
+  }
+
+  inputContainer.appendChild(largeContainer);
+  inputContainer.appendChild(smallContainer);
+}
+createCards();
 
 /**
  * Randomly assign the 4 large numbers to the 4 large cards for user selection
@@ -101,10 +122,13 @@ if (userNums.length < 6) {
  */
 function flipCard() {
   for (i = 0; i < 24; i++) {
-    this.classList.add("flipCard");
-    this.classList.remove('available');
+    if (this.classList.contains('available')) {
+      this.classList.add("flipCard");
+      this.classList.remove('available');
+    }
   }
 }
+
 
 /**
  * Adds a selected card's value to the array of user numbers
@@ -272,6 +296,8 @@ function handleSubmit(event) {
           }
       }
       userNums.splice(index1, 1);
+
+      // Set index2 here as if it was set before the previous splice it would have been out by 1
       let index2 = userNums.indexOf(operand2);
       userNums.splice(index2, 1);
       userNums.push(result.value);
@@ -447,21 +473,21 @@ function totalPoints(p) {
 function exactMatchs(p) {
   let oldScore = parseInt(document.getElementById('matchs').innerText)
   if (p == 10) {
-  document.getElementById('matchs').innerText = oldScore + 1;
+    document.getElementById('matchs').innerText = oldScore + 1;
   }
 }
 
 function within5(p) {
   let oldScore = parseInt(document.getElementById('5s').innerText)
   if (p == 7) {
-  document.getElementById('5s').innerText = oldScore + 1;
+    document.getElementById('5s').innerText = oldScore + 1;
   }
 }
 
 function within10(p) {
   let oldScore = parseInt(document.getElementById('10s').innerText)
   if (p == 5) {
-  document.getElementById('10s').innerText = oldScore + 1;
+    document.getElementById('10s').innerText = oldScore + 1;
   }
 }
 
