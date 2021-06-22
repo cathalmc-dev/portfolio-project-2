@@ -1,6 +1,6 @@
 let userNums = [];
-let targetNum
-let scores = [{
+let targetNum = 0;
+const scores = [{
     value: 10,
     message: "You Win! 10 Points!",
   },
@@ -21,14 +21,14 @@ let scores = [{
 /**
  * Allows the user to toggle the instruction by clicking on the instructions title div
  */
-let instructions = document.getElementById("instructions-badge");
+const instructions = document.getElementById("instructions-badge");
 instructions.addEventListener('click', toggleInstructions);
 
 function toggleInstructions() {
   document.getElementById("num-instructions").classList.toggle("display-none");
 }
 
-var inputContainer = document.getElementById("input-container");
+const inputContainer = document.getElementById("input-container");
 
 function createCards() {
   // Creates the backs of each card and sets the id of each
@@ -122,13 +122,16 @@ assignSmall();
 
 // Listeners for when a user wants to flip a card
 let cards = document.getElementsByClassName("available");
-if (userNums.length < 6) {
-  for (i = 0; i < 24; i++) {
-    cards[i].addEventListener('click', addToUserNums);
-    cards[i].addEventListener('click', flipCard);
+
+function addCardListeners() {
+  if (userNums.length < 6) {
+    for (i = 0; i < 24; i++) {
+      cards[i].addEventListener('click', addToUserNums);
+      cards[i].addEventListener('click', flipCard);
+    }
   }
 }
-
+addCardListeners();
 /** 
  *Flips a card to reveal it's value,
  *then removes it from the pool of cards that are available to be flipped 
@@ -392,7 +395,7 @@ function replaceUserCards() {
   let picks = document.getElementsByClassName('user-pick');
   for (i = 0; i < picks.length; i++) {
     if (picks.length > 3) {
-      ;
+      // Comment explanation
     } else if (picks.length = 3) {
       picks[i].classList.remove('four-plus');
       picks[i].classList.add('three');
@@ -407,35 +410,19 @@ function replaceUserCards() {
 }
 
 function compareResult() {
-  if (userNums.length > 1) {
-    let usersAttempt = userNums.pop();
-    if (usersAttempt == targetNum) {
-      resultModal(10);
-      updateScoreboard(10);
-    } else if (Math.abs(usersAttempt - targetNum) <= 5) {
-      resultModal(7);
-      updateScoreboard(7);
-    } else if (Math.abs(usersAttempt - targetNum) <= 10) {
-      resultModal(5);
-      updateScoreboard(5);
-    } else {
-      resultModal(0);
-      updateScoreboard(0);
-    }
-  } else if (userNums.length = 1) {
-    if (userNums.includes(targetNum)) {
-      resultModal(10);
-      updateScoreboard(10);
-    } else if (Math.abs(userNums[0] - targetNum) <= 5) {
-      resultModal(7);
-      updateScoreboard(7);
-    } else if (Math.abs(userNums[0] - targetNum) <= 10) {
-      resultModal(5);
-      updateScoreboard(5);
-    } else {
-      resultModal(0);
-      updateScoreboard(0);
-    }
+  let usersAttempt = parseInt(userNums.pop());
+  if (usersAttempt === targetNum) {
+    resultModal(10);
+    updateScoreboard(10);
+  } else if (Math.abs(usersAttempt - targetNum) <= 5) {
+    resultModal(7);
+    updateScoreboard(7);
+  } else if (Math.abs(usersAttempt - targetNum) <= 10) {
+    resultModal(5);
+    updateScoreboard(5);
+  } else {
+    resultModal(0);
+    updateScoreboard(0);
   }
 }
 
@@ -493,21 +480,21 @@ function totalPoints(p) {
 
 function exactMatchs(p) {
   let oldScore = parseInt(document.getElementById('matchs').innerText)
-  if (p == 10) {
+  if (p === 10) {
     document.getElementById('matchs').innerText = oldScore + 1;
   }
 }
 
 function within5(p) {
   let oldScore = parseInt(document.getElementById('5s').innerText)
-  if (p == 7) {
+  if (p === 7) {
     document.getElementById('5s').innerText = oldScore + 1;
   }
 }
 
 function within10(p) {
   let oldScore = parseInt(document.getElementById('10s').innerText)
-  if (p == 5) {
+  if (p === 5) {
     document.getElementById('10s').innerText = oldScore + 1;
   }
 }
@@ -524,9 +511,13 @@ function resetGame() {
   document.getElementById('slot3').innerText = 0;
   formContainer.remove();
   createCards();
+  smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
+  largeNumbers = [25, 50, 75, 100];
   assignLarge();
   assignSmall();
   userCardsContainer.innerHTML = "";
   createUserCards();
   userNums = [];
+  addCardListeners();
+  spin = true;
 }
