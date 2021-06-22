@@ -365,22 +365,30 @@ function compareResult() {
     let usersAttempt = userNums.pop();
     if (usersAttempt == targetNum) {
       resultModal(10);
+      updateScoreboard(10);
     } else if (Math.abs(usersAttempt - targetNum) <= 5) {
       resultModal(7);
+      updateScoreboard(7);
     } else if (Math.abs(usersAttempt - targetNum) <= 10) {
       resultModal(5);
+      updateScoreboard(5);
     } else {
       resultModal(0);
+      updateScoreboard(0);
     }
   } else if (userNums.length = 1) {
     if (userNums.includes(targetNum)) {
       resultModal(10);
+      updateScoreboard(10);
     } else if (Math.abs(userNums[0] - targetNum) <= 5) {
       resultModal(7);
+      updateScoreboard(7);
     } else if (Math.abs(userNums[0] - targetNum) <= 10) {
       resultModal(5);
+      updateScoreboard(5);
     } else {
       resultModal(0);
+      updateScoreboard(0);
     }
   }
 }
@@ -420,4 +428,45 @@ function resultModal(x) {
 function removeModal() {
   let modal = document.getElementById('modal');
   modal.remove()
+}
+
+
+function updateScoreboard(p) {
+  totalPoints(p);
+  exactMatchs(p);
+  within5(p);
+  within10(p);
+  attempts();
+}
+
+function totalPoints(p) {
+  let oldScore = parseInt(document.getElementById('points').innerText)
+  document.getElementById('points').innerText = oldScore + p;
+}
+
+function exactMatchs(p) {
+  let oldScore = parseInt(document.getElementById('matchs').innerText)
+  if (p == 10) {
+  document.getElementById('matchs').innerText = oldScore + 1;
+  }
+}
+
+function within5(p) {
+  let oldScore = parseInt(document.getElementById('5s').innerText)
+  if (p == 7) {
+  document.getElementById('5s').innerText = oldScore + 1;
+  }
+}
+
+function within10(p) {
+  let oldScore = parseInt(document.getElementById('10s').innerText)
+  if (p == 5) {
+  document.getElementById('10s').innerText = oldScore + 1;
+  }
+}
+
+function attempts() {
+  let oldScore = parseInt(document.getElementById('attempts').innerText)
+  document.getElementById('attempts').innerText = oldScore + 1;
+
 }
