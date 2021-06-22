@@ -395,7 +395,7 @@ function replaceUserCards() {
   let picks = document.getElementsByClassName('user-pick');
   for (i = 0; i < picks.length; i++) {
     if (picks.length > 3) {
-      // Comment explanation
+      // empty rule as no action required if there are more than 3 available user cards
     } else if (picks.length = 3) {
       picks[i].classList.remove('four-plus');
       picks[i].classList.add('three');

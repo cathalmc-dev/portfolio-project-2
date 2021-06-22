@@ -4,11 +4,10 @@
   --heading-font: Oswald, sans-serif;
   --body-font: Raleway, sans-serif;
   --number-font: Orbitron, sans-serif;
-  --dark-blue: #08115C;
-  --light-blue: #4081E8;
-  --box-background: #9CC7C4;
-  --orange: #CE884B;
-  --card: #ebeae7;
+  --dark-blue: #0B3C5D;
+  --box-background: #6aadca;
+  --orange: #e45d0f;
+  --card: #C0C0C0;
   --stop: #cf142b;
 }
 
@@ -30,18 +29,23 @@ body {
   background-color: var(--dark-blue);
 }
 
+.background {
+  /* background-color: var(--box-background); */
+}
+
 /* Headings */
 
 h1, h2 {
   font-family: var(--heading-font);
   text-transform: uppercase;
   letter-spacing: 4px;
+  text-shadow: 2px 2px black;
   text-align: center;
 }
 
 h1 {
-  margin: 3vh auto 1vh;
-  font-size: 250%;
+  margin: 1vh auto 1vh;
+  font-size: 350%;
 }
 
 h2 {
@@ -53,14 +57,15 @@ h2 {
   background-color: var(--box-background);
   width: 14%;
   margin: 0 auto 5vh;
-  border: solid 5px var(--orange);
+  /* border: solid 5px var(--orange); */
   border-radius: 15px;
   box-sizing: border-box;
 }
 
 ul {
   margin: 2vh 25vw;
-  font-size: 120%;
+  font-size: 150%;
+  text-shadow: 1px 1px black;
 }
 
 
@@ -127,6 +132,7 @@ ul {
   font-family: var(--number-font);
   line-height: 6em;
   transform-style: preserve-3d;
+  text-shadow: 2px 2px black;
   transition: all 0.6s ease;
 }
 
@@ -148,6 +154,7 @@ ul {
   background-color: var(--card);
   font-family: var(--number-font);
   line-height: 6em;
+  text-shadow: 2px 2px black;
 }
 
 .four-plus {
@@ -207,7 +214,7 @@ form {
   vertical-align: top;
   font-family: var(--number-font);
   font-size: 150%;
-  color: var(--orange);
+  color: var(--dark-blue);
   text-align: center;
 }
 
@@ -226,7 +233,7 @@ form {
   height: 4em;
   width: 15em;
   position: absolute;
-  background-color: var(--light-blue);
+  background-color: var(--dark-blue);
   bottom: 5em;
   left: 45%;
   font-family: var(--number-font);
@@ -254,17 +261,24 @@ form {
 #scoreboard {
   position: absolute;
   width: 15vw;
-  height: 55vh;
-  background-color: silver;
+  height: 60vh;
+  /* background-color: var(--box-background); */
+  /* box-sizing: border-box; */
+  border: 5px solid var(--orange);
   top: 20vh;
   right: 1vw;
   text-align: center;
   font-size: 145%;
-  text-shadow: 1px 1px #000000;
+  text-shadow: 2px 2px #000000;
+  border-radius: 15%;
 }
 
 .score-type {
   margin: 2.2vh;
+}
+
+#scoreboard h2 {
+  margin-top: 4vh;
 }
 
 .score-type p {
