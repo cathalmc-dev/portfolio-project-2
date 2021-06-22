@@ -218,7 +218,9 @@ function createDoneButton() {
   done.setAttribute('id', 'done');
   done.innerHTML = "<h2>Done</h2>";
   inputContainer.appendChild(done);
-  done.addEventListener('click', compareResult)
+  done.addEventListener('click', compareResult);
+  done.addEventListener('click', clearEmptyCalcRow);
+
 }
 
 /**
@@ -362,4 +364,9 @@ function clearOldCalcRow() {
     document.getElementsByTagName('form')[0].remove();
 }
 
-
+function clearEmptyCalcRow() {
+let forms = document.getElementsByTagName('form')
+  if (userNums.length <= 5) {
+    forms[forms.length - 1].remove();
+  }
+}
