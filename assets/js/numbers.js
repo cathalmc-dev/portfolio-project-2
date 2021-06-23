@@ -210,6 +210,7 @@ function stopSpinner() {
   createFormHolder();
   createInputRow();
   createDoneButton();
+  addCardListeners();
 }
 
 function createFormHolder() {
@@ -238,6 +239,7 @@ function createInputRow() {
   let operand = document.createElement('input');
   operand.setAttribute("class", "input operand");
   operand.type = "number";
+  operand.value = "";
   operand.setAttribute('id', 'operand1')
 
   let clone = operand.cloneNode(true);
@@ -279,6 +281,7 @@ function createInputRow() {
   form.appendChild(span);
   form.setAttribute("onsubmit", "handleSubmit(event);")
   formContainer.appendChild(form);
+  addUserCardListeners();
   clearOldCalcRow();
 }
 
@@ -289,6 +292,27 @@ function createDoneButton() {
   formContainer.appendChild(done);
   done.addEventListener('click', compareResult);
 }
+
+let userPicks = document.getElementsByClassName('user-pick');
+
+function addUserCardListeners() {
+  for (i = 0; i <= userNums.length - 1; i++) {
+    userPicks[i].addEventListener('click', selectOperand);
+  }
+}
+
+function selectOperand() {
+  console.log(this.innerText);
+  let operand1 = document.getElementById('operand1');
+  let operand2 = document.getElementById('operand2');
+  let number = this.innerText;
+  if (operand1.value === "") {
+  operand1.value = number;
+  } else {
+    operand2.value = number;
+  }
+}
+
 
 /**
  * Checks if the user has given valid inputs by comparing the operands to each other and to the user numbers array
