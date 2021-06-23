@@ -75,6 +75,7 @@ function createCards() {
   for (i = 0; i <= 3; i++) {
     largeContainer.appendChild(cards[i])
   }
+  
   for (i = 0; i <= 19; i++) {
     smallContainer.appendChild(cards[i + 4]);
   }
@@ -301,18 +302,18 @@ function addUserCardListeners() {
   }
 }
 
+// Allows user to click on their available numbers to add them to the input field
 function selectOperand() {
   console.log(this.innerText);
-  let operand1 = document.getElementById('operand1');
-  let operand2 = document.getElementById('operand2');
+  let input1 = document.getElementById('operand1');
+  let input2 = document.getElementById('operand2');
   let number = this.innerText;
-  if (operand1.value === "") {
-  operand1.value = number;
+  if (input1.value === "") {
+  input1.value = number;
   } else {
-    operand2.value = number;
+    input2.value = number;
   }
 }
-
 
 /**
  * Checks if the user has given valid inputs by comparing the operands to each other and to the user numbers array

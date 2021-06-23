@@ -55,7 +55,8 @@ h2 {
 
 #instructions-badge {
   background-color: var(--box-background);
-  max-width: 16%;
+  min-width: 16%;
+  max-width: 25%;
   margin: 0 auto 5vh;
   /* border: solid 5px var(--orange); */
   border-radius: 15px;
@@ -68,6 +69,7 @@ i {
 
 .rotate180-animation{
   transform: rotate(180deg);
+  text-shadow: 0px -1px black;
 }
 
 ul {
@@ -285,9 +287,6 @@ form {
   margin: 2.2vh;
 }
 
-#scoreboard h2 {
-  margin-top: 4vh;
-}
 
 .score-type p {
   font-family: var(--number-font);

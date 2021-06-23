@@ -1,16 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cathal's Games</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <title>Countdown Numbers</title>
 </head>
+
 <body>
-  <h1>Welcome To Cathal's Games</h1>
-  <h2><a href=numbers.html>Countdown Numbers</a></h2>
-  <h2><a href=conundrum.html>Countdown Conundrum</a></h2>
-  <h2><a href=rpsls.html>Rock, Paper, Scissors, Lizard, Spock</a></h2>
-  <p>More games are under construction so be sure to watch this space!</p>
+  <header>
+    <h1 class="main-heading">Welcome to the Countdown Numbers Game!</h1>
+    <div id="instructions-badge">
+      <h2>Instructions <i class="fas fa-chevron-down" id="chevron"></i></h2>
+    </div>
+    <ul id="num-instructions" class="block-element display-none">
+      <li>Choose any 6 cards from the below. The top 4 are large numbers and the bottom 20 are small numbers.</li>
+      <li>Stop the spinner to generate a random 3 digit target number.</li>
+      <li>Add, subtract, multiply or divide your 6 numbers to get as close to the target number as you can. Each number
+        may only be used once. Division must not leave a remainder.</li>
+      <li>10 points for getting the number exactly, 7 for being within 5 of it and 5 for being within 10. Any further
+        away is 0 points.</li>
+    </ul>
+  </header>
+  <section>
+    <div id="target" class="block-element">
+      <div class="random-number" id="slot1">0</div>
+      <div class="random-number" id="slot2">0</div>
+      <div class="random-number" id="slot3">0</div>
+      <button id="get-target" class="hidden">
+        <h2>STOP</h2>
+      </button>
+    </div>
+    <div id="user-nums" class="block-element">
+    </div>
+  </section>
+  <section>
+    <div id="scoreboard">
+      <h2>Scoreboard</h2>
+      <div class="score-type">
+        <h3>Total Points</h3>
+        <p id="points">0</p>
+      </div>
+      <div class="score-type">
+        <h3>Exact Matchs</h3>
+        <p id="matchs">0</p>
+      </div>
+      <div class="score-type">
+        <h3>Within 5</h3>
+        <p id="5s">0</p>
+      </div>
+      <div class="score-type">
+        <h3>Within 10</h3>
+        <p id="10s">0</p>
+    </div>
+    <div class="score-type">
+      <h3>Total Attempts</h3>
+      <p id="attempts">0</p>
+  </section>
+  <section>
+    <div id="input-container" class="block-element">
+    </div>
+  </section>
+  <script src="assets/js/script.js"></script>
 </body>
+
 </html>
