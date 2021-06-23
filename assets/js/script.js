@@ -35,69 +35,55 @@ function toggleInstructions() {
 
 const inputContainer = document.getElementById("input-container");
 
-// function createCards() {
-//   // Creates the backs of each card and sets the id of each
-//   back = document.createElement('div');
-//   back.className = 'back';
-//   let backs = [];
+function createCards() {
+  // Creates the backs of each card and sets the id of each
+  back = document.createElement('div');
+  back.className = 'back';
+  let backs = [];
 
-//   for (i = 0; i <= 3; i++) {
-//     backs.push(back.cloneNode());
-//     backs[i].setAttribute('id', `large${i+1}`)
-//     backs[i].setAttribute('tab-index', `${i+1}`)
-//   }
-//   for (i = 0; i <= 19; i++) {
-//     backs.push(back.cloneNode());
-//     backs[i + 4].setAttribute('id', `small${i+1}`);
-//     backs[i + 4].setAttribute('tab-index', `${i+4}`)
-//   }
+  for (i = 0; i <= 3; i++) {
+    backs.push(back.cloneNode());
+    backs[i].setAttribute('id', `large${i+1}`)
+  }
+  for (i = 0; i <= 19; i++) {
+    backs.push(back.cloneNode());
+    backs[i + 4].setAttribute('id', `small${i+1}`);
+  }
 
-//   card = document.createElement('div');
-//   card.className = 'card available';
+  // Creates the front face and each card container template
+  front = document.createElement('div');
+  front.className = 'front';
 
-//   // Iterates each card and then appends the appropriate card back
-//   let cards = [];
-//   for (i = 0; i <= 23; i++) {
-//     cards.push(card.cloneNode());
-//     cards[i].appendChild(backs[i])
-//   }
-
-//   // Creates the card containers and appends the correct cards to them
-//   largeContainer = document.createElement('div');
-//   largeContainer.setAttribute('id', 'large-cards');
-
-//   smallContainer = document.createElement('div');
-//   smallContainer.setAttribute('id', 'small-cards');
-
-//   for (i = 0; i <= 3; i++) {
-//     largeContainer.appendChild(cards[i])
-//   }
-  
-//   for (i = 0; i <= 19; i++) {
-//     smallContainer.appendChild(cards[i + 4]);
-//   }
-
-//   inputContainer.appendChild(largeContainer);
-//   inputContainer.appendChild(smallContainer);
-// }
-// createCards();
-
-function mobileFriendlyCards() {
   card = document.createElement('div');
-  card.className = "mobile-card card";
+  card.className = 'card available';
+  card.appendChild(front.cloneNode());
+
+  // Iterates each card and then appends the appropriate card back
   let cards = [];
-  cards.push(card.cloneNode());
-  cards.push(card.cloneNode());
-  cards[0].setAttribute('id', 'mobile-large');
-  cards[0].innerHTML = '<h3>Large</h3>';
-  cards[1].setAttribute('id', 'mobile-small');
-  cards[1].innerHTML = '<h3>Small</h3>';
-  inputContainer.appendChild(cards[0])
-  inputContainer.appendChild(cards[1]);
-  document.getElementById('mobile-large').addEventListener('click', randomLarge);
-  document.getElementById('mobile-small').addEventListener('click', randomSmall);
+  for (i = 0; i <= 23; i++) {
+    cards.push(card.cloneNode());
+    cards[i].appendChild(backs[i])
+  }
+
+  // Creates the card containers and appends the correct cards to them
+  largeContainer = document.createElement('div');
+  largeContainer.setAttribute('id', 'large-cards');
+
+  smallContainer = document.createElement('div');
+  smallContainer.setAttribute('id', 'small-cards');
+
+  for (i = 0; i <= 3; i++) {
+    largeContainer.appendChild(cards[i])
+  }
+  
+  for (i = 0; i <= 19; i++) {
+    smallContainer.appendChild(cards[i + 4]);
+  }
+
+  inputContainer.appendChild(largeContainer);
+  inputContainer.appendChild(smallContainer);
 }
-mobileFriendlyCards();
+createCards();
 
 function createUserCards() {
   userCard = document.createElement('div');
@@ -554,9 +540,9 @@ function resetGame() {
   document.getElementById('slot2').innerText = 0;
   document.getElementById('slot3').innerText = 0;
   formContainer.remove();
+  createCards();
   smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
   largeNumbers = [25, 50, 75, 100];
-  createCards();
   assignLarge();
   assignSmall();
   userCardsContainer.innerHTML = "";
@@ -565,4 +551,3 @@ function resetGame() {
   addCardListeners();
   spin = true;
 }
-
