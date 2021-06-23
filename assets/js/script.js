@@ -344,7 +344,7 @@ function handleSubmit(event) {
             result.value = parseInt(operand1) / parseInt(operand2);
             break
           } else {
-            alert('That is not a valid operation');
+            alert(`${operand1} is not divisible by ${operand2}!`)
             return
           }
       }
@@ -382,7 +382,7 @@ function handleSubmit(event) {
             result.value = parseInt(operand1) / parseInt(operand2);
             break
           } else {
-            alert('That is not a valid operation');
+            alert(`${operand1} is not divisible by ${operand2}!`)
             return
           }
       }
