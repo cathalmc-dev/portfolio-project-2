@@ -119,7 +119,7 @@ ul {
 
 #input-container {
   height: 22em;
-  width: 45vw;
+  width: 45%;
   background-color: var(--box-background);
   margin: 4vh auto;
   text-align: center;

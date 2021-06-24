@@ -1,5 +1,8 @@
+let cards = [];
 let userNums = [];
 let targetNum = 0;
+let spin = true;
+let stopButton = document.getElementById("get-target");
 const scores = [{
     value: 10,
     message: "You Win! 10 Points!",
@@ -34,56 +37,75 @@ function toggleInstructions() {
 }
 
 const inputContainer = document.getElementById("input-container");
+let card = document.createElement('div');
 
-function createCards() {
-  // Creates the backs of each card and sets the id of each
-  back = document.createElement('div');
-  back.className = 'back';
-  let backs = [];
+// function createCards() {
+//   // Creates the backs of each card and sets the id of each
+//   back = document.createElement('div');
+//   back.className = 'back';
+//   let backs = [];
 
-  for (i = 0; i <= 3; i++) {
-    backs.push(back.cloneNode());
-    backs[i].setAttribute('id', `large${i+1}`)
-  }
-  for (i = 0; i <= 19; i++) {
-    backs.push(back.cloneNode());
-    backs[i + 4].setAttribute('id', `small${i+1}`);
-  }
+//   for (i = 0; i <= 3; i++) {
+//     backs.push(back.cloneNode());
+//     backs[i].setAttribute('id', `large${i+1}`)
+//   }
+//   for (i = 0; i <= 19; i++) {
+//     backs.push(back.cloneNode());
+//     backs[i + 4].setAttribute('id', `small${i+1}`);
+//   }
 
-  // Creates the front face and each card container template
-  front = document.createElement('div');
-  front.className = 'front';
+//   // Creates the front face and each card container template
+//   front = document.createElement('div');
+//   front.className = 'front';
 
-  card = document.createElement('div');
-  card.className = 'card available';
-  card.appendChild(front.cloneNode());
+//   card.className = 'card available';
+//   card.appendChild(front.cloneNode());
 
-  // Iterates each card and then appends the appropriate card back
-  let cards = [];
-  for (i = 0; i <= 23; i++) {
-    cards.push(card.cloneNode());
-    cards[i].appendChild(backs[i])
-  }
+//   // Iterates each card and then appends the appropriate card back
+//   for (i = 0; i <= 23; i++) {
+//     cards.push(card.cloneNode());
+//     cards[i].appendChild(backs[i])
+//   }
 
-  // Creates the card containers and appends the correct cards to them
-  largeContainer = document.createElement('div');
-  largeContainer.setAttribute('id', 'large-cards');
+//   // Creates the card containers and appends the correct cards to them
+//   largeContainer = document.createElement('div');
+//   largeContainer.setAttribute('id', 'large-cards');
 
-  smallContainer = document.createElement('div');
-  smallContainer.setAttribute('id', 'small-cards');
+//   smallContainer = document.createElement('div');
+//   smallContainer.setAttribute('id', 'small-cards');
 
-  for (i = 0; i <= 3; i++) {
-    largeContainer.appendChild(cards[i])
-  }
+//   for (i = 0; i <= 3; i++) {
+//     largeContainer.appendChild(cards[i])
+//   }
   
-  for (i = 0; i <= 19; i++) {
-    smallContainer.appendChild(cards[i + 4]);
-  }
+//   for (i = 0; i <= 19; i++) {
+//     smallContainer.appendChild(cards[i + 4]);
+//   }
 
-  inputContainer.appendChild(largeContainer);
-  inputContainer.appendChild(smallContainer);
+//   inputContainer.appendChild(largeContainer);
+//   inputContainer.appendChild(smallContainer);
+// }
+// createCards();
+
+function createMobileCards() {
+  card.className = "card mobile";
+  let idArray = ['Large', 'Small']
+  for (i = 0; i <= 1; i++) {
+    cards.push(card.cloneNode());
+    cards[i].setAttribute('id', `${idArray[i]}Mobile`);
+    cards[i].innerHTML = `<h3>${idArray[i]}</h3>`
+  }
+  let mobileContainer = document.createElement('div');
+  mobileContainer.setAttribute('id', 'mobile-container');
+  mobileContainer.appendChild(cards[0]);
+  mobileContainer.appendChild(cards[1]);
+  inputContainer.appendChild(mobileContainer);
+  let largeMobile = document.getElementById('LargeMobile');
+  let smallMobile = document.getElementById('SmallMobile');
+  largeMobile.addEventListener('click', randomLarge);
+  smallMobile.addEventListener('click', randomSmall);
 }
-createCards();
+createMobileCards()
 
 function createUserCards() {
   userCard = document.createElement('div');
@@ -102,38 +124,68 @@ createUserCards();
  * Randomly assign the 4 large numbers to the 4 large cards for user selection
  */
 let largeNumbers = [25, 50, 75, 100];
+let largeLength = largeNumbers.length;
 
-function assignLarge() {
-  for (i = 1; i <= 4; i++) {
-    let largeLength = largeNumbers.length;
-    let j = Math.floor((Math.random()) * largeLength);
-    document.getElementById(`large${i}`).innerHTML = `<h3>${largeNumbers[j]}</h3>`
-    largeNumbers.splice(j, 1);
+// function assignLarge() {
+//   for (i = 1; i <= 4; i++) {
+//     largeLength = largeNumbers.length;
+//     let j = Math.floor((Math.random()) * largeLength);
+//     document.getElementById(`large${i}`).innerHTML = `<h3>${largeNumbers[j]}</h3>`
+//     largeNumbers.splice(j, 1);
+//   }
+// }
+// assignLarge();
+
+function randomLarge() {
+  largeLength = largeNumbers.length;
+  if (largeLength !== 0) {
+  let index = Math.floor((Math.random()) * largeLength);
+  let largeNumber = largeNumbers[index];
+  userNums.push(largeNumber);
+  largeNumbers.splice(index, 1);
+  let length = userNums.length;
+  document.getElementById(`pick${length}`).innerHTML = `<h3>${largeNumber}</h3>`;
+  console.log(largeNumbers);
+  userNumsFull();
+  } else {
+    alert('No more large numbers to pick from!');
   }
 }
-assignLarge();
 
 // Randomly assign the 20 small numbers to the 20 small cards for user selection
 let smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
+let smallLength = smallNumbers.length;
 
-function assignSmall() {
-  for (i = 1; i <= 20; i++) {
-    let smallLength = smallNumbers.length;
-    let j = Math.floor((Math.random()) * smallLength);
-    document.getElementById(`small${i}`).innerHTML = `<h3>${smallNumbers[j]}</h3>`
-    smallNumbers.splice(j, 1);
-  }
+
+// function assignSmall() {
+//   for (i = 1; i <= 20; i++) {
+//     smallLength = smallNumbers.length;
+//     let j = Math.floor((Math.random()) * smallLength);
+//     document.getElementById(`small${i}`).innerHTML = `<h3>${smallNumbers[j]}</h3>`
+//     smallNumbers.splice(j, 1);
+//   }
+// }
+// assignSmall();
+
+function randomSmall() {
+  smallLength = smallLength
+  index = Math.floor((Math.random()) * smallLength);
+  let smallNumber = smallNumbers[index];
+  userNums.push(smallNumber);
+  smallNumbers.splice(index, 1);
+  length = userNums.length;
+  document.getElementById(`pick${length}`).innerHTML = `<h3>${smallNumber}</h3>`;
+  userNumsFull();
 }
-assignSmall();
 
 // Listeners for when a user wants to flip a card
-let cards = document.getElementsByClassName("available");
+let available = document.getElementsByClassName("available");
 
 function addCardListeners() {
   if (userNums.length < 6) {
     for (i = 0; i < 24; i++) {
-      cards[i].addEventListener('click', addToUserNums);
-      cards[i].addEventListener('click', flipCard);
+      available[i].addEventListener('click', addToUserNums);
+      available[i].addEventListener('click', flipCard);
     }
   }
 }
@@ -165,24 +217,30 @@ function addToUserNums() {
     userNums.push(x);
     let i = userNums.length;
     document.getElementById(`pick${i}`).innerHTML = `<h3>${x}</h3>`
-    if (userNums.length === 6) {
-      replaceCards();
-      startSpinner();
-      stopButton.classList.remove('hidden');
-    }
+    userNumsFull();
+  }
+}
+
+function userNumsFull() {
+  if (userNums.length === 6) {
+    replaceCards();
+    startSpinner();
+    stopButton.classList.remove('hidden');
   }
 }
 
 // Deletes the elements containing the selectable cards
 function replaceCards() {
-  let largeCards = document.getElementById("large-cards");
-  largeCards.remove();
-  let smallCards = document.getElementById("small-cards");
-  smallCards.remove();
+  if (screen.width > 1150) {
+    let largeCards = document.getElementById("large-cards");
+    largeCards.remove();
+    let smallCards = document.getElementById("small-cards");
+    smallCards.remove();
+  } else {
+  let mobileCards = document.getElementById('mobile-container');
+  mobileCards.remove();
+  }
 }
-
-let spin = true;
-let stopButton = document.getElementById("get-target");
 
 /**
  * Starts changing the innerHTML of the target number slots every 0.1 seconds until the stop function is called
