@@ -1,5 +1,5 @@
 let w = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
-const targetWidth = 1150;
+const targetWidth = 1240;
 const scoreboard = document.getElementById('scoreboard');
 let cards = [];
 let largeNumbers = [25, 50, 75, 100];
@@ -57,7 +57,7 @@ const inputContainer = document.getElementById("input-container");
 let card = document.createElement('div');
 
 function desktopOrMobile() {
-  if (screen.width > 1150) {
+  if (screen.width > 1024) {
     createCards();
   } else {
     createMobileCards();
@@ -192,7 +192,8 @@ function assignSmall() {
 
 
 function randomSmall() {
-  smallLength = smallLength
+  smallLength = smallNumbers.length;
+  console.log(smallNumbers)
   index = Math.floor((Math.random()) * smallLength);
   let smallNumber = smallNumbers[index];
   userNums.push(smallNumber);
