@@ -8,7 +8,7 @@
   --box-background: #6aadca;
   --text: #e45d0f;
   --card: #C0C0C0;
-  --stop: #cf142b;
+  --stop: #ff001e;
 }
 
 * {
@@ -55,10 +55,11 @@ h2 {
 
 #instructions-badge {
   background-color: var(--box-background);
-  min-width: 16%;
-  max-width: 25%;
+  width: 15vw;
   margin: 0 auto 5vh;
   border-radius: 15px;
+  height: 2.5em;
+  line-height: 2.25em;
   box-sizing: border-box;
 }
 
@@ -75,21 +76,62 @@ ul {
   margin: 2vh 25vw;
   font-size: 150%;
   text-shadow: 1px 1px black;
+  list-style-type: none;
+}
+
+hr {
+  border-top: 1px dashed var(--text);
+  margin: 5px -5%;
+  width: 110%;
+}
+
+
+@media screen and (max-width: 1150px) {
+  h1 {
+    font-size: 300%;
+  }
+
+  #instructions-badge {
+    width: 65vw;
+  }
+
+  ul {
+    font-size: 130%;
+    margin: 2vh 15vw;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  h1 {
+    font-size: 200%;
+  }
+
+  #instructions-badge {
+    width: 85vw;
+  }
+
+  ul {
+    font-size: 110%;
+    margin: 2vh 5vw;
+  }
+
+  hr {
+    width: 102%;
+    margin: 5px -1%;
+  }
 }
 
 
 #target {
-  position: absolute;
-  left: 40%;
-  height: 150px;
-  width: 450px;
-  margin: 20px 35%;
-  text-align: left;
+  height: 18vh;
+  width: 20vw;
+  margin: 20px auto 0;
+  text-align: center;
 }
 
 .random-number {
   height: 100%;
-  width: 25%;
+  width: 34%;
   background-color: var(--box-background);
   border: 1px solid black;
   font-family: Orbitron;
@@ -100,15 +142,42 @@ ul {
   text-shadow: 2px 2px black;
 }
 
-#get-target {
-  float: right;
-  height: 60%;
-  width: 22%;
-  border-radius: 50%;
-  margin-top: 35px;
-  margin-right: 10px;
+.stop {
+  height: 80%;
+  width: 20vw;
+  margin: 0 auto;
+  margin-top: 0;
   text-align: center;
   background-color: var(--stop);
+}
+
+@media screen and (max-width: 1150px) {
+  #target {
+    width: 50vw;
+  }
+
+  .stop {
+    width: 50vw;
+  }
+
+  .random-number {
+    font-size: 450%;
+  }
+}
+
+
+@media screen and (max-width: 430px) {
+  #target {
+    width: 75vw;
+  }
+
+  .stop {
+    width: 75vw;
+  }
+
+  .random-number {
+    font-size: 450%;
+  }
 }
 
 .display-none {
@@ -120,7 +189,7 @@ ul {
 }
 
 #input-container {
-  height: 22em;
+  height: 20em;
   width: 45%;
   background-color: var(--box-background);
   margin: 4vh auto;
@@ -150,7 +219,7 @@ ul {
 #user-nums {
   height: 6em;
   width: 75vw;
-  margin: 50px auto 0;
+  margin: 20px auto 0;
   text-align: center;
   vertical-align: middle;
 }
@@ -312,15 +381,16 @@ option {
   text-shadow: 2px 2px #000000;
   border-radius: 15%;
   background-color: var(--box-background);
+  display: table;
+}
+
+#scoreboard > * {
+  transform: translateY(2vh);
 }
 
 .score-type {
   margin: 2vh;
   font-size: 110%;
-}
-
-.header {
-  margin-top: 3vh;
 }
 
 .score-type p {
