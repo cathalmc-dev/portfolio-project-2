@@ -29,10 +29,6 @@ body {
   background-color: var(--background);
 }
 
-.background {
-  /* background-color: var(--box-background); */
-}
-
 /* Headings */
 
 h1, h2 {
@@ -152,7 +148,7 @@ hr {
 
 .stop {
   height: 80%;
-  width: 35vw;
+  width: 35.3vw;
   margin: 0 auto;
   margin-top: 0;
   text-align: center;
@@ -205,7 +201,7 @@ hr {
 #user-nums {
   height: 6em;
   width: 50vw;
-  margin: 20px auto 0;
+  margin: 30px auto 30px;
   text-align: center;
   vertical-align: middle;
   /* background-color: fuchsia; */
@@ -247,7 +243,7 @@ hr {
   #user-nums {
     height: 10em;
     width: 35vw;
-    margin: 5px auto 0;
+    margin: 15px auto 0;
   }
 
   .user-pick {
@@ -273,41 +269,32 @@ hr {
 
 @media screen and (max-width: 1150px) {
   #user-nums {
-    height: 10em;
     width: 45vw;
-    margin: 5px auto 0;
   }
 }
 
-@media screen and (max-width: 890px) {
+@media screen and (max-width: 895px) {
   #user-nums {
-    height: 10em;
     width: 59vw;
-    margin: 5px auto 0;
   }
 }
 
 @media screen and (max-width: 680px) {
   #user-nums {
-    height: 10em;
     width: 70vw;
-    margin: 5px auto 0;
   }
 }
 
 @media screen and (max-width: 580px) {
   #user-nums {
-    height: 10em;
     width: 85vw;
-    margin: 5px auto 0;
   }
 }
 
 @media screen and (max-width: 480px) {
   #user-nums {
-    height: 10em;
     width: 60vw;
-    margin: 5px auto 0;
+    height: 8em;
   }
 
   .user-pick {
@@ -320,12 +307,20 @@ hr {
   }
 }
 
-.display-none {
-  display: none;
+@media screen and (max-width: 440px) {
+  #user-nums {
+    width: 70vw;
+  }
 }
 
-.hidden {
-  visibility: hidden;
+@media screen and (max-width: 380px) {
+  #user-nums {
+    width: 83vw;
+  }
+}
+
+.display-none {
+  display: none;
 }
 
 #input-container {

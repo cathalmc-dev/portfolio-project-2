@@ -254,7 +254,7 @@ function userNumsFull() {
       replaceCardsMobile();
     }
     startSpinner();
-    stopButton.classList.remove('hidden');
+    stopButton.classList.remove('display-none');
   }
 }
 
@@ -292,7 +292,7 @@ function startSpinner() {
 
 function stopSpinner() {
   spin = false;
-  stopButton.classList.add('hidden');
+  stopButton.classList.add('display-none');
   createFormHolder();
   createInputRow();
   createDoneButton();
