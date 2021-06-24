@@ -79,9 +79,11 @@ ul {
 
 
 #target {
+  position: absolute;
+  left: 40%;
   height: 150px;
   width: 450px;
-  margin: 20px 42%;
+  margin: 20px 35%;
   text-align: left;
 }
 
@@ -153,6 +155,8 @@ ul {
   vertical-align: middle;
 }
 
+
+
 .user-pick {
   position: relative;
   height: 6em;
@@ -166,20 +170,30 @@ ul {
   text-shadow: 2px 2px black;
 }
 
+@media screen and (max-width: 1150px) {
+  #user-nums {
+    height: 10em;
+  }
+
+  .user-pick {
+    height: 5em;
+  }
+}
+
 .four-plus {
-  width: 10em;
+  width: 7em;
 }
 
 .three {
-  width: 12em;
+  width: 9em;
 }
 
 .two {
-  width: 14em;
+  width: 11em;
 }
 
 .one {
-  width: 16em;
+  width: 13em;
 }
 
 .front {
@@ -283,7 +297,7 @@ option {
   font-size: 300%;
   text-align: center;
   margin-top: 15%;
-  text-shadow: 2px 2px #ff0000;
+  text-shadow: 2px 2px black;
 }
 
 #scoreboard {

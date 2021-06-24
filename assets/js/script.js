@@ -1,8 +1,18 @@
+let w = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
+const targetWidth = 1150;
+const scoreboard = document.getElementById('scoreboard');
 let cards = [];
+let largeNumbers = [25, 50, 75, 100];
+let largeLength = largeNumbers.length;
+let smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
+let smallLength = smallNumbers.length;
+let available = document.getElementsByClassName("available");
 let userNums = [];
 let targetNum = 0;
 let spin = true;
 let stopButton = document.getElementById("get-target");
+stopButton.addEventListener('click', stopSpinner);
+let userPicks = document.getElementsByClassName('user-pick');
 const scores = [{
     value: 10,
     message: "You Win! 10 Points!",
@@ -36,56 +46,76 @@ function toggleInstructions() {
   chevron.classList.toggle(up);
 }
 
+function deleteScoreboard() {
+  if (w < targetWidth) {
+    scoreboard.remove();
+  }
+}
+deleteScoreboard();
+
 const inputContainer = document.getElementById("input-container");
 let card = document.createElement('div');
 
-// function createCards() {
-//   // Creates the backs of each card and sets the id of each
-//   back = document.createElement('div');
-//   back.className = 'back';
-//   let backs = [];
+function desktopOrMobile() {
+  if (screen.width > 1150) {
+    createCards();
+  } else {
+    createMobileCards();
+  }
+}
+desktopOrMobile();
 
-//   for (i = 0; i <= 3; i++) {
-//     backs.push(back.cloneNode());
-//     backs[i].setAttribute('id', `large${i+1}`)
-//   }
-//   for (i = 0; i <= 19; i++) {
-//     backs.push(back.cloneNode());
-//     backs[i + 4].setAttribute('id', `small${i+1}`);
-//   }
+function createCards() {
+  // Creates the backs of each card and sets the id of each
+  back = document.createElement('div');
+  back.className = 'back';
+  let backs = [];
 
-//   // Creates the front face and each card container template
-//   front = document.createElement('div');
-//   front.className = 'front';
+  for (i = 0; i <= 3; i++) {
+    backs.push(back.cloneNode());
+    backs[i].setAttribute('id', `large${i+1}`)
+  }
+  for (i = 0; i <= 19; i++) {
+    backs.push(back.cloneNode());
+    backs[i + 4].setAttribute('id', `small${i+1}`);
+  }
 
-//   card.className = 'card available';
-//   card.appendChild(front.cloneNode());
+  // Creates the front face and each card container template
+  front = document.createElement('div');
+  front.className = 'front';
 
-//   // Iterates each card and then appends the appropriate card back
-//   for (i = 0; i <= 23; i++) {
-//     cards.push(card.cloneNode());
-//     cards[i].appendChild(backs[i])
-//   }
+  card.className = 'card available';
+  card.appendChild(front.cloneNode());
 
-//   // Creates the card containers and appends the correct cards to them
-//   largeContainer = document.createElement('div');
-//   largeContainer.setAttribute('id', 'large-cards');
+  // Iterates each card and then appends the appropriate card back
+  for (i = 0; i <= 23; i++) {
+    cards.push(card.cloneNode());
+    cards[i].appendChild(backs[i])
+  }
 
-//   smallContainer = document.createElement('div');
-//   smallContainer.setAttribute('id', 'small-cards');
+  // Creates the card containers and appends the correct cards to them
+  largeContainer = document.createElement('div');
+  largeContainer.setAttribute('id', 'large-cards');
 
-//   for (i = 0; i <= 3; i++) {
-//     largeContainer.appendChild(cards[i])
-//   }
+  smallContainer = document.createElement('div');
+  smallContainer.setAttribute('id', 'small-cards');
+
+  for (i = 0; i <= 3; i++) {
+    largeContainer.appendChild(cards[i])
+  }
   
-//   for (i = 0; i <= 19; i++) {
-//     smallContainer.appendChild(cards[i + 4]);
-//   }
+  for (i = 0; i <= 19; i++) {
+    smallContainer.appendChild(cards[i + 4]);
+  }
 
-//   inputContainer.appendChild(largeContainer);
-//   inputContainer.appendChild(smallContainer);
-// }
-// createCards();
+  inputContainer.appendChild(largeContainer);
+  inputContainer.appendChild(smallContainer);
+
+  assignLarge();
+  assignSmall();
+  addCardListeners();
+}
+
 
 function createMobileCards() {
   card.className = "card mobile";
@@ -105,7 +135,7 @@ function createMobileCards() {
   largeMobile.addEventListener('click', randomLarge);
   smallMobile.addEventListener('click', randomSmall);
 }
-createMobileCards()
+
 
 function createUserCards() {
   userCard = document.createElement('div');
@@ -123,18 +153,17 @@ createUserCards();
 /**
  * Randomly assign the 4 large numbers to the 4 large cards for user selection
  */
-let largeNumbers = [25, 50, 75, 100];
-let largeLength = largeNumbers.length;
 
-// function assignLarge() {
-//   for (i = 1; i <= 4; i++) {
-//     largeLength = largeNumbers.length;
-//     let j = Math.floor((Math.random()) * largeLength);
-//     document.getElementById(`large${i}`).innerHTML = `<h3>${largeNumbers[j]}</h3>`
-//     largeNumbers.splice(j, 1);
-//   }
-// }
-// assignLarge();
+
+function assignLarge() {
+  for (i = 1; i <= 4; i++) {
+    largeLength = largeNumbers.length;
+    let j = Math.floor((Math.random()) * largeLength);
+    document.getElementById(`large${i}`).innerHTML = `<h3>${largeNumbers[j]}</h3>`
+    largeNumbers.splice(j, 1);
+  }
+}
+
 
 function randomLarge() {
   largeLength = largeNumbers.length;
@@ -145,7 +174,6 @@ function randomLarge() {
   largeNumbers.splice(index, 1);
   let length = userNums.length;
   document.getElementById(`pick${length}`).innerHTML = `<h3>${largeNumber}</h3>`;
-  console.log(largeNumbers);
   userNumsFull();
   } else {
     alert('No more large numbers to pick from!');
@@ -153,19 +181,15 @@ function randomLarge() {
 }
 
 // Randomly assign the 20 small numbers to the 20 small cards for user selection
-let smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
-let smallLength = smallNumbers.length;
+function assignSmall() {
+  for (i = 1; i <= 20; i++) {
+    smallLength = smallNumbers.length;
+    let j = Math.floor((Math.random()) * smallLength);
+    document.getElementById(`small${i}`).innerHTML = `<h3>${smallNumbers[j]}</h3>`
+    smallNumbers.splice(j, 1);
+  }
+}
 
-
-// function assignSmall() {
-//   for (i = 1; i <= 20; i++) {
-//     smallLength = smallNumbers.length;
-//     let j = Math.floor((Math.random()) * smallLength);
-//     document.getElementById(`small${i}`).innerHTML = `<h3>${smallNumbers[j]}</h3>`
-//     smallNumbers.splice(j, 1);
-//   }
-// }
-// assignSmall();
 
 function randomSmall() {
   smallLength = smallLength
@@ -179,17 +203,16 @@ function randomSmall() {
 }
 
 // Listeners for when a user wants to flip a card
-let available = document.getElementsByClassName("available");
+
 
 function addCardListeners() {
   if (userNums.length < 6) {
     for (i = 0; i < 24; i++) {
-      available[i].addEventListener('click', addToUserNums);
-      available[i].addEventListener('click', flipCard);
+      cards[i].addEventListener('click', addToUserNums);
+      cards[i].addEventListener('click', flipCard);
     }
   }
 }
-addCardListeners();
 /** 
  *Flips a card to reveal it's value,
  *then removes it from the pool of cards that are available to be flipped 
@@ -223,23 +246,28 @@ function addToUserNums() {
 
 function userNumsFull() {
   if (userNums.length === 6) {
-    replaceCards();
+    if (w > targetWidth) {     
+      replaceCardsDesktop();
+    }
+    else {
+      replaceCardsMobile();
+    }
     startSpinner();
     stopButton.classList.remove('hidden');
   }
 }
 
 // Deletes the elements containing the selectable cards
-function replaceCards() {
-  if (screen.width > 1150) {
-    let largeCards = document.getElementById("large-cards");
-    largeCards.remove();
-    let smallCards = document.getElementById("small-cards");
-    smallCards.remove();
-  } else {
+function replaceCardsDesktop() {
+  let largeCards = document.getElementById("large-cards");
+  largeCards.remove();
+  let smallCards = document.getElementById("small-cards");
+  smallCards.remove();
+}
+
+function replaceCardsMobile() {
   let mobileCards = document.getElementById('mobile-container');
   mobileCards.remove();
-  }
 }
 
 /**
@@ -260,8 +288,6 @@ function startSpinner() {
     console.log(targetNum);
   }
 }
-
-stopButton.addEventListener('click', stopSpinner);
 
 function stopSpinner() {
   spin = false;
@@ -352,8 +378,6 @@ function createDoneButton() {
   done.addEventListener('click', compareResult);
 }
 
-let userPicks = document.getElementsByClassName('user-pick');
-
 function addUserCardListeners() {
   for (i = 0; i <= userNums.length - 1; i++) {
     userPicks[i].addEventListener('click', selectOperand);
@@ -362,7 +386,6 @@ function addUserCardListeners() {
 
 // Allows user to click on their available numbers to add them to the input field
 function selectOperand() {
-  console.log(this.innerText);
   let input1 = document.getElementById('operand1');
   let input2 = document.getElementById('operand2');
   let number = this.innerText;
@@ -554,11 +577,13 @@ function removeModal() {
 
 
 function updateScoreboard(p) {
-  totalPoints(p);
-  exactMatchs(p);
-  within5(p);
-  within10(p);
-  attempts();
+  if (w > targetWidth) {
+    totalPoints(p);
+    exactMatchs(p);
+    within5(p);
+    within10(p);
+    attempts();
+  }
 }
 
 function totalPoints(p) {
@@ -598,14 +623,13 @@ function resetGame() {
   document.getElementById('slot2').innerText = 0;
   document.getElementById('slot3').innerText = 0;
   formContainer.remove();
-  createCards();
+  cards = [];
+  available = [];
+  desktopOrMobile();
   smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
   largeNumbers = [25, 50, 75, 100];
-  assignLarge();
-  assignSmall();
   userCardsContainer.innerHTML = "";
   createUserCards();
   userNums = [];
-  addCardListeners();
   spin = true;
 }
