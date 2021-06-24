@@ -147,7 +147,7 @@ hr {
 }
 
 .stop {
-  height: 80%;
+  height: 6vh;
   width: 35.3vw;
   margin: 0 auto;
   margin-top: 0;
@@ -243,7 +243,7 @@ hr {
   #user-nums {
     height: 10em;
     width: 35vw;
-    margin: 15px auto 0;
+    margin: 15px auto 25px;
   }
 
   .user-pick {
@@ -300,6 +300,7 @@ hr {
   .user-pick {
     height: 4em;
     margin: 2px;
+    line-height: 4em;
   }
 
   .four-plus {
@@ -316,6 +317,12 @@ hr {
 @media screen and (max-width: 380px) {
   #user-nums {
     width: 83vw;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #user-nums {
+    width: 86vw;
   }
 }
 
@@ -395,6 +402,12 @@ hr {
   }
 }
 
+@media screen and (max-width: 1080px) {
+  #input-container {
+    width: 90vw;
+  }
+}
+
 #large-cards {
   margin-bottom: 5px;
 }
@@ -428,6 +441,13 @@ hr {
   text-align: center;
   backface-visibility: hidden;
   transform: rotateY(180deg);
+}
+
+.mobile {
+  height: 8em;
+  width: 8em;
+  line-height: 8em;
+  margin: 5em 1vw;
 }
 
 .flipCard {

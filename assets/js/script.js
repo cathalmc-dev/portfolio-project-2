@@ -193,10 +193,10 @@ function assignSmall() {
 
 function randomSmall() {
   smallLength = smallNumbers.length;
-  console.log(smallNumbers)
   index = Math.floor((Math.random()) * smallLength);
   let smallNumber = smallNumbers[index];
   userNums.push(smallNumber);
+  console.log(userNums);
   smallNumbers.splice(index, 1);
   length = userNums.length;
   document.getElementById(`pick${length}`).innerHTML = `<h3>${smallNumber}</h3>`;
