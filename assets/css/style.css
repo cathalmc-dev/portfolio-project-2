@@ -569,7 +569,7 @@ input[type=number] {
   text-align: center;
   box-sizing: border-box;
   border: 1px solid black;
-  background-color: (--card);
+  background-color: var(--card);
   border-radius: 15%;
 }
 
@@ -691,6 +691,6 @@ option {
 
 @media screen and (max-width: 1400px) {
   #scoreboard {
-    transform: scale(80%);
+    transform: scale(0.8);
   }
 }
