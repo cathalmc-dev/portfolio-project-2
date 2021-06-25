@@ -201,7 +201,6 @@ function randomSmall() {
   index = Math.floor((Math.random()) * smallLength);
   let smallNumber = smallNumbers[index];
   userNums.push(smallNumber);
-  console.log(userNums);
   smallNumbers.splice(index, 1);
   length = userNums.length;
   document.getElementById(`pick${length}`).innerHTML = `<h3>${smallNumber}</h3>`;
@@ -242,7 +241,7 @@ function flipCard() {
  * It also makes the stop button visible
  */
 function addToUserNums() {
-  let x = this.innerText;
+  let x = parseInt(this.innerText);
   if (this.classList.contains('available')) {
     userNums.push(x);
     let i = userNums.length;
@@ -398,7 +397,10 @@ function selectOperand() {
   let number = this.innerText;
   if (input1.value === "") {
   input1.value = number;
-  } else {
+  } else if ((input1.value === "") && (input2.value !== "")) {
+    input1.value = number;
+  }
+  else {
     input2.value = number;
   }
 }

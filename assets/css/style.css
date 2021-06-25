@@ -468,6 +468,12 @@ hr {
   font-size: 250%;
 }
 
+@media screen and (max-width: 750px) {
+  .user-pick h3 {
+    font-size: 200%;
+  }
+}
+
 form {
   margin: 20px auto;
   font-size: 180%;
@@ -548,12 +554,18 @@ option {
 
   #done {
     left: 25%;
+    bottom: 10px;
   }
 }
 
 @media screen and (max-width: 395px) {
   #done {
     left: 20%;
+  }
+
+  .input {
+    font-size: 80%;
+    text-shadow: 1px 1px black;
   }
 }
 
