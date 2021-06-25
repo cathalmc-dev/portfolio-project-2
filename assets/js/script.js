@@ -2,6 +2,7 @@ let w = document.documentElement.clientWidth || document.body.clientWidth || win
 const targetWidth = 1240;
 const scoreboard = document.getElementById('scoreboard');
 let cards = [];
+let backs = [];
 let largeNumbers = [25, 50, 75, 100];
 let largeLength = largeNumbers.length;
 let smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
@@ -69,7 +70,8 @@ function createCards() {
   // Creates the backs of each card and sets the id of each
   back = document.createElement('div');
   back.className = 'back';
-  let backs = [];
+  backs = [];
+  console.log(backs);
 
   for (i = 0; i <= 3; i++) {
     backs.push(back.cloneNode());
@@ -88,10 +90,13 @@ function createCards() {
   card.appendChild(front.cloneNode());
 
   // Iterates each card and then appends the appropriate card back
+  cards = [];
+  console.log(cards);
   for (i = 0; i <= 23; i++) {
     cards.push(card.cloneNode());
     cards[i].appendChild(backs[i])
   }
+  console.log(cards);
 
   // Creates the card containers and appends the correct cards to them
   largeContainer = document.createElement('div');
@@ -214,6 +219,7 @@ function addCardListeners() {
     }
   }
 }
+
 /** 
  *Flips a card to reveal it's value,
  *then removes it from the pool of cards that are available to be flipped 
@@ -247,7 +253,7 @@ function addToUserNums() {
 
 function userNumsFull() {
   if (userNums.length === 6) {
-    if (w > targetWidth) {     
+    if (screen.width > 1024) {     
       replaceCardsDesktop();
     }
     else {
@@ -626,9 +632,10 @@ function resetGame() {
   formContainer.remove();
   cards = [];
   available = [];
-  desktopOrMobile();
   smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
   largeNumbers = [25, 50, 75, 100];
+  desktopOrMobile();
+  addCardListeners();
   userCardsContainer.innerHTML = "";
   createUserCards();
   userNums = [];
