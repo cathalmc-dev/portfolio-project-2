@@ -413,6 +413,7 @@ function selectOperand() {
  * Checks if the user has given valid inputs by comparing the operands to each other and to the user numbers array
  * Computes the value of the user equation depending on the chosen operator
  * Removes the used values from the user numbers array and pushes in the new one
+ * 
  */
 function handleSubmit(event) {
   event.preventDefault();

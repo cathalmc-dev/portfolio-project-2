@@ -153,6 +153,7 @@ hr {
   margin-top: 0;
   text-align: center;
   background-color: var(--stop);
+  font-family: var(--number-font);  
 }
 
 @media screen and (max-width: 1025px) {
