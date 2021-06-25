@@ -30,7 +30,7 @@ const scores = [{
     value: 0,
     message: "Sorry, 0 points!",
   }
-]
+];
 
 /**
  * Allows the user to toggle the instruction by clicking on the instructions title div
@@ -68,14 +68,14 @@ desktopOrMobile();
 
 function createCards() {
   // Creates the backs of each card and sets the id of each
-  back = document.createElement('div');
+  let back = document.createElement('div');
   back.className = 'back';
   backs = [];
   console.log(backs);
 
   for (i = 0; i <= 3; i++) {
     backs.push(back.cloneNode());
-    backs[i].setAttribute('id', `large${i+1}`)
+    backs[i].setAttribute('id', `large${i+1}`);
   }
   for (i = 0; i <= 19; i++) {
     backs.push(back.cloneNode());
@@ -83,7 +83,7 @@ function createCards() {
   }
 
   // Creates the front face and each card container template
-  front = document.createElement('div');
+  let front = document.createElement('div');
   front.className = 'front';
 
   card.className = 'card available';
@@ -94,19 +94,19 @@ function createCards() {
   console.log(cards);
   for (i = 0; i <= 23; i++) {
     cards.push(card.cloneNode());
-    cards[i].appendChild(backs[i])
+    cards[i].appendChild(backs[i]);
   }
   console.log(cards);
 
   // Creates the card containers and appends the correct cards to them
-  largeContainer = document.createElement('div');
+  let largeContainer = document.createElement('div');
   largeContainer.setAttribute('id', 'large-cards');
 
-  smallContainer = document.createElement('div');
+  let smallContainer = document.createElement('div');
   smallContainer.setAttribute('id', 'small-cards');
 
   for (i = 0; i <= 3; i++) {
-    largeContainer.appendChild(cards[i])
+    largeContainer.appendChild(cards[i]);
   }
   
   for (i = 0; i <= 19; i++) {
@@ -124,11 +124,11 @@ function createCards() {
 
 function createMobileCards() {
   card.className = "card mobile";
-  let idArray = ['Large', 'Small']
+  let idArray = ['Large', 'Small'];
   for (i = 0; i <= 1; i++) {
     cards.push(card.cloneNode());
     cards[i].setAttribute('id', `${idArray[i]}Mobile`);
-    cards[i].innerHTML = `<h3>${idArray[i]}</h3>`
+    cards[i].innerHTML = `<h3>${idArray[i]}</h3>`;
   }
   let mobileContainer = document.createElement('div');
   mobileContainer.setAttribute('id', 'mobile-container');
@@ -143,10 +143,10 @@ function createMobileCards() {
 
 
 function createUserCards() {
-  userCard = document.createElement('div');
+  let userCard = document.createElement('div');
   userCard.className = 'user-pick five-plus';
   let userCards = [];
-  userCardsContainer = document.getElementById('user-nums');
+  let userCardsContainer = document.getElementById('user-nums');
   for (i = 0; i <= 5; i++) {
     userCards.push(userCard.cloneNode());
     userCards[i].setAttribute('id', `pick${i+1}`);
@@ -164,7 +164,7 @@ function assignLarge() {
   for (i = 1; i <= 4; i++) {
     largeLength = largeNumbers.length;
     let j = Math.floor((Math.random()) * largeLength);
-    document.getElementById(`large${i}`).innerHTML = `<h3>${largeNumbers[j]}</h3>`
+    document.getElementById(`large${i}`).innerHTML = `<h3>${largeNumbers[j]}</h3>`;
     largeNumbers.splice(j, 1);
   }
 }
@@ -190,7 +190,7 @@ function assignSmall() {
   for (i = 1; i <= 20; i++) {
     smallLength = smallNumbers.length;
     let j = Math.floor((Math.random()) * smallLength);
-    document.getElementById(`small${i}`).innerHTML = `<h3>${smallNumbers[j]}</h3>`
+    document.getElementById(`small${i}`).innerHTML = `<h3>${smallNumbers[j]}</h3>`;
     smallNumbers.splice(j, 1);
   }
 }
@@ -198,11 +198,11 @@ function assignSmall() {
 
 function randomSmall() {
   smallLength = smallNumbers.length;
-  index = Math.floor((Math.random()) * smallLength);
+  let index = Math.floor((Math.random()) * smallLength);
   let smallNumber = smallNumbers[index];
   userNums.push(String(smallNumber));
   smallNumbers.splice(index, 1);
-  length = userNums.length;
+  let length = userNums.length;
   document.getElementById(`pick${length}`).innerHTML = `<h3>${smallNumber}</h3>`;
   userNumsFull();
 }
@@ -245,7 +245,7 @@ function addToUserNums() {
   if (this.classList.contains('available')) {
     userNums.push(x);
     let i = userNums.length;
-    document.getElementById(`pick${i}`).innerHTML = `<h3>${x}</h3>`
+    document.getElementById(`pick${i}`).innerHTML = `<h3>${x}</h3>`;
     userNumsFull();
   }
 }
@@ -286,9 +286,9 @@ function startSpinner() {
   let slot2 = document.getElementById('slot2');
   let slot3 = document.getElementById('slot3');
   if (spin === true) {
-    slot1.innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`
-    slot2.innerHTML = `${Math.floor(Math.random() * 9.999999)}`
-    slot3.innerHTML = `${Math.floor(Math.random() * 9.999999)}`
+    slot1.innerHTML = `${Math.floor(Math.random() * 8.999999) + 1}`;
+    slot2.innerHTML = `${Math.floor(Math.random() * 9.999999)}`;
+    slot3.innerHTML = `${Math.floor(Math.random() * 9.999999)}`;
     setTimeout(startSpinner, 100);
   } else {
     targetNum = parseInt(slot1.innerText + slot2.innerText + slot3.innerText);
@@ -307,7 +307,7 @@ function stopSpinner() {
 }
 
 function createFormHolder() {
-  formContainer = document.createElement('div');
+  let formContainer = document.createElement('div');
   formContainer.setAttribute('id', 'form-container');
   inputContainer.appendChild(formContainer);
 }
@@ -333,10 +333,10 @@ function createInputRow() {
   operand.setAttribute("class", "input operand");
   operand.type = "number";
   operand.value = "";
-  operand.setAttribute('id', 'operand1')
+  operand.setAttribute('id', 'operand1');
 
   let clone = operand.cloneNode(true);
-  clone.setAttribute('id', 'operand2')
+  clone.setAttribute('id', 'operand2');
 
   let operator = document.createElement('select');
   operator.setAttribute("class", "button operator");
@@ -344,7 +344,7 @@ function createInputRow() {
 
   let compute = document.createElement('input');
   compute.type = "submit";
-  compute.value = "="
+  compute.value = "=";
   compute.setAttribute("class", "button");
   compute.setAttribute('id', 'compute');
 
@@ -352,7 +352,7 @@ function createInputRow() {
   result.setAttribute("class", "input");
   result.setAttribute("type", "text");
   result.setAttribute("id", "result");
-  result.setAttribute("readonly", "")
+  result.setAttribute("readonly", "");
 
   let span = document.createElement('span');
   let form = document.createElement('form');
@@ -372,7 +372,8 @@ function createInputRow() {
 
   // Nests the entire row within a form which calls the handleSubmit function when it is computed
   form.appendChild(span);
-  form.setAttribute("onsubmit", "handleSubmit(event);")
+  form.setAttribute("onsubmit", "handleSubmit(event);");
+  let formContainer = document.getElementById('form-container');
   formContainer.appendChild(form);
   addUserCardListeners();
   clearOldCalcRow();
@@ -382,6 +383,7 @@ function createDoneButton() {
   let done = document.createElement('button');
   done.setAttribute('id', 'done');
   done.innerHTML = "<h2>Done</h2>";
+  let formContainer = document.getElementById('form-container');
   formContainer.appendChild(done);
   done.addEventListener('click', compareResult);
 }
@@ -424,20 +426,20 @@ function handleSubmit(event) {
       switch (operator) {
         case "+":
           result.value = parseInt(operand1) + parseInt(operand2);
-          break
+          break;
         case "-":
           result.value = parseInt(operand1) - parseInt(operand2);
-          break
+          break;
         case "*":
           result.value = parseInt(operand1) * parseInt(operand2);
-          break
+          break;
         case "/":
           if (operand1 % operand2 === 0) {
             result.value = parseInt(operand1) / parseInt(operand2);
-            break
+            break;
           } else {
-            alert(`${operand1} is not divisible by ${operand2}!`)
-            return
+            alert(`${operand1} is not divisible by ${operand2}!`);
+            return;
           }
       }
       userNums.splice(index1, 1);
@@ -462,20 +464,20 @@ function handleSubmit(event) {
       switch (operator) {
         case "+":
           result.value = parseInt(operand1) + parseInt(operand2);
-          break
+          break;
         case "-":
           result.value = parseInt(operand1) - parseInt(operand2);
-          break
+          break;
         case "*":
           result.value = parseInt(operand1) * parseInt(operand2);
-          break
+          break;
         case "/":
           if (operand1 % operand2 === 0) {
             result.value = parseInt(operand1) / parseInt(operand2);
-            break
+            break;
           } else {
-            alert(`${operand1} is not divisible by ${operand2}!`)
-            return
+            alert(`${operand1} is not divisible by ${operand2}!`);
+            return;
           }
       }
       let index2 = userNums.indexOf(operand2);
@@ -510,7 +512,7 @@ function freezeRow() {
 function replaceUserCards() {
   for (i = 0; i <= userNums.length; i++) {
     let pick = document.getElementById(`pick${i+1}`);
-    pick.innerHTML = `<h3>${userNums[i]}</h3>`
+    pick.innerHTML = `<h3>${userNums[i]}</h3>`;
     if (pick.innerHTML == `<h3>${undefined}</h3>`) {
       pick.remove();
     }
@@ -519,16 +521,16 @@ function replaceUserCards() {
   for (i = 0; i < picks.length; i++) {
     if (picks.length > 4) {
       // empty rule as no action required if there are more than 3 available user cards
-    } else if (picks.length = 4) {
+    } else if (picks.length === 4) {
       picks[i].classList.remove('five-plus');
       picks[i].classList.add('four');
-    } else if (picks.length = 3) {
+    } else if (picks.length === 3) {
       picks[i].classList.remove('four');
       picks[i].classList.add('three');
-    } else if (picks.length = 2) {
+    } else if (picks.length === 2) {
       picks[i].classList.remove('three');
       picks[i].classList.add('two');
-    } else if (picks.length = 1) {
+    } else if (picks.length === 1) {
       picks[i].classList.remove('two');
       picks[i].classList.add('one');
     }
@@ -562,32 +564,32 @@ function resultModal(x) {
   switch (x) {
     case 10:
       message = scores[0].message;
-      break
+      break;
     case 7:
       message = scores[1].message;
-      break
+      break;
     case 5:
       message = scores[2].message;
-      break
+      break;
     case 0:
       message = scores[3].message;
   }
 
-  modal = document.createElement('div');
+  let modal = document.createElement('div');
   modal.setAttribute('id', 'modal');
   modal.innerHTML = `<div class="modal-text">
     <h2>${message}</h2>
   </div>
-`
+	`;
   let body = document.getElementsByTagName('body');
-  body[0].appendChild(modal)
+  body[0].appendChild(modal);
   setTimeout(removeModal, 3000);
   resetGame();
 }
 
 function removeModal() {
   let modal = document.getElementById('modal');
-  modal.remove()
+  modal.remove();
 }
 
 
@@ -602,33 +604,33 @@ function updateScoreboard(p) {
 }
 
 function totalPoints(p) {
-  let oldScore = parseInt(document.getElementById('points').innerText)
+  let oldScore = parseInt(document.getElementById('points').innerText);
   document.getElementById('points').innerText = oldScore + p;
 }
 
 function exactMatchs(p) {
-  oldScore = parseInt(document.getElementById('matchs').innerText)
+  let oldScore = parseInt(document.getElementById('matchs').innerText);
   if (p === 10) {
     document.getElementById('matchs').innerText = oldScore + 1;
   }
 }
 
 function within5(p) {
-  oldScore = parseInt(document.getElementById('5s').innerText)
+  let oldScore = parseInt(document.getElementById('5s').innerText);
   if (p === 7) {
     document.getElementById('5s').innerText = oldScore + 1;
   }
 }
 
 function within10(p) {
-  oldScore = parseInt(document.getElementById('10s').innerText)
+  let oldScore = parseInt(document.getElementById('10s').innerText);
   if (p === 5) {
     document.getElementById('10s').innerText = oldScore + 1;
   }
 }
 
 function attempts() {
-  oldScore = parseInt(document.getElementById('attempts').innerText)
+  let oldScore = parseInt(document.getElementById('attempts').innerText);
   document.getElementById('attempts').innerText = oldScore + 1;
 
 }
@@ -637,6 +639,7 @@ function resetGame() {
   document.getElementById('slot1').innerText = 0;
   document.getElementById('slot2').innerText = 0;
   document.getElementById('slot3').innerText = 0;
+  let formContainer = document.getElementById('form-container');
   formContainer.remove();
   cards = [];
   available = [];
@@ -644,6 +647,7 @@ function resetGame() {
   largeNumbers = [25, 50, 75, 100];
   desktopOrMobile();
   addCardListeners();
+  let userCardsContainer = document.getElementById('user-nums');
   userCardsContainer.innerHTML = "";
   createUserCards();
   userNums = [];

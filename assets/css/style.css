@@ -651,6 +651,12 @@ option {
   text-shadow: 2px 2px black;
 }
 
+@media screen and (max-width: 600px) {
+  #modal h2 {
+    font-size: 200%;
+  }
+}
+
 #scoreboard {
   position: absolute;
   width: 16vw;
