@@ -337,6 +337,7 @@ hr {
 
 #input-container {
   background-color: var(--box-background);
+  position: relative;
   width: 45vw;
   margin: 0 auto;
   text-align: center;
@@ -498,9 +499,9 @@ input[type=number] {
 }
 
 .button {
-  width: 5%;
+  width: 40px;
   height: 40px;
-  margin: 15px auto;
+  margin: 12.5px auto;
   font-size: 100%;
   text-align: center;
   box-sizing: border-box;
@@ -518,9 +519,48 @@ option {
   width: 15em;
   position: absolute;
   background-color: var(--background);
-  bottom: 7.5em;
-  left: 45%;
+  bottom: 20px;
+  left: 40%;
   font-family: var(--number-font);
+}
+
+@media screen and (max-width: 950px) {
+  #done{
+    left: 35%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .input {
+    width: 20vw;
+    font-size: 120%;
+  }
+
+  #done {
+    left: 30%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .input {
+    width: 18vw;
+  }
+
+  #done {
+    left: 25%;
+  }
+}
+
+@media screen and (max-width: 395px) {
+  #done {
+    left: 20%;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  #done {
+    left: 15%;
+  }
 }
 
 #modal {

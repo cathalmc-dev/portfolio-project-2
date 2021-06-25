@@ -574,7 +574,7 @@ function resultModal(x) {
   let body = document.getElementsByTagName('body');
   body[0].appendChild(modal)
   setTimeout(removeModal, 3000);
-  setTimeout(resetGame, 3000);
+  resetGame();
 }
 
 function removeModal() {
