@@ -8,7 +8,7 @@
   --box-background: #6aadca;
   --text: #e45d0f;
   --card: #C0C0C0;
-  --stop: #ff001e;
+  --stop: #990f1f;
 }
 
 * {
@@ -293,8 +293,8 @@ hr {
 
 @media screen and (max-width: 480px) {
   #user-nums {
-    width: 60vw;
-    height: 8em;
+    width: 70vw;
+    height: 9em;
   }
 
   .user-pick {
@@ -304,27 +304,32 @@ hr {
   }
 
   .four-plus {
+    width: 6em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #user-nums {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  #user-nums {
+    width: 85vw;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  #user-nums {
+    width: 95vw;
+  }
+
+  .four-plus {
     width: 5em;
   }
 }
 
-@media screen and (max-width: 440px) {
-  #user-nums {
-    width: 70vw;
-  }
-}
-
-@media screen and (max-width: 380px) {
-  #user-nums {
-    width: 83vw;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  #user-nums {
-    width: 86vw;
-  }
-}
 
 .display-none {
   display: none;

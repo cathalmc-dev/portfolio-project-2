@@ -593,28 +593,28 @@ function totalPoints(p) {
 }
 
 function exactMatchs(p) {
-  let oldScore = parseInt(document.getElementById('matchs').innerText)
+  oldScore = parseInt(document.getElementById('matchs').innerText)
   if (p === 10) {
     document.getElementById('matchs').innerText = oldScore + 1;
   }
 }
 
 function within5(p) {
-  let oldScore = parseInt(document.getElementById('5s').innerText)
+  oldScore = parseInt(document.getElementById('5s').innerText)
   if (p === 7) {
     document.getElementById('5s').innerText = oldScore + 1;
   }
 }
 
 function within10(p) {
-  let oldScore = parseInt(document.getElementById('10s').innerText)
+  oldScore = parseInt(document.getElementById('10s').innerText)
   if (p === 5) {
     document.getElementById('10s').innerText = oldScore + 1;
   }
 }
 
 function attempts() {
-  let oldScore = parseInt(document.getElementById('attempts').innerText)
+  oldScore = parseInt(document.getElementById('attempts').innerText)
   document.getElementById('attempts').innerText = oldScore + 1;
 
 }
