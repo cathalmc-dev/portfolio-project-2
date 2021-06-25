@@ -144,7 +144,7 @@ function createMobileCards() {
 
 function createUserCards() {
   userCard = document.createElement('div');
-  userCard.className = 'user-pick four-plus';
+  userCard.className = 'user-pick five-plus';
   let userCards = [];
   userCardsContainer = document.getElementById('user-nums');
   for (i = 0; i <= 5; i++) {
@@ -492,6 +492,7 @@ function handleSubmit(event) {
   } else {
     alert("That number isn't available to you!");
   }
+  userCardsHeightAdjust();
 }
 
 function freezeRow() {
@@ -516,10 +517,13 @@ function replaceUserCards() {
   }
   let picks = document.getElementsByClassName('user-pick');
   for (i = 0; i < picks.length; i++) {
-    if (picks.length > 3) {
+    if (picks.length > 4) {
       // empty rule as no action required if there are more than 3 available user cards
+    } else if (picks.length = 4) {
+      picks[i].classList.remove('five-plus');
+      picks[i].classList.add('four');
     } else if (picks.length = 3) {
-      picks[i].classList.remove('four-plus');
+      picks[i].classList.remove('four');
       picks[i].classList.add('three');
     } else if (picks.length = 2) {
       picks[i].classList.remove('three');
@@ -644,4 +648,10 @@ function resetGame() {
   createUserCards();
   userNums = [];
   spin = true;
+}
+
+function userCardsHeightAdjust() {
+  if (userNums.length > 2) {
+    // do nothing
+  } else document.getElementById('user-nums').classList.toggle('user-nums-adjusted-height');
 }

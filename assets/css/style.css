@@ -199,7 +199,6 @@ hr {
 }
 
 #user-nums {
-  height: 6em;
   width: 50vw;
   margin: 30px auto 30px;
   text-align: center;
@@ -207,7 +206,9 @@ hr {
   /* background-color: fuchsia; */
 }
 
-
+.normal-user-nums-height {
+  height: 6em;
+}
 
 .user-pick {
   position: relative;
@@ -223,8 +224,12 @@ hr {
   margin: 1px;
 }
 
-.four-plus {
-  width: 7em;
+.five-plus {
+  width: 8em;
+}
+
+.four {
+  width: 8em;
 }
 
 .three {
@@ -239,19 +244,37 @@ hr {
   width: 13em;
 }
 
+@media screen and (max-width: 1720px) {
+  .five-plus {
+    width: 6.8em;
+  }
+}
+
 @media screen and (max-width: 1400px) {
   #user-nums {
-    height: 10em;
     width: 35vw;
     margin: 15px auto 25px;
+  }
+
+  .normal-user-nums-height {
+    height: 10em;
+  }
+
+  .user-nums-adjusted-height {
+    height: 5em;
   }
 
   .user-pick {
     height: 5em;
     line-height: 5em;
   }
-  .four-plus {
-    width: 8em;
+
+  .five-plus {
+    width: 9em;
+  }
+
+  .four {
+    width: 12em;
   }
   
   .three {
@@ -267,34 +290,51 @@ hr {
   }
 }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 1300px) {
   #user-nums {
-    width: 45vw;
+    width: 46vw;
   }
 }
 
-@media screen and (max-width: 895px) {
+@media screen and (max-width: 1150px) {
+  #user-nums {
+    width: 48vw;
+  }
+}
+
+@media screen and (max-width: 950px) {
   #user-nums {
     width: 59vw;
   }
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 765px) {
   #user-nums {
     width: 70vw;
   }
-}
 
-@media screen and (max-width: 580px) {
-  #user-nums {
-    width: 85vw;
+  .four {
+    width: 13em;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 650px) {
+  #user-nums {
+    width: 92vw;
+  }
+}
+
+@media screen and (max-width: 490px) {
   #user-nums {
     width: 70vw;
+  }
+
+  .normal-user-nums-height {
     height: 9em;
+  }
+
+  .user-nums-adjusted-height {
+    height: 4em;
   }
 
   .user-pick {
@@ -303,14 +343,22 @@ hr {
     line-height: 4em;
   }
 
-  .four-plus {
+  .five-plus {
     width: 6em;
+  }
+
+  .four {
+    width: 8em;
   }
 }
 
 @media screen and (max-width: 450px) {
   #user-nums {
     width: 80vw;
+  }
+ 
+  .user-nums-adjusted-height {
+    height: 4em;
   }
 }
 
@@ -325,7 +373,7 @@ hr {
     width: 95vw;
   }
 
-  .four-plus {
+  .five-plus {
     width: 5em;
   }
 }
@@ -602,10 +650,10 @@ option {
 
 #scoreboard {
   position: absolute;
-  width: 14vw;
+  width: 16vw;
   height: 40vh;
   border: 5px solid var(--text);
-  top: 30px;
+  top: 65px;
   right: 1vw;
   text-align: center;
   font-size: 125%;
@@ -613,14 +661,17 @@ option {
   border-radius: 15%;
   background-color: var(--box-background);
   display: table;
+  padding-top: 3vh;
+  z-index: 1;
 }
 
 #scoreboard > * {
   transform: translateY(1vh);
+  transform: scale(85%);
 }
 
 .score-type {
-  margin: 2vh;
+  margin: 1vh;
   font-size: 110%;
 }
 
