@@ -8,7 +8,13 @@
   --box-background: #6aadca;
   --text: #e45d0f;
   --card: #C0C0C0;
-  --stop: #990f1f;
+  --stop: #d3212d;
+  --white: #ffffff;
+  --background: #3C3744;
+  --box-background: #2A5AA7;
+  --text: #090C9B;
+  --card: #D3D9E9;
+  /* --stop: #; */
 }
 
 * {
@@ -35,13 +41,14 @@ h1, h2 {
   font-family: var(--heading-font);
   text-transform: uppercase;
   letter-spacing: 4px;
-  text-shadow: 2px 2px black;
+  /* text-shadow: 2px 2px black; */
   text-align: center;
 }
 
 h1 {
   margin: 1vh auto 1vh;
   font-size: 350%;
+  color: var(--card)
 }
 
 h2 {
@@ -50,7 +57,7 @@ h2 {
 }
 
 #instructions-badge {
-  background-color: var(--box-background);
+  background-color: var(--card);
   width: 25vw;
   margin: 0 auto 1vh;
   border-radius: 15px;
@@ -65,18 +72,19 @@ i {
 
 .rotate180-animation{
   transform: rotate(180deg);
-  text-shadow: 0px -1px black;
+  /* text-shadow: 0px -1px black; */
 }
 
 ul {
   margin: 0 25vw;
   font-size: 150%;
-  text-shadow: 1px 1px black;
+  /* text-shadow: 1px 1px black; */
   list-style-type: none;
+  color: var(--card);
 }
 
 hr {
-  border-top: 1px dashed var(--text);
+  border-top: 1px dashed var(--card);
   margin: 5px -5%;
   width: 110%;
 }
@@ -136,14 +144,14 @@ hr {
 .random-number {
   height: 100%;
   width: 34%;
-  background-color: var(--box-background);
+  background-color: var(--card);
   border: 1px solid black;
   font-family: Orbitron;
   font-size: 550%;
   text-align: center;
   display: inline-block;
   margin: 0 -5px;
-  text-shadow: 2px 2px black;
+  /* text-shadow: 2px 2px black; */
 }
 
 .stop {
@@ -154,6 +162,10 @@ hr {
   text-align: center;
   background-color: var(--stop);
   font-family: var(--number-font);  
+}
+
+.stop h2 {
+  color: var(--card);
 }
 
 @media screen and (max-width: 1025px) {
@@ -221,7 +233,7 @@ hr {
   background-color: var(--card);
   font-family: var(--number-font);
   line-height: 6em;
-  text-shadow: 2px 2px black;
+  /* text-shadow: 2px 2px black; */
   margin: 1px;
 }
 
@@ -481,10 +493,11 @@ hr {
   border-radius: 10%;
   display: inline-table;
   background-color: var(--card);
+  color: var(--text);
   font-family: var(--number-font);
   line-height: 5em;
   transform-style: preserve-3d;
-  text-shadow: 2px 2px black;
+  /* text-shadow: 2px 2px black; */
   transition: all 0.6s ease;
 }
 
@@ -546,7 +559,7 @@ form {
   color: var(--text);
   background-color: var(--card);
   text-align: center;
-  text-shadow: 2px 2px black;
+  /* text-shadow: 2px 2px black; */
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -570,11 +583,13 @@ input[type=number] {
   box-sizing: border-box;
   border: 1px solid black;
   background-color: var(--card);
+  color: var(--text);
   border-radius: 15%;
 }
 
 option {
   background-color: var(--card);
+  color: var(--text);
 }
 
 #done {
@@ -585,6 +600,10 @@ option {
   bottom: 10px;
   left: 40%;
   font-family: var(--number-font);
+}
+
+#done h2 {
+  color: var(--card);
 }
 
 @media screen and (max-width: 950px) {
@@ -622,7 +641,7 @@ option {
 
   .input {
     font-size: 80%;
-    text-shadow: 1px 1px black;
+    /* text-shadow: 1px 1px black; */
   }
 }
 
@@ -634,11 +653,11 @@ option {
 
 #modal {
   position: absolute;
-  width: 80%;
-  height: 95%;
+  width: 60%;
+  height: 70%;
   background-color: var(--box-background);
-  top: 2.5%;
-  left: 10%;
+  top: 15%;
+  left: 20%;
   z-index: 2;
 }
 
@@ -648,8 +667,8 @@ option {
   font-family: var(--number-font);
   font-size: 400%;
   text-align: center;
-  margin-top: 40vh;
-  text-shadow: 2px 2px black;
+  margin-top: 25vh;
+  /* text-shadow: 2px 2px black; */
 }
 
 @media screen and (max-width: 600px) {
@@ -662,12 +681,12 @@ option {
   position: absolute;
   width: 16vw;
   height: 40vh;
-  border: 5px solid var(--text);
+  border: 5px solid var(--card);
   top: 65px;
   right: 1vw;
   text-align: center;
   font-size: 125%;
-  text-shadow: 2px 2px #000000;
+  /* text-shadow: 1px 1px #ffffff; */
   border-radius: 15%;
   background-color: var(--box-background);
   display: table;
@@ -677,6 +696,7 @@ option {
 
 #scoreboard > * {
   transform: translateY(1vh);
+  color: var(--card);
 }
 
 .score-type {
@@ -685,7 +705,7 @@ option {
 }
 
 .score-type p {
-  font-family: var(--number-font);
+  font-family: var(--body-font);
   font-size: 120%;
 }
 
