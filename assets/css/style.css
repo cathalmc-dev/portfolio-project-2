@@ -341,11 +341,18 @@ hr {
   width: 45vw;
   margin: 0 auto;
   text-align: center;
-  height: 20em;
   margin: 2vh auto;
   text-align: center;
   vertical-align: middle;
   padding-top: 5px;
+}
+
+.normal-height {
+  height: 40vh;
+}
+
+.dynamic-height {
+  height: 34vh;
 }
 
 @media screen and (max-width: 1870px) {
@@ -525,7 +532,7 @@ option {
   width: 15em;
   position: absolute;
   background-color: var(--background);
-  bottom: 20px;
+  bottom: 10px;
   left: 40%;
   font-family: var(--number-font);
 }
@@ -554,7 +561,6 @@ option {
 
   #done {
     left: 25%;
-    bottom: 10px;
   }
 }
 

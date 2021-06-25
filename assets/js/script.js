@@ -175,7 +175,7 @@ function randomLarge() {
   if (largeLength !== 0) {
   let index = Math.floor((Math.random()) * largeLength);
   let largeNumber = largeNumbers[index];
-  userNums.push(largeNumber);
+  userNums.push(String(largeNumber));
   largeNumbers.splice(index, 1);
   let length = userNums.length;
   document.getElementById(`pick${length}`).innerHTML = `<h3>${largeNumber}</h3>`;
@@ -200,7 +200,7 @@ function randomSmall() {
   smallLength = smallNumbers.length;
   index = Math.floor((Math.random()) * smallLength);
   let smallNumber = smallNumbers[index];
-  userNums.push(smallNumber);
+  userNums.push(String(smallNumber));
   smallNumbers.splice(index, 1);
   length = userNums.length;
   document.getElementById(`pick${length}`).innerHTML = `<h3>${smallNumber}</h3>`;
@@ -241,7 +241,7 @@ function flipCard() {
  * It also makes the stop button visible
  */
 function addToUserNums() {
-  let x = parseInt(this.innerText);
+  let x = this.innerText;
   if (this.classList.contains('available')) {
     userNums.push(x);
     let i = userNums.length;
@@ -260,6 +260,7 @@ function userNumsFull() {
     }
     startSpinner();
     stopButton.classList.remove('display-none');
+    inputContainer.classList.toggle('dynamic-height');
   }
 }
 
@@ -298,6 +299,7 @@ function startSpinner() {
 function stopSpinner() {
   spin = false;
   stopButton.classList.add('display-none');
+  inputContainer.classList.toggle('dynamic-height');
   createFormHolder();
   createInputRow();
   createDoneButton();
