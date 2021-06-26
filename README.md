@@ -8,13 +8,13 @@
 This website is inspired by the popular British television show 'Countdown'. It is a practice version of the numbers round on the show. It's a responsive design that can be played at home or on the go.
 ## Table of Contents
 [User Experience (UX)](#ux)  
-[Features](#features)
-[Debugging](#debugging)
-[Technologies Used](#technologies)
-[Testing](#testing)
-[Deployment](#deployment)
-[Known Bugs](#bugs)
-[Credits](#credits)
+[Features](#features) 
+[Debugging](#debugging) 
+[Technologies Used](#technologies) 
+[Testing](#testing) 
+[Deployment](#deployment) 
+[Known Bugs](#bugs) 
+[Credits](#credits) 
 <a name="ux"></a>
 ## User Experience (UX)
 
