@@ -268,7 +268,7 @@ This can be achieved as follows:
 - **Mobile Keyboard Moving Done Button**
   - On mobile, while in the input stage, if the user trys to type in an input box their keyboard will displace the done button.
 
-  <img src="./assets/images/readme-images/mobile-bug.png" height="120px">
+  <img src="./assets/images/readme-images/mobile-bug.png" height="800px">
 
 <a name="credits"></a>
 ## Credits
