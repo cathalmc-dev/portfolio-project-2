@@ -1,5 +1,5 @@
 <h1 align="center">Countdown Numbers Game</h1>
-<h1 align="center">![Responsiveness Mockup](assets/images/readme-images/responsive-home-page.png)</h1>
+<h1 align="center"><img src="./assets/images/readme-images/responsive-home-page.png"></h1>
 
 <a href="https://cathalmc-dev.github.io/portfolio-project-2/">![Favicon](assets/images/favicon.ioc)</a>
 
