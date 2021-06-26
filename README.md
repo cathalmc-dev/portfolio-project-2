@@ -1,9 +1,9 @@
 <h1 align="center">Countdown Numbers Game</h1>
-<h1 align="center">![Responsiveness Mockup](./assets/images/readme-images/responsive-home-page.png)</h1>
+<h1 align="center">![Responsiveness Mockup](assets/images/readme-images/responsive-home-page.png)</h1>
 
-<a href="https://cathalmc-dev.github.io/portfolio-project-2/">![Favicon](./assets/images/favicon.ioc)</a>
+<a href="https://cathalmc-dev.github.io/portfolio-project-2/">![Favicon](assets/images/favicon.ioc)</a>
 
-<a href="https://github.com/cathalmc-dev/portfolio-project-2">![GitHub Logo](./assets/images/readme-images/github-mark-32px.png)</a>
+<a href="https://github.com/cathalmc-dev/portfolio-project-2">![GitHub Logo](assets/images/readme-images/github-mark-32px.png)</a>
 
 ## About
 
