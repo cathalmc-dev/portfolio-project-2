@@ -6,8 +6,8 @@
   --heading-font: Oswald, sans-serif;
   --body-font: Raleway, sans-serif;
   --number-font: Orbitron, sans-serif;
-  --stop: #d3212d;
-  --background: #3C3744;
+  --stop: #ce2029;
+  --background: #1D1E18;
   --box-background: #2A5AA7;
   --text: #090C9B;
   --card: #D3D9E9;
@@ -151,7 +151,7 @@ hr {
 
 .stop {
   height: 6vh;
-  width: 35.3vw;
+  width: 34.5vw;
   margin: 0 auto;
   margin-top: 0;
   text-align: center;
@@ -170,7 +170,7 @@ hr {
   }
 
   .stop {
-    width: 50vw;
+    width: 49vw;
   }
 
   .random-number {
@@ -184,7 +184,7 @@ hr {
   }
 
   .stop {
-    width: 65vw;
+    width: 64vw;
   }
 
   .random-number {
@@ -199,7 +199,7 @@ hr {
   }
 
   .stop {
-    width: 75vw;
+    width: 74vw;
   }
 
   .random-number {
