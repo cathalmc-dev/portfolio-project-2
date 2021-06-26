@@ -47,7 +47,7 @@ This website is inspired by the popular British television show 'Countdown'. It 
 - #### Colour Scheme
   - As the aim of the game can be boiled down to information processing I wanted to make sure that the information was displayed in an unambiguous fashion. Colours with high contrast became a priority. At the same time I wanted to incorporate a shade of blue close to the one that dominates the set of countdown. With these factors in mind I generated a colour palette. The colours used in the website are Black Chocolate (#1D1E18), Bdazzled Blue (#2A5AA7), Duke Blue (#090C9B) and Light Periwinkle (#D3D9E9). There is also a stop button that appears at a certain point during the play of the game so I incorporated Fire Engine Red (#CE2029) to draw the user's attention to that element.
     
-    <img src="./assets/images/readme-images/color-palette.png" height="40px">
+    <img src="./assets/images/readme-images/color-palette.png" height="60px">
 
 - #### Typography
   - The main font used is a sans-serif font called 'Orbitron' with sans-serif as the secondary option. I chose this font as it is remeniscint of a calculator, much like the digital numeric font used on the show.
@@ -233,10 +233,10 @@ Throughout the development of this project there were bugs and issues that neede
 - Tested using Chrome's Dev Tools - Lighthouse while set to both desktop and mobile.
       ![Lighthouse Desktop](./assets/images/readme-images/lighthouse-desktop.png)
       
-      ![Lighthouse Mobile](assets/images/readme-images/lighthouse-mobile.png)
+      ![Lighthouse Mobile](./assets/images/readme-images/lighthouse-mobile.png)
 - Also tested using webpagetest.org. [Results] (https://www.webpagetest.org/result/210626_BiDcPJ_2cf14a49b1ddcb7d7eaa569b2d79342a/)
 
-      ![Web Page Test](assets/images/readme-images/web-page-test.png)
+      ![Web Page Test](./assets/images/readme-images/web-page-test.png)
 
 <a name="deployment"></a>
 ## Deployment
@@ -265,6 +265,8 @@ This can be achieved as follows:
 
 - **Mobile Keyboard Moving Done Button**
   - On mobile, while in the input stage, if the user trys to type in an input box their keyboard will displace the done button.
+
+  ![Mobile Bug](./assets/images/readme-images/mobile-bug.png)
 
 <a name="credits"></a>
 ## Credits
