@@ -22,7 +22,7 @@ This website is inspired by the popular British television show 'Countdown'. It 
   1. I want to easily understand the purpose of the website at first glance.
   1. I want the flow of information and interaction feedback to be clear and unambiguous.
 
-- #### As a player isn't aware of how to play the game
+- #### As a player who isn't aware of how to play the game
   1. I want the instructions to be obviously placed.
   1. I want the instructions to be easy to understand.
   1. I want the interactions with the website to be intuitive.
