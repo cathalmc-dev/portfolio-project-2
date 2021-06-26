@@ -1,9 +1,9 @@
 <h1 align="center">Countdown Numbers Game</h1>
-<h1 align="center"><img src="./assets/images/readme-images/responsive-home-page.png" /></h1>
+<h1 align="center">![Responsiveness Mockup](./assets/images/readme-images/responsive-home-page.png)</h1>
 
-<a href="https://cathalmc-dev.github.io/portfolio-project-2/"><img src="./assets/images/readme-images/favicon.png"/></a>
+<a href="https://cathalmc-dev.github.io/portfolio-project-2/">![Favicon](./assets/images/readme-images/favicon.ioc)</a>
 
-<a href="https://github.com/cathalmc-dev/portfolio-project-2"><img src="./assets/images/readme-images/github-mark-32px.png"/></a>
+<a href="https://github.com/cathalmc-dev/portfolio-project-2">![GitHub Logo](./assets/images/readme-images/github-mark-32px.png)</a>
 
 ## About
 
@@ -47,16 +47,15 @@ This website is inspired by the popular British television show 'Countdown'. It 
 - #### Colour Scheme
   - As the aim of the game can be boiled down to information processing I wanted to make sure that the information was displayed in an unambiguous fashion. Colours with high contrast became a priority. At the same time I wanted to incorporate a shade of blue close to the one that dominates the set of countdown. With these factors in mind I generated a colour palette. The colours used in the website are Black Chocolate (#1D1E18), Bdazzled Blue (#2A5AA7), Duke Blue (#090C9B) and Light Periwinkle (#D3D9E9). There is also a stop button that appears at a certain point during the play of the game so I incorporated Fire Engine Red (#CE2029) to draw the user's attention to that element.
     
-    <img src="./assets/images/readme-images/color-palette.png" />
+    ![Color Palette](./assets/images/readme-images/color-palette.png)
 
 - #### Typography
   - The main font used is a sans-serif font called 'Orbitron' with sans-serif as the secondary option. I chose this font as it is remeniscint of a calculator, much like the digital numeric font used on the show.
 
-    <img src="./assets/images/readme-images/orbitron.png" height="20px" />
-
+![Orbitron]("./assets/images/readme-images/orbitron.png)
   - The heading font used was 'Oswald' with sans-serif as a fallback. This font is robust and well-suited towards the header of the website. The heading must be immediately obvious to and make an impression on the user.
 
-    <img src="./assets/images/readme-images/oswald.png" height="20px" />
+![Oswald](./assets/images/readme-images/oswald.png)
 
   - The body font I used for other text was 'Raleway', again with sans-serif as the backup font. This font contrasts nicely with Oswald and has a sleek design.
 
