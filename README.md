@@ -230,13 +230,10 @@ Throughout the development of this project there were bugs and issues that neede
 - Pass - [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcathalmc-dev.github.io%2Fportfolio-project-2%2F)
 
 ### Performance Testing
-- Tested using Chrome's Dev Tools - Lighthouse while set to both desktop and mobile.
+- Tested using Chrome's Dev Tools - Lighthouse while set to both desktop.
       ![Lighthouse Desktop](./assets/images/readme-images/lighthouse-desktop.png)
-      
-      ![Lighthouse Mobile](./assets/images/readme-images/lighthouse-mobile.png)
-- Also tested using webpagetest.org. [Results] (https://www.webpagetest.org/result/210626_BiDcPJ_2cf14a49b1ddcb7d7eaa569b2d79342a/)
 
-      ![Web Page Test](./assets/images/readme-images/web-page-test.png)
+- Also tested using webpagetest.org. [Results] (https://www.webpagetest.org/result/210626_BiDcPJ_2cf14a49b1ddcb7d7eaa569b2d79342a/)
 
 <a name="deployment"></a>
 ## Deployment
@@ -263,10 +260,15 @@ This can be achieved as follows:
   - Any further calculations become skewed at this point.
   - Thus far I have been unable to track down the cause of this bug.
 
+- **Mobile Larger Numbers Overflow**
+  - Design issue. Widened cards to compensate but below certain screen widths it's always going to happen in some form with this design.
+  - Not prioritised as the aim of the game is to reach a 3 digit number and for the user to multiply as far as 5 or more digit numbers is counterproductive in 99% of cases.
+  - Can be seen in next photo along with the other mobile bug. 
+
 - **Mobile Keyboard Moving Done Button**
   - On mobile, while in the input stage, if the user trys to type in an input box their keyboard will displace the done button.
 
-  ![Mobile Bug](./assets/images/readme-images/mobile-bug.png)
+  <img src="./assets/images/readme-images/mobile-bug.png" height="120px">
 
 <a name="credits"></a>
 ## Credits
