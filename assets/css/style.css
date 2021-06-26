@@ -1,20 +1,16 @@
+/* Import font families used */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Oswald&family=Raleway&display=swap');
 
+/* Assign variables for ease of use and alteration */
 :root {
   --heading-font: Oswald, sans-serif;
   --body-font: Raleway, sans-serif;
   --number-font: Orbitron, sans-serif;
-  --background: #0B3C5D;
-  --box-background: #6aadca;
-  --text: #e45d0f;
-  --card: #C0C0C0;
   --stop: #d3212d;
-  --white: #ffffff;
   --background: #3C3744;
   --box-background: #2A5AA7;
   --text: #090C9B;
   --card: #D3D9E9;
-  /* --stop: #; */
 }
 
 * {
@@ -41,7 +37,6 @@ h1, h2 {
   font-family: var(--heading-font);
   text-transform: uppercase;
   letter-spacing: 4px;
-  /* text-shadow: 2px 2px black; */
   text-align: center;
 }
 
@@ -66,19 +61,19 @@ h2 {
   box-sizing: border-box;
 }
 
+/* transition setting for the font-awesome icon animation in the instructions dropdown */
 i {
   transition: all .5s linear;
 }
 
+/* Flips the instructions chevron when the dropdown is extended */
 .rotate180-animation{
   transform: rotate(180deg);
-  /* text-shadow: 0px -1px black; */
 }
 
 ul {
   margin: 0 25vw;
   font-size: 150%;
-  /* text-shadow: 1px 1px black; */
   list-style-type: none;
   color: var(--card);
 }
@@ -89,7 +84,7 @@ hr {
   width: 110%;
 }
 
-
+/* Media queriers for the title and instructions sections */
 @media screen and (max-width: 1150px) {
   h1 {
     font-size: 300%;
@@ -131,8 +126,9 @@ hr {
     margin: 5px -1%;
   }
 }
+/* End of media query group */
 
-
+/* Target number spinner and the stop button */
 #target {
   height: 18vh;
   width: 35vw;
@@ -143,15 +139,14 @@ hr {
 
 .random-number {
   height: 100%;
-  width: 34%;
+  width: 33%;
   background-color: var(--card);
-  border: 1px solid black;
+  border: 2px solid black;
   font-family: Orbitron;
   font-size: 550%;
   text-align: center;
   display: inline-block;
   margin: 0 -5px;
-  /* text-shadow: 2px 2px black; */
 }
 
 .stop {
@@ -168,6 +163,7 @@ hr {
   color: var(--card);
 }
 
+/* Media queries for the section */
 @media screen and (max-width: 1025px) {
   #target {
     width: 50vw;
@@ -210,7 +206,9 @@ hr {
     font-size: 450%;
   }
 }
+/* End of that section of media queries */
 
+/* User number display cards */
 #user-nums {
   width: 50vw;
   margin: 30px auto 30px;
@@ -233,10 +231,10 @@ hr {
   background-color: var(--card);
   font-family: var(--number-font);
   line-height: 6em;
-  /* text-shadow: 2px 2px black; */
   margin: 1px;
 }
 
+/* Classes that allow more flexibility in the width of the display cards depending on how many are left for the user to choose from */
 .five-plus {
   width: 8em;
 }
@@ -257,6 +255,7 @@ hr {
   width: 13em;
 }
 
+/* Media queries for the display cards section */
 @media screen and (max-width: 1720px) {
   .five-plus {
     width: 6.8em;
@@ -273,6 +272,7 @@ hr {
     height: 10em;
   }
 
+  /* Reduces height of the parent div to prevent display cards from stacking on top of each other when there are only 2 left  */
   .user-nums-adjusted-height {
     height: 5em;
   }
@@ -390,7 +390,7 @@ hr {
     width: 5em;
   }
 }
-
+/* End of user cards media queries */
 
 .display-none {
   display: none;
@@ -412,10 +412,13 @@ hr {
   height: 40vh;
 }
 
+/* Class to change the height of the input container to make room for the stop button when it is temporarily added to the DOM flow
+Doing this allows the page to maintain it's same overall height in a fluid manner */
 .dynamic-height {
   height: 34vh;
 }
 
+/* Media queries to maintain the card layout that is specific to the countdown gameshow */
 @media screen and (max-width: 1870px) {
   #input-container {
     width: 48vw;
@@ -481,7 +484,9 @@ hr {
     width: 90vw;
   }
 }
+/* End of input container div media queries */
 
+/* Card elements styling */
 #large-cards {
   margin-bottom: 5px;
 }
@@ -497,10 +502,12 @@ hr {
   font-family: var(--number-font);
   line-height: 5em;
   transform-style: preserve-3d;
-  /* text-shadow: 2px 2px black; */
   transition: all 0.6s ease;
 }
 
+/* Classes for the interactive flip cards
+Credit: https://jefferson-cuartas.medium.com/how-to-create-a-flip-card-effect-using-javascript-767dd945210c
+ */
 .front {
   position: absolute;
   backface-visibility: hidden;
@@ -544,6 +551,7 @@ hr {
   }
 }
 
+/* Styling for the form lines that are created for user input */
 form {
   margin: 20px auto;
   font-size: 180%;
@@ -559,9 +567,9 @@ form {
   color: var(--text);
   background-color: var(--card);
   text-align: center;
-  /* text-shadow: 2px 2px black; */
 }
 
+/* https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -606,6 +614,7 @@ option {
   color: var(--card);
 }
 
+/* Media queries for the form elements */
 @media screen and (max-width: 950px) {
   #done{
     left: 35%;
@@ -641,7 +650,6 @@ option {
 
   .input {
     font-size: 80%;
-    /* text-shadow: 1px 1px black; */
   }
 }
 
@@ -650,7 +658,9 @@ option {
     left: 15%;
   }
 }
+/* End of media queries for the form elements */
 
+/* Styling for the results modal */
 #modal {
   position: absolute;
   width: 60%;
@@ -670,7 +680,6 @@ option {
   font-size: 400%;
   text-align: center;
   margin-top: 25vh;
-  /* text-shadow: 2px 2px black; */
 }
 
 @media screen and (max-width: 600px) {
@@ -685,6 +694,7 @@ option {
   }
 }
 
+/* Styling for the scoreboard */
 #scoreboard {
   position: absolute;
   width: 16vw;
@@ -694,7 +704,6 @@ option {
   right: 1vw;
   text-align: center;
   font-size: 125%;
-  /* text-shadow: 1px 1px #ffffff; */
   border-radius: 15%;
   background-color: var(--box-background);
   display: table;

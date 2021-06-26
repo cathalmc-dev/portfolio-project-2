@@ -710,7 +710,10 @@ function resetGame() {
   spin = true;
 }
 
-// Dynamically adjusts the height of the input container by changing the class which assigns it's height so long as the stop button in within the DOM flow
+/** 
+ * Dynamically adjusts the height of the user cards container by changing the class which assigns it's height when there are only a couple of display cards left
+ * This is to prevent them from stacking on top of one another
+ */
 function userCardsHeightAdjust() {
   if (userNums.length > 2) {
     // do nothing
