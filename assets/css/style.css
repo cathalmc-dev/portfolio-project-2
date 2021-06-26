@@ -663,7 +663,7 @@ option {
 
 #modal h2 {
   position: relative;
-  color: var(--text);
+  color: var(--card);
   font-family: var(--number-font);
   font-size: 400%;
   text-align: center;
@@ -694,7 +694,7 @@ option {
   z-index: 1;
 }
 
-#scoreboard > * {
+#scoreboard * {
   transform: translateY(1vh);
   color: var(--card);
 }
@@ -713,4 +713,19 @@ option {
   #scoreboard {
     transform: scale(0.8);
   }
+}
+
+@media screen and (max-width: 1250px) {
+  #scoreboard {
+    display: none;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  font-size: 400%;
+  color: var(--card);
+  margin: 0;
+  top: 5px;
+  right: 20px;
 }

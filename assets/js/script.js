@@ -1,8 +1,6 @@
-let w = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth;
-const targetWidth = 1240;
-const scoreboard = document.getElementById('scoreboard');
 let cards = [];
 let backs = [];
+let scoreboard = document.getElementById('scoreboard');
 let largeNumbers = [25, 50, 75, 100];
 let largeLength = largeNumbers.length;
 let smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
@@ -46,13 +44,6 @@ function toggleInstructions() {
   chevron.classList.toggle(down);
   chevron.classList.toggle(up);
 }
-
-function deleteScoreboard() {
-  if (w < targetWidth) {
-    scoreboard.remove();
-  }
-}
-deleteScoreboard();
 
 const inputContainer = document.getElementById("input-container");
 let card = document.createElement('div');
@@ -108,7 +99,7 @@ function createCards() {
   for (i = 0; i <= 3; i++) {
     largeContainer.appendChild(cards[i]);
   }
-  
+
   for (i = 0; i <= 19; i++) {
     smallContainer.appendChild(cards[i + 4]);
   }
@@ -173,13 +164,13 @@ function assignLarge() {
 function randomLarge() {
   largeLength = largeNumbers.length;
   if (largeLength !== 0) {
-  let index = Math.floor((Math.random()) * largeLength);
-  let largeNumber = largeNumbers[index];
-  userNums.push(String(largeNumber));
-  largeNumbers.splice(index, 1);
-  let length = userNums.length;
-  document.getElementById(`pick${length}`).innerHTML = `<h3>${largeNumber}</h3>`;
-  userNumsFull();
+    let index = Math.floor((Math.random()) * largeLength);
+    let largeNumber = largeNumbers[index];
+    userNums.push(String(largeNumber));
+    largeNumbers.splice(index, 1);
+    let length = userNums.length;
+    document.getElementById(`pick${length}`).innerHTML = `<h3>${largeNumber}</h3>`;
+    userNumsFull();
   } else {
     alert('No more large numbers to pick from!');
   }
@@ -252,10 +243,9 @@ function addToUserNums() {
 
 function userNumsFull() {
   if (userNums.length === 6) {
-    if (screen.width > 1024) {     
+    if (screen.width > 1024) {
       replaceCardsDesktop();
-    }
-    else {
+    } else {
       replaceCardsMobile();
     }
     startSpinner();
@@ -400,11 +390,10 @@ function selectOperand() {
   let input2 = document.getElementById('operand2');
   let number = this.innerText;
   if (input1.value === "") {
-  input1.value = number;
+    input1.value = number;
   } else if ((input1.value === "") && (input2.value !== "")) {
     input1.value = number;
-  }
-  else {
+  } else {
     input2.value = number;
   }
 }
@@ -579,29 +568,27 @@ function resultModal(x) {
   let modal = document.createElement('div');
   modal.setAttribute('id', 'modal');
   modal.innerHTML = `<div class="modal-text">
+    <span class="modal-close" onclick="removeModal();">&times;</span>
     <h2>${message}</h2>
   </div>
 	`;
   let body = document.getElementsByTagName('body');
   body[0].appendChild(modal);
-  setTimeout(removeModal, 3000);
   resetGame();
 }
 
 function removeModal() {
-  let modal = document.getElementById('modal');
+  modal = document.getElementById('modal');
   modal.remove();
 }
 
 
 function updateScoreboard(p) {
-  if (w > targetWidth) {
-    totalPoints(p);
-    exactMatchs(p);
-    within5(p);
-    within10(p);
-    attempts();
-  }
+  totalPoints(p);
+  exactMatchs(p);
+  within5(p);
+  within10(p);
+  attempts();
 }
 
 function totalPoints(p) {
