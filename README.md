@@ -1,7 +1,7 @@
 <h1 align="center">Countdown Numbers Game</h1>
 <h1 align="center"><img src="./assets/images/readme-images/responsive-home-page.png"></h1>
 
-<a href="https://cathalmc-dev.github.io/portfolio-project-2/">![Favicon](assets/images/favicon.ioc)</a>
+<a href="https://cathalmc-dev.github.io/portfolio-project-2/">![Favicon](assets/images/readme-images/favicon.png)</a>
 
 <a href="https://github.com/cathalmc-dev/portfolio-project-2">![GitHub Logo](assets/images/readme-images/github-mark-32px.png)</a>
 
@@ -47,15 +47,15 @@ This website is inspired by the popular British television show 'Countdown'. It 
 - #### Colour Scheme
   - As the aim of the game can be boiled down to information processing I wanted to make sure that the information was displayed in an unambiguous fashion. Colours with high contrast became a priority. At the same time I wanted to incorporate a shade of blue close to the one that dominates the set of countdown. With these factors in mind I generated a colour palette. The colours used in the website are Black Chocolate (#1D1E18), Bdazzled Blue (#2A5AA7), Duke Blue (#090C9B) and Light Periwinkle (#D3D9E9). There is also a stop button that appears at a certain point during the play of the game so I incorporated Fire Engine Red (#CE2029) to draw the user's attention to that element.
     
-    <img src="./assets/images/readme-images/color-palette.png" height="20px">
+    <img src="./assets/images/readme-images/color-palette.png" height="40px">
 
 - #### Typography
   - The main font used is a sans-serif font called 'Orbitron' with sans-serif as the secondary option. I chose this font as it is remeniscint of a calculator, much like the digital numeric font used on the show.
 
-![Orbitron]("./assets/images/readme-images/orbitron.png)
+    ![Orbitron](assets/images/readme-images/orbitron.png)
   - The heading font used was 'Oswald' with sans-serif as a fallback. This font is robust and well-suited towards the header of the website. The heading must be immediately obvious to and make an impression on the user.
 
-![Oswald](./assets/images/readme-images/oswald.png)
+    ![Oswald](./assets/images/readme-images/oswald.png)
 
   - The body font I used for other text was 'Raleway', again with sans-serif as the backup font. This font contrasts nicely with Oswald and has a sleek design.
 
@@ -106,9 +106,9 @@ Throughout the development of this project there were bugs and issues that neede
   - Ended up getting an array of all the cards where each individual card had 25 children as all 24 distinct backs were being appended to them all.
   - Solved through the correct use of the .cloneNode() method.
 
-      ![Card Back Bug]./assets/images/readme-images/card-back-array-bug.png)
-      ![Card Back Bug]./assets/images/readme-images/card-back-array-bug1.png)
-      ![Card Back Bug]./assets/images/readme-images/card-back-array-bug2.png)
+      ![Card Back Bug](./assets/images/readme-images/card-back-array-bug.png)
+      ![Card Back Bug](./assets/images/readme-images/card-back-array-bug1.png)
+      ![Card Back Bug](./assets/images/readme-images/card-back-array-bug2.png)
 
 - **User Picks Vertical Alignment**
   - The cards which display the numbers the user has chosen were jumping out of position when I pushed a value to them.
@@ -123,7 +123,7 @@ Throughout the development of this project there were bugs and issues that neede
   - After looking into recursive functions I came up with a solution.
   - The new function changes the innerHTML and then waits 0.1s before calling itself again. The if statement in the equation checks if the spin variable is true so when I click the stop button, and change that variable's value to false, the spin function stops itself at the beginning of the next loop.
 
-      ![New Spinner Function](./assets/images/readme-images/spinner-function.png)
+      ![Spinner Function](./assets/images/readme-images/spinner-function.png)
       ![New Spinner Function](./assets/images/readme-images/new-spinner-function.png)
 
 - **Prevent Picking the Same Card Twice**
@@ -233,10 +233,10 @@ Throughout the development of this project there were bugs and issues that neede
 - Tested using Chrome's Dev Tools - Lighthouse while set to both desktop and mobile.
       ![Lighthouse Desktop](./assets/images/readme-images/lighthouse-desktop.png)
       
-      ![Lighthouse Mobile](./assets/images/readme-images/lighthouse-mobile.png)
+      ![Lighthouse Mobile](assets/images/readme-images/lighthouse-mobile.png)
 - Also tested using webpagetest.org. [Results] (https://www.webpagetest.org/result/210626_BiDcPJ_2cf14a49b1ddcb7d7eaa569b2d79342a/)
 
-      ![Web Page Test](./assets/images/readme-images/web-page-test.org.png)
+      ![Web Page Test](assets/images/readme-images/web-page-test.png)
 
 <a name="deployment"></a>
 ## Deployment
