@@ -1,20 +1,30 @@
 <h1 align="center">Countdown Numbers Game</h1>
 <h1 align="center"><img src="./assets/images/readme-images/responsive-home-page.png" /></h1>
 
-[Live Website](https://cathalmc-dev.github.io/portfolio-project-2/)
-[GitHub Repository](https://github.com/cathalmc-dev/portfolio-project-2)
+<a href="https://cathalmc-dev.github.io/portfolio-project-2/"><img src="./assets/images/favicon.png"/></a>
+
+<a href="https://github.com/cathalmc-dev/portfolio-project-2"><img src="./assets/images/github-mark-32px.png"/></a>
+
 ## About
 
 This website is inspired by the popular British television show 'Countdown'. It is a practice version of the numbers round on the show. It's a responsive design that can be played at home or on the go.
 ## Table of Contents
-[User Experience (UX)](#ux)  
-[Features](#features) 
-[Debugging](#debugging) 
-[Technologies Used](#technologies) 
-[Testing](#testing) 
-[Deployment](#deployment) 
-[Known Bugs](#bugs) 
-[Credits](#credits) 
+[User Experience (UX)](#ux)
+
+[Features](#features)
+
+[Debugging](#debugging)
+
+[Technologies Used](#technologies)
+
+[Testing](#testing)
+
+[Deployment](#deployment)
+
+[Known Bugs](#bugs)
+
+[Credits](#credits)
+
 <a name="ux"></a>
 ## User Experience (UX)
 
