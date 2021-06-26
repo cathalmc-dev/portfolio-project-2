@@ -1,7 +1,7 @@
 <h1 align="center">Countdown Numbers Game</h1>
 <h1 align="center">![Responsiveness Mockup](./assets/images/readme-images/responsive-home-page.png)</h1>
 
-<a href="https://cathalmc-dev.github.io/portfolio-project-2/">![Favicon](./assets/images/readme-images/favicon.ioc)</a>
+<a href="https://cathalmc-dev.github.io/portfolio-project-2/">![Favicon](./assets/images/favicon.ioc)</a>
 
 <a href="https://github.com/cathalmc-dev/portfolio-project-2">![GitHub Logo](./assets/images/readme-images/github-mark-32px.png)</a>
 
@@ -47,7 +47,7 @@ This website is inspired by the popular British television show 'Countdown'. It 
 - #### Colour Scheme
   - As the aim of the game can be boiled down to information processing I wanted to make sure that the information was displayed in an unambiguous fashion. Colours with high contrast became a priority. At the same time I wanted to incorporate a shade of blue close to the one that dominates the set of countdown. With these factors in mind I generated a colour palette. The colours used in the website are Black Chocolate (#1D1E18), Bdazzled Blue (#2A5AA7), Duke Blue (#090C9B) and Light Periwinkle (#D3D9E9). There is also a stop button that appears at a certain point during the play of the game so I incorporated Fire Engine Red (#CE2029) to draw the user's attention to that element.
     
-    ![Color Palette](./assets/images/readme-images/color-palette.png)
+    <img src="./assets/images/readme-images/color-palette.png" height="20px">
 
 - #### Typography
   - The main font used is a sans-serif font called 'Orbitron' with sans-serif as the secondary option. I chose this font as it is remeniscint of a calculator, much like the digital numeric font used on the show.
@@ -59,7 +59,7 @@ This website is inspired by the popular British television show 'Countdown'. It 
 
   - The body font I used for other text was 'Raleway', again with sans-serif as the backup font. This font contrasts nicely with Oswald and has a sleek design.
 
-    <img src="./assets/images/readme-images/raleway.png" height="20px" />
+    ![Raleway](./assets/images/readme-images/raleway.png)
 
 <a name="features"></a>
 ## Features
@@ -106,16 +106,16 @@ Throughout the development of this project there were bugs and issues that neede
   - Ended up getting an array of all the cards where each individual card had 25 children as all 24 distinct backs were being appended to them all.
   - Solved through the correct use of the .cloneNode() method.
 
-      <img src="./assets/images/readme-images/card-back-array-bug.png">
-      <img src="./assets/images/readme-images/card-back-array-bug1.png">
-      <img align="center" src="./assets/images/readme-images/card-back-array-bug2.png">
+      ![Card Back Bug]./assets/images/readme-images/card-back-array-bug.png)
+      ![Card Back Bug]./assets/images/readme-images/card-back-array-bug1.png)
+      ![Card Back Bug]./assets/images/readme-images/card-back-array-bug2.png)
 
 - **User Picks Vertical Alignment**
   - The cards which display the numbers the user has chosen were jumping out of position when I pushed a value to them.
   - Changing the vertical alignment of the elements so that they all lined up with the top of the tallest element solved this problem.
   - Since they were all the same height this resulted in them staying aligned.
 
-      <img src="./assets/images/readme-images/user-picks-movement.png">
+      ![User Picks Move](./assets/images/readme-images/user-picks-movement.png)
 
 - **Spinner Function**
   - Tried to implement a function to change the innerHTML of the spinner slots using a setInterval method.
@@ -123,38 +123,38 @@ Throughout the development of this project there were bugs and issues that neede
   - After looking into recursive functions I came up with a solution.
   - The new function changes the innerHTML and then waits 0.1s before calling itself again. The if statement in the equation checks if the spin variable is true so when I click the stop button, and change that variable's value to false, the spin function stops itself at the beginning of the next loop.
 
-      <img src="./assets/images/readme-images/spinner-function.png">
-      <img src="./assets/images/readme-images/new-spinner-function.png">
+      ![New Spinner Function](./assets/images/readme-images/spinner-function.png)
+      ![New Spinner Function](./assets/images/readme-images/new-spinner-function.png)
 
 - **Prevent Picking the Same Card Twice**
   - Prevented this issue by swapping the class that the event listeners are tied to to a class with no CSS rules (The available class).
   - This allowed me to add a function removing the class 'available' from a card when picked so that the user can't keep clicking the same card to fill thier picks with it.
 
-      <img src="./assets/images/readme-images/pick-same-card-repeatedly.png">
+      ![Same Card Bug](./assets/images/readme-images/pick-same-card-repeatedly.png)
 
 - **Parse Int**
   - Could not get this piece of code to work until I eventually realised that the boolean was false as the array contained string values and by parsing the operands to integer form prior to the conditional, during their declaration, the boolean was resulting in a false and would not proceed.
 
-      <img src="./assets/images/readme-images/parse-int.png">
+      ![Parse Int Bug](./assets/images/readme-images/parse-int.png)
 
 - **Adding When Number Was Not In The Array**
   - Computation function was running despite not having the correct inputs.
   - Fixed by adjusting conditional check from if (userNums.includes(operand1 && operand2)) to if (userNums.includes(operand1) && userNums.includes(operand2)).
   
-      <img src="./assets/images/readme-images/adding-when-not-in-array.png">
+      ![Adding while Not In Array Bug](./assets/images/readme-images/adding-when-not-in-array.png)
 
   - At this time I noticed the next bug.
 
-- **Able to use same number twice in 1 computation**
+- **Able To Use Same Number Twice In 1 Computation**
   - The user was able to make use of the same number twice in a computation line.
   - Fixed by prefacing the while computing function with the condition that the index of operand1 in the user numbers array cannot equal the index of operand2.
 
-      <img src="./assets/images/readme-images/same-number-twice.png">
+      ![Same Number Twice Bug](./assets/images/readme-images/same-number-twice.png)
 
 - **Able To Divide While Leaving A Remainder**
   - Forgot to predicate the division rule on the premise that the modulo of the operation must be 0.
 
-      <img src="./assets/images/readme-images/division-remainder.png">
+      ![Division Bug](./assets/images/readme-images/division-remainder.png)
 
 - **Unable To Use Same Value Twice When Valid**
   - The above bug fix caused another bug in the code.
@@ -162,7 +162,7 @@ Throughout the development of this project there were bugs and issues that neede
   - I solved this problem by changing my earlier bug fix of comparing the indices of the operands in the array.
   - I instead compared the operands themselves. If they were not equal the function would run as before. I then spliced the value of the first operand from the array and then check if the array still includes operand2. If it does then the same code as before runs. If it does not then the user also gets the invalid choice message.
 
-      <img src="./assets/images/readme-images/can't-use-same-number-twice-when-valid.png">
+      ![Can't Use Valid Number Twice](./assets/images/readme-images/can't-use-same-number-twice-when-valid.png)
 
 - **Wrong Operand Spliced**
   - I noticed that the splicing methods were removing the wrong operand sometimes.
@@ -170,8 +170,8 @@ Throughout the development of this project there were bugs and issues that neede
   - Then after the first splice was performed the second operand index variable would be wrong as the elements would have shifted.
   - I solved this by only declaring the second index variable after the first splice had been completed.
 
-      <img src="./assets/images/readme-images/wrong-splice-1.png">
-      <img src="./assets/images/readme-images/wrong-splice-2.png">
+      ![Wrong Splice 1](./assets/images/readme-images/wrong-splice-1.png)
+      ![Wrong Splice 2](./assets/images/readme-images/wrong-splice-2.png)
 
 - **Mobile Cards Bug**
   - When I implemented the mobile-friendly cards I found that the calculation funnction was not working.
@@ -231,12 +231,12 @@ Throughout the development of this project there were bugs and issues that neede
 
 ### Performance Testing
 - Tested using Chrome's Dev Tools - Lighthouse while set to both desktop and mobile.
-      <img src="./assets/images/readme-images/lighthouse-desktop.png">
+      ![Lighthouse Desktop](./assets/images/readme-images/lighthouse-desktop.png)
       
-      <img src="./assets/images/readme-images/lighthouse-mobile.png">
+      ![Lighthouse Mobile](./assets/images/readme-images/lighthouse-mobile.png)
 - Also tested using webpagetest.org. [Results] (https://www.webpagetest.org/result/210626_BiDcPJ_2cf14a49b1ddcb7d7eaa569b2d79342a/)
 
-      <img src="./assets/images/readme-images/web-page-test.org.png">
+      ![Web Page Test](./assets/images/readme-images/web-page-test.org.png)
 
 <a name="deployment"></a>
 ## Deployment
@@ -251,7 +251,7 @@ This can be achieved as follows:
 5. The page will reload and you will be presented with a link to your deployed page.
 6. It will take a few minutes for the live version of your website to be functional, have patience!
 
-    <img src="./assets/images/readme-images/deployment.png">
+    ![Deployment](./assets/images/readme-images/deployment.png)
 
 <a name="bugs"></a>
 ## Known Bugs
