@@ -463,7 +463,7 @@ Doing this allows the page to maintain it's same overall height in a fluid manne
 
 @media screen and (max-width: 1240px) {
   #input-container {
-    width: 72vw;
+    width: 74vw;
   }
 }
 
@@ -475,13 +475,7 @@ Doing this allows the page to maintain it's same overall height in a fluid manne
 
 @media screen and (max-width: 1080px) {
   #input-container {
-    width: 83vw;
-  }
-}
-
-@media screen and (max-width: 1080px) {
-  #input-container {
-    width: 90vw;
+    width: 85vw;
   }
 }
 /* End of input container div media queries */
@@ -527,10 +521,16 @@ Credit: https://jefferson-cuartas.medium.com/how-to-create-a-flip-card-effect-us
 
 .mobile {
   height: 8em;
-  width: 8em;
+  width: 30%;
   line-height: 8em;
   margin: 5em 1vw;
   font-family: var(--body-font);
+}
+
+@media screen and (max-width: 600px) {
+  .mobile {
+    width: 40%
+  }
 }
 
 .flipCard {
