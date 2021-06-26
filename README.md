@@ -9,8 +9,9 @@ This website is inspired by the popular British television show 'Countdown'. It 
 ## Table of Contents
 [User Experience (UX)](#ux)  
 [Features](#features)
+[Debugging](#debugging)
 [Technologies Used](#technologies)
-[Testing](#testing)  
+[Testing](#testing)
 [Deployment](#deployment)
 [Known Bugs](#bugs)
 [Credits](#credits)
@@ -86,6 +87,88 @@ This website is inspired by the popular British television show 'Countdown'. It 
 - [ ] User feedback section.
 - [ ] Practice modes for the other gameshow segments - the classic letter jumble game and the 9 letter conundrum round.
 
+<a name="debugging"></a>
+## Debugging
+
+Throughout the development of this project there were bugs and issues that needed to be resolved. Here are a few of the standout problems I faced.
+
+- **Card Backs Iteration**
+  - Wrote the function to assign the card backs their own specific ID and then append each back to a card.
+  - Ended up getting an array of all the cards where each individual card had 25 children as all 24 distinct backs were being appended to them all.
+  - Solved through the correct use of the .cloneNode() method.
+
+      <img src="./assets/images/readme-images/card-back-array-bug.png">
+      <img src="./assets/images/readme-images/card-back-array-bug1.png">
+      <img src="./assets/images/readme-images/card-back-array-bug2.png">
+
+- **User Picks Vertical Alignment**
+  - The cards which display the numbers the user has chosen were jumping out of position when I pushed a value to them.
+  - Changing the vertical alignment of the elements so that they all lined up with the top of the tallest element solved this problem.
+  - Since they were all the same height this resulted in them staying aligned.
+
+      <img src=./assets/images/readme-images/user-picks-movement.png>
+
+- **Spinner Function**
+  - Tried to implement a function to change the innerHTML of the spinner slots using a setInterval method.
+  - This would not work as I could not effect the function from an external source.
+  - After looking into recursive functions I came up with a solution.
+  - The new function changes the innerHTML and then waits 0.1s before calling itself again. The if statement in the equation checks if the spin variable is true so when I click the stop button, and change that variable's value to false, the spin function stops itself at the beginning of the next loop.
+
+      <img src=./assets/images/readme-images/spinner-function.png>
+      <img src=./assets/images/readme-images/new-spinner-function.png>
+
+- **Prevent Picking the Same Card Twice**
+  - Prevented this issue by swapping the class that the event listeners are tied to to a class with no CSS rules (The available class).
+  - This allowed me to add a function removing the class 'available' from a card when picked so that the user can't keep clicking the same card to fill thier picks with it.
+
+      <img src=./assets/images/readme-images/pick-same-card-repeatedly.png>
+
+- **Parse Int**
+  - Could not get this piece of code to work until I eventually realised that the boolean was false as the array contained string values and by parsing the operands to integer form prior to the conditional, during their declaration, the boolean was resulting in a false and would not proceed.
+
+      <img src=./assets/images/readme-images/parse-int.png>
+
+- **Adding When Number Was Not In The Array**
+  - Computation function was running despite not having the correct inputs.
+  - Fixed by adjusting conditional check from if (userNums.includes(operand1 && operand2)) to if (userNums.includes(operand1) && userNums.includes(operand2)).
+  
+      <img src="./assets/images/readme-images/adding-when-not-in-array.png>
+
+  - At this time I noticed the next bug.
+
+- **Able to use same number twice in 1 computation**
+  - The user was able to make use of the same number twice in a computation line.
+  - Fixed by prefacing the while computing function with the condition that the index of operand1 in the user numbers array cannot equal the index of operand2.
+
+      <img src="./assets/images/readme-images/same-number-twice.png">
+
+- **Able To Divide While Leaving A Remainder**
+  - Forgot to predicate the division rule on the premise that the modulo of the operation must be 0.
+
+      <img src="./assets/images/readme-images/division-remainder.png>
+
+- **Unable To Use Same Value Twice When Valid**
+  - The above bug fix caused another bug in the code.
+  - If the same value was included twice in the array the function no longer accepted using both as a valid input.
+  - I solved this problem by changing my earlier bug fix of comparing the indices of the operands in the array.
+  - I instead compared the operands themselves. If they were not equal the function would run as before. I then spliced the value of the first operand from the array and then check if the array still includes operand2. If it does then the same code as before runs. If it does not then the user also gets the invalid choice message.
+
+      <img src="./assets/images/readme-images/can't-use-same-number-twice-when-valid.png">
+
+- **Wrong Operand Spliced**
+  - I noticed that the splicing methods were removing the wrong operand sometimes.
+  - This was because the index values were declared before either splice.
+  - Then after the first splice was performed the second operand index variable would be wrong as the elements would have shifted.
+  - I solved this by only declaring the second index variable after the first splice had been completed.
+
+      <img src="./assets/images/readme-images/wrong-splice-1.png>
+      <img src="./assets/images/readme-images/wrong-splice-2.png>
+
+- **Mobile Cards Bug**
+  - When I implemented the mobile-friendly cards I found that the calculation funnction was not working.
+  - Tracked it down to the fact that my original user numbers array had been passed the inner text values of the cards, rather than the number value.
+  - Passed the user numbers array the String(value) of the number chosen by the card and let the function carry on as normal after that.
+
 <a name="technologies"></a>
 ## Technologies Used
 
@@ -150,3 +233,45 @@ This website is inspired by the popular British television show 'Countdown'. It 
 ## Deployment
 
 ### Publishing
+This website was published using the [GitHub Pages](https://pages.github.com/) service.
+This can be achieved as follows:
+1. Go to the GutHub repository you wish to publish.
+2. In the upper tabs, click on Settings.
+3. Click on the second last tab in the list that appears on the left.
+4. Under the Source section, click the dropdown and select the 'master' branch.
+5. The page will reload and you will be presented with a link to your deployed page.
+6. It will take a few minutes for the live version of your website to be functional, have patience!
+
+    <img src="./assets/images/readme-images/deployment.png>
+
+<a name="bugs"></a>
+## Known Bugs
+
+- **Invalid Input Still Advances Game**
+  - After introducing the feature where a user can click on one of the available cards to quick input it, a new bug arose.
+  - If the user clicks the same card twice they can click calculate and the game will proceed illegaly.
+  - The front-end of the website does not give any indication that this has happened.
+  - Any further calculations become skewed at this point.
+  - Thus far I have been unable to track down the cause of this bug.
+
+- **Mobile Keyboard Moving Done Button**
+  - On mobile, while in the input stage, if the user trys to type in an input box their keyboard will displace the done button.
+
+<a name="credits"></a>
+## Credits
+
+### Content
+
+- All code, except where otherwise specified, was written by me - Cathal McDermott
+- Colour scheme was found with the help of [coolors.co](https://coolors.co/)
+
+### Media
+
+- Favicon:
+  - <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+  ### Acknowledgements
+
+- The project itself is based on the gameshow [Countdown](https://en.wikipedia.org/wiki/Countdown_(game_show))
+- Thanks to my mentor, Maranatha Ilesanmi. Javascript still intimidated me before my first mentor session but he helped talk me through that.
+
