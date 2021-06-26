@@ -657,8 +657,10 @@ option {
   height: 70%;
   background-color: var(--box-background);
   top: 15%;
-  left: 20%;
+  left: 19.5%;
   z-index: 2;
+  border: 5px solid var(--card);
+  border-radius: 5%;
 }
 
 #modal h2 {
@@ -672,8 +674,14 @@ option {
 }
 
 @media screen and (max-width: 600px) {
+  #modal {
+    height: 40%;
+    top: 25%;
+  }
+
   #modal h2 {
     font-size: 200%;
+    margin-top: 15vh;
   }
 }
 

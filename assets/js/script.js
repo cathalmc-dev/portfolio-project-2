@@ -1,17 +1,34 @@
+// The interactive instructions dropdown
+const instructions = document.getElementById("instructions-badge");
+instructions.addEventListener('click', toggleInstructions);
+
+// Empty arrays for desktop card creation
 let cards = [];
 let backs = [];
-let scoreboard = document.getElementById('scoreboard');
+
+const scoreboard = document.getElementById('scoreboard');
+
+// Arrays and variables for card creation
 let largeNumbers = [25, 50, 75, 100];
 let largeLength = largeNumbers.length;
 let smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
 let smallLength = smallNumbers.length;
+const idArray = ['Large', 'Small'];
+
+const inputContainer = document.getElementById("input-container");
+const card = document.createElement('div');
 let available = document.getElementsByClassName("available");
+
+// Arrays and variables for user interaction
 let userNums = [];
+let userCardsContainer = document.getElementById('user-nums');
 let targetNum = 0;
 let spin = true;
-let stopButton = document.getElementById("get-target");
+const stopButton = document.getElementById("get-target");
 stopButton.addEventListener('click', stopSpinner);
-let userPicks = document.getElementsByClassName('user-pick');
+const userPicks = document.getElementsByClassName('user-pick');
+
+// Object to holder the points for each result and the corresponding message
 const scores = [{
     value: 10,
     message: "You Win! 10 Points!",
@@ -33,9 +50,6 @@ const scores = [{
 /**
  * Allows the user to toggle the instruction by clicking on the instructions title div
  */
-const instructions = document.getElementById("instructions-badge");
-instructions.addEventListener('click', toggleInstructions);
-
 function toggleInstructions() {
   document.getElementById("num-instructions").classList.toggle("display-none");
   const chevron = document.getElementById('chevron');
@@ -45,9 +59,9 @@ function toggleInstructions() {
   chevron.classList.toggle(up);
 }
 
-const inputContainer = document.getElementById("input-container");
-let card = document.createElement('div');
-
+/**
+ * When the page is loaded, or when the game is reset, decide which card set to generate
+ */
 function desktopOrMobile() {
   if (screen.width > 1024) {
     createCards();
@@ -57,12 +71,14 @@ function desktopOrMobile() {
 }
 desktopOrMobile();
 
+/**
+ * Create desktop version of cards to be picked by the user
+ */
 function createCards() {
   // Creates the backs of each card and sets the id of each
   let back = document.createElement('div');
   back.className = 'back';
   backs = [];
-  console.log(backs);
 
   for (i = 0; i <= 3; i++) {
     backs.push(back.cloneNode());
@@ -81,13 +97,10 @@ function createCards() {
   card.appendChild(front.cloneNode());
 
   // Iterates each card and then appends the appropriate card back
-  cards = [];
-  console.log(cards);
   for (i = 0; i <= 23; i++) {
     cards.push(card.cloneNode());
     cards[i].appendChild(backs[i]);
   }
-  console.log(cards);
 
   // Creates the card containers and appends the correct cards to them
   let largeContainer = document.createElement('div');
@@ -112,27 +125,32 @@ function createCards() {
   addCardListeners();
 }
 
-
+/**
+ * Creates mobile version of the cards to be picked by the user
+ */
 function createMobileCards() {
   card.className = "card mobile";
-  let idArray = ['Large', 'Small'];
   for (i = 0; i <= 1; i++) {
     cards.push(card.cloneNode());
     cards[i].setAttribute('id', `${idArray[i]}Mobile`);
     cards[i].innerHTML = `<h3>${idArray[i]}</h3>`;
   }
+
   let mobileContainer = document.createElement('div');
   mobileContainer.setAttribute('id', 'mobile-container');
   mobileContainer.appendChild(cards[0]);
   mobileContainer.appendChild(cards[1]);
   inputContainer.appendChild(mobileContainer);
+
   let largeMobile = document.getElementById('LargeMobile');
   let smallMobile = document.getElementById('SmallMobile');
   largeMobile.addEventListener('click', randomLarge);
   smallMobile.addEventListener('click', randomSmall);
 }
 
-
+/**
+ * Creates the display cards which hold the numbers that the user has available to them for calculations
+ */
 function createUserCards() {
   let userCard = document.createElement('div');
   userCard.className = 'user-pick five-plus';
@@ -147,10 +165,8 @@ function createUserCards() {
 createUserCards();
 
 /**
- * Randomly assign the 4 large numbers to the 4 large cards for user selection
+ * Randomly assign the 4 large numbers to the 4 large cards for user selection in the desktop version
  */
-
-
 function assignLarge() {
   for (i = 1; i <= 4; i++) {
     largeLength = largeNumbers.length;
@@ -160,7 +176,10 @@ function assignLarge() {
   }
 }
 
-
+/**
+ * For the mobile version, when the user clicks the large card a random index from the large numbers array is chosen
+ * then appended to the user numbers array and the innerHTML of the display card is updated
+ */
 function randomLarge() {
   largeLength = largeNumbers.length;
   if (largeLength !== 0) {
@@ -176,7 +195,7 @@ function randomLarge() {
   }
 }
 
-// Randomly assign the 20 small numbers to the 20 small cards for user selection
+// Randomly assign the 20 small numbers to the 20 small cards for user selection in the desktop version
 function assignSmall() {
   for (i = 1; i <= 20; i++) {
     smallLength = smallNumbers.length;
@@ -186,7 +205,10 @@ function assignSmall() {
   }
 }
 
-
+/**
+ * For the mobile version, when the user clicks the small card a random index from the small numbers array is chosen
+ * then appended to the user numbers array and the innerHTML of the display card is updated
+ */
 function randomSmall() {
   smallLength = smallNumbers.length;
   let index = Math.floor((Math.random()) * smallLength);
@@ -198,9 +220,7 @@ function randomSmall() {
   userNumsFull();
 }
 
-// Listeners for when a user wants to flip a card
-
-
+// Listeners for when a user wants to flip a card (only called in desktop version)
 function addCardListeners() {
   if (userNums.length < 6) {
     for (i = 0; i < 24; i++) {
@@ -243,6 +263,11 @@ function addToUserNums() {
   }
 }
 
+/**
+ * Checks if the users numbers array has 6 values
+ * if there are 6 values, this function runs the functions to start the spinner and remove the selection cards.
+ * It also makes the stop button visible and adjusts the height of the input container to maintain a consistent overall content area in the vertical plane
+ */
 function userNumsFull() {
   if (userNums.length === 6) {
     if (screen.width > 1024) {
@@ -256,7 +281,7 @@ function userNumsFull() {
   }
 }
 
-// Deletes the elements containing the selectable cards
+// Deletes the elements containing the selectable cards for the desktop version
 function replaceCardsDesktop() {
   let largeCards = document.getElementById("large-cards");
   largeCards.remove();
@@ -264,6 +289,7 @@ function replaceCardsDesktop() {
   smallCards.remove();
 }
 
+// Deletes the elements containing the selectable cards for the desktop version
 function replaceCardsMobile() {
   let mobileCards = document.getElementById('mobile-container');
   mobileCards.remove();
@@ -284,10 +310,13 @@ function startSpinner() {
     setTimeout(startSpinner, 100);
   } else {
     targetNum = parseInt(slot1.innerText + slot2.innerText + slot3.innerText);
-    console.log(targetNum);
   }
 }
 
+/**
+ * Stops the target numbers from spinning
+ * removes the stop button from DOM flow and resets input container height to previous value
+ */
 function stopSpinner() {
   spin = false;
   stopButton.classList.add('display-none');
@@ -295,7 +324,6 @@ function stopSpinner() {
   createFormHolder();
   createInputRow();
   createDoneButton();
-  addCardListeners();
 }
 
 function createFormHolder() {
@@ -371,6 +399,10 @@ function createInputRow() {
   clearOldCalcRow();
 }
 
+/**
+ * Creates the done button so that the user can compare their last calculated result to the target number
+ * before having used all of their numbers
+ */
 function createDoneButton() {
   let done = document.createElement('button');
   done.setAttribute('id', 'done');
@@ -380,13 +412,18 @@ function createDoneButton() {
   done.addEventListener('click', compareResult);
 }
 
+/**
+ * Listener for the next function
+ */
 function addUserCardListeners() {
   for (i = 0; i <= userNums.length - 1; i++) {
     userPicks[i].addEventListener('click', selectOperand);
   }
 }
 
-// Allows user to click on their available numbers to add them to the input field
+/**
+ * Allows the user the option of clicking on one of their displayed number choices rather than having to type it into the input field
+ */
 function selectOperand() {
   let input1 = document.getElementById('operand1');
   let input2 = document.getElementById('operand2');
@@ -489,6 +526,10 @@ function handleSubmit(event) {
   userCardsHeightAdjust();
 }
 
+/**
+ * Freezes the just calculated row in place by chaging the input fields to read-only and disabling the dropdown and button
+ * This is to allow the user to look back at what they just did
+ */
 function freezeRow() {
   document.getElementById('operand1').setAttribute('readonly', '');
   document.getElementById('operand1').removeAttribute('id');
@@ -501,6 +542,10 @@ function freezeRow() {
   document.getElementById('result').removeAttribute('id');
 }
 
+/**
+ * Replaces the values in each of the display cards with the updated version of the array values post each calculation
+ * Also dynamically adjusts the class of the display cards depending on how many are left to make better use of the available screen real estate
+ */
 function replaceUserCards() {
   for (i = 0; i <= userNums.length; i++) {
     let pick = document.getElementById(`pick${i+1}`);
@@ -529,6 +574,9 @@ function replaceUserCards() {
   }
 }
 
+/**
+ * Compares the last value to be added to the user numbers array with the target number
+ */
 function compareResult() {
   let usersAttempt = parseInt(userNums.pop());
   if (usersAttempt === targetNum) {
@@ -546,11 +594,18 @@ function compareResult() {
   }
 }
 
+/**
+ * Clears the oldest form row after every calculation after the 3rd calculation
+ * This prevents the input fields from getting too separated from the display numbers
+ */
 function clearOldCalcRow() {
   if (userNums.length < 4)
     document.getElementsByTagName('form')[0].remove();
 }
 
+/**
+ * Creates the modal that appears at the end of a round along with it's message
+ */
 function resultModal(x) {
   let message;
   switch (x) {
@@ -576,15 +631,20 @@ function resultModal(x) {
 	`;
   let body = document.getElementsByTagName('body');
   body[0].appendChild(modal);
-  resetGame();
 }
 
+/**
+ * Removes the modal and resets the game for another round
+ */
 function removeModal() {
   modal = document.getElementById('modal');
   modal.remove();
+  resetGame();
 }
 
-
+/**
+ * Updates the whole scoreboard
+ */
 function updateScoreboard(p) {
   totalPoints(p);
   exactMatchs(p);
@@ -593,11 +653,13 @@ function updateScoreboard(p) {
   attempts();
 }
 
+// Updates the points earned so far by the user
 function totalPoints(p) {
   let oldScore = parseInt(document.getElementById('points').innerText);
   document.getElementById('points').innerText = oldScore + p;
 }
 
+// Updates the amount of time the user got the target number exactly
 function exactMatchs(p) {
   let oldScore = parseInt(document.getElementById('matchs').innerText);
   if (p === 10) {
@@ -605,6 +667,7 @@ function exactMatchs(p) {
   }
 }
 
+// Updates the amount of time the user was within 5 of the target number
 function within5(p) {
   let oldScore = parseInt(document.getElementById('5s').innerText);
   if (p === 7) {
@@ -612,6 +675,7 @@ function within5(p) {
   }
 }
 
+// Updates the amount of time the user was within 10 of the target number
 function within10(p) {
   let oldScore = parseInt(document.getElementById('10s').innerText);
   if (p === 5) {
@@ -619,12 +683,16 @@ function within10(p) {
   }
 }
 
+// Updates the amount of times the user has attempted the game this session
 function attempts() {
   let oldScore = parseInt(document.getElementById('attempts').innerText);
   document.getElementById('attempts').innerText = oldScore + 1;
 
 }
 
+/**
+ * Resets the game for the next round
+ */
 function resetGame() {
   document.getElementById('slot1').innerText = 0;
   document.getElementById('slot2').innerText = 0;
@@ -636,14 +704,13 @@ function resetGame() {
   smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
   largeNumbers = [25, 50, 75, 100];
   desktopOrMobile();
-  addCardListeners();
-  let userCardsContainer = document.getElementById('user-nums');
   userCardsContainer.innerHTML = "";
   createUserCards();
   userNums = [];
   spin = true;
 }
 
+// Dynamically adjusts the height of the input container by changing the class which assigns it's height so long as the stop button in within the DOM flow
 function userCardsHeightAdjust() {
   if (userNums.length > 2) {
     // do nothing
