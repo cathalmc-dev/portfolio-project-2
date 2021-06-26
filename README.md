@@ -228,6 +228,10 @@ Throughout the development of this project, there were some bugs and issues that
 
 ### HTML5 W3C Validation
 - Pass - [Results](https://validator.w3.org/nu/?doc=https%3A%2F%2Fcathalmc-dev.github.io%2Fportfolio-project-2%2F)
+- 1 Warning - Input container section lacks a header. Would not fit the flow of the game so excluded.
+
+### JSHint Validation
+- 2 unused variables but both are functions called by onclick HTML attributes.
 
 ### Performance Testing
 - Tested using Chrome's Dev Tools - Lighthouse while set to desktop.

@@ -6,9 +6,9 @@ instructions.addEventListener('click', toggleInstructions);
 let cards = [];
 let backs = [];
 
-const scoreboard = document.getElementById('scoreboard');
 
 // Arrays and variables for card creation
+let i = 0;
 let largeNumbers = [25, 50, 75, 100];
 let largeLength = largeNumbers.length;
 let smallNumbers = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
@@ -47,6 +47,9 @@ const scores = [{
   }
 ];
 
+// Creates the modal
+let modal = document.createElement('div');
+
 /**
  * Allows the user to toggle the instruction by clicking on the instructions title div
  */
@@ -79,7 +82,7 @@ function createCards() {
   let back = document.createElement('div');
   back.className = 'back';
   backs = [];
-
+	
   for (i = 0; i <= 3; i++) {
     backs.push(back.cloneNode());
     backs[i].setAttribute('id', `large${i+1}`);
@@ -441,7 +444,7 @@ function selectOperand() {
  * Checks if the user has given valid inputs by comparing the operands to each other and to the user numbers array
  * Computes the value of the user equation depending on the chosen operator
  * Removes the used values from the user numbers array and pushes in the new one
- * 
+ * Event listener on the form submission so that is in use
  */
 function handleSubmit(event) {
   event.preventDefault();
@@ -622,7 +625,6 @@ function resultModal(x) {
       message = scores[3].message;
   }
 
-  let modal = document.createElement('div');
   modal.setAttribute('id', 'modal');
   modal.innerHTML = `<div class="modal-text">
     <span class="modal-close" onclick="removeModal();">&times;</span>
@@ -635,6 +637,7 @@ function resultModal(x) {
 
 /**
  * Removes the modal and resets the game for another round
+ * Event listener on the modal close button so this in use
  */
 function removeModal() {
   modal = document.getElementById('modal');
