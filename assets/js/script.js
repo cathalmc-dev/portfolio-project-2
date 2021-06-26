@@ -212,7 +212,9 @@ function addCardListeners() {
 
 /** 
  *Flips a card to reveal it's value,
- *then removes it from the pool of cards that are available to be flipped 
+ *then removes it from the pool of cards that are available to be flipped
+ *Relied heavily on the below link for this functionality
+ *https://jefferson-cuartas.medium.com/how-to-create-a-flip-card-effect-using-javascript-767dd945210c
  */
 function flipCard() {
   for (i = 0; i < 24; i++) {

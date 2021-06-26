@@ -14,11 +14,13 @@
 
 <body>
   <header>
+    <!-- Main heading -->
     <h1 class="main-heading">Countdown Numbers Game</h1>
+    <!-- Instructions section dropdown list -->
     <div id="instructions-badge">
       <h2>Instructions <i class="fas fa-chevron-down" id="chevron"></i></h2>
     </div>
-    <ul id="num-instructions" class="block-element display-none">
+    <ul id="num-instructions" class="display-none">
       <li>Choose any 6 cards from the below. The top 4 are large numbers and the bottom 20 are small numbers.<hr></li>
       <li>Stop the spinner to generate a random 3 digit target number.<hr></li>
       <li>Add, subtract, multiply or divide your 6 numbers to get as close to the target number as you can. Each number
@@ -28,7 +30,8 @@
     </ul>
   </header>
   <section>
-    <div id="target" class="block-element">
+    <!-- Target number generation section -->
+    <div id="target">
       <div class="random-number" id="slot1">0</div>
       <div class="random-number" id="slot2">0</div>
       <div class="random-number" id="slot3">0</div>
@@ -38,10 +41,12 @@
         <h2>STOP</h2>
         </div>
     </div>
+    <!-- Holder for the numbers available to be used in calculations by the user -->
     <div id="user-nums" class="normal-user-nums-height">
     </div>
   </section>
-  <section id="scoreboard" class="hidden">
+  <!-- scoreboard section -->
+  <section id="scoreboard">
     <div>
       <h2>Scoreboard</h2>
       <div class="score-type">
@@ -67,6 +72,7 @@
     </div>
   </section>
   <section>
+    <!-- The container for the main area of user interaction -->
     <div id="input-container" class="normal-height">
     </div>
   </section>

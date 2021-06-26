@@ -717,7 +717,7 @@ option {
 
 @media screen and (max-width: 1250px) {
   #scoreboard {
-    display: none;
+    visibility: hidden;
   }
 }
 
