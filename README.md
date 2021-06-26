@@ -1,9 +1,9 @@
 <h1 align="center">Countdown Numbers Game</h1>
 <h1 align="center"><img src="./assets/images/readme-images/responsive-home-page.png" /></h1>
 
-<a href="https://cathalmc-dev.github.io/portfolio-project-2/"><img src="./assets/images/favicon.png"/></a>
+<a href="https://cathalmc-dev.github.io/portfolio-project-2/"><img src="./assets/images/readme-images/favicon.png"/></a>
 
-<a href="https://github.com/cathalmc-dev/portfolio-project-2"><img src="./assets/images/github-mark-32px.png"/></a>
+<a href="https://github.com/cathalmc-dev/portfolio-project-2"><img src="./assets/images/readme-images/github-mark-32px.png"/></a>
 
 ## About
 
@@ -52,15 +52,15 @@ This website is inspired by the popular British television show 'Countdown'. It 
 - #### Typography
   - The main font used is a sans-serif font called 'Orbitron' with sans-serif as the secondary option. I chose this font as it is remeniscint of a calculator, much like the digital numeric font used on the show.
 
-    <img src=".assets/images/readme-images/orbitron.png" height="20px" />
+    <img src="./assets/images/readme-images/orbitron.png" height="20px" />
 
   - The heading font used was 'Oswald' with sans-serif as a fallback. This font is robust and well-suited towards the header of the website. The heading must be immediately obvious to and make an impression on the user.
 
-    <img src=".assets/images/readme-images/oswald.png" height="20px" />
+    <img src="./assets/images/readme-images/oswald.png" height="20px" />
 
   - The body font I used for other text was 'Raleway', again with sans-serif as the backup font. This font contrasts nicely with Oswald and has a sleek design.
 
-    <img src=".assets/images/readme-images/raleway.png" height="20px" />
+    <img src="./assets/images/readme-images/raleway.png" height="20px" />
 
 <a name="features"></a>
 ## Features
@@ -109,14 +109,14 @@ Throughout the development of this project there were bugs and issues that neede
 
       <img src="./assets/images/readme-images/card-back-array-bug.png">
       <img src="./assets/images/readme-images/card-back-array-bug1.png">
-      <img src="./assets/images/readme-images/card-back-array-bug2.png">
+      <img align="center" src="./assets/images/readme-images/card-back-array-bug2.png">
 
 - **User Picks Vertical Alignment**
   - The cards which display the numbers the user has chosen were jumping out of position when I pushed a value to them.
   - Changing the vertical alignment of the elements so that they all lined up with the top of the tallest element solved this problem.
   - Since they were all the same height this resulted in them staying aligned.
 
-      <img src=./assets/images/readme-images/user-picks-movement.png>
+      <img src="./assets/images/readme-images/user-picks-movement.png">
 
 - **Spinner Function**
   - Tried to implement a function to change the innerHTML of the spinner slots using a setInterval method.
@@ -124,25 +124,25 @@ Throughout the development of this project there were bugs and issues that neede
   - After looking into recursive functions I came up with a solution.
   - The new function changes the innerHTML and then waits 0.1s before calling itself again. The if statement in the equation checks if the spin variable is true so when I click the stop button, and change that variable's value to false, the spin function stops itself at the beginning of the next loop.
 
-      <img src=./assets/images/readme-images/spinner-function.png>
-      <img src=./assets/images/readme-images/new-spinner-function.png>
+      <img src="./assets/images/readme-images/spinner-function.png">
+      <img src="./assets/images/readme-images/new-spinner-function.png">
 
 - **Prevent Picking the Same Card Twice**
   - Prevented this issue by swapping the class that the event listeners are tied to to a class with no CSS rules (The available class).
   - This allowed me to add a function removing the class 'available' from a card when picked so that the user can't keep clicking the same card to fill thier picks with it.
 
-      <img src=./assets/images/readme-images/pick-same-card-repeatedly.png>
+      <img src="./assets/images/readme-images/pick-same-card-repeatedly.png">
 
 - **Parse Int**
   - Could not get this piece of code to work until I eventually realised that the boolean was false as the array contained string values and by parsing the operands to integer form prior to the conditional, during their declaration, the boolean was resulting in a false and would not proceed.
 
-      <img src=./assets/images/readme-images/parse-int.png>
+      <img src="./assets/images/readme-images/parse-int.png">
 
 - **Adding When Number Was Not In The Array**
   - Computation function was running despite not having the correct inputs.
   - Fixed by adjusting conditional check from if (userNums.includes(operand1 && operand2)) to if (userNums.includes(operand1) && userNums.includes(operand2)).
   
-      <img src="./assets/images/readme-images/adding-when-not-in-array.png>
+      <img src="./assets/images/readme-images/adding-when-not-in-array.png">
 
   - At this time I noticed the next bug.
 
@@ -155,7 +155,7 @@ Throughout the development of this project there were bugs and issues that neede
 - **Able To Divide While Leaving A Remainder**
   - Forgot to predicate the division rule on the premise that the modulo of the operation must be 0.
 
-      <img src="./assets/images/readme-images/division-remainder.png>
+      <img src="./assets/images/readme-images/division-remainder.png">
 
 - **Unable To Use Same Value Twice When Valid**
   - The above bug fix caused another bug in the code.
@@ -171,8 +171,8 @@ Throughout the development of this project there were bugs and issues that neede
   - Then after the first splice was performed the second operand index variable would be wrong as the elements would have shifted.
   - I solved this by only declaring the second index variable after the first splice had been completed.
 
-      <img src="./assets/images/readme-images/wrong-splice-1.png>
-      <img src="./assets/images/readme-images/wrong-splice-2.png>
+      <img src="./assets/images/readme-images/wrong-splice-1.png">
+      <img src="./assets/images/readme-images/wrong-splice-2.png">
 
 - **Mobile Cards Bug**
   - When I implemented the mobile-friendly cards I found that the calculation funnction was not working.
@@ -252,7 +252,7 @@ This can be achieved as follows:
 5. The page will reload and you will be presented with a link to your deployed page.
 6. It will take a few minutes for the live version of your website to be functional, have patience!
 
-    <img src="./assets/images/readme-images/deployment.png>
+    <img src="./assets/images/readme-images/deployment.png">
 
 <a name="bugs"></a>
 ## Known Bugs
